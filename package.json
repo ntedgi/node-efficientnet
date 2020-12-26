@@ -1,0 +1,22 @@
+{
+  "name": "efficientnet",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ntedgi/efficientnet.git"
+  },
+  "author": "Naor Tedgi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ntedgi/efficientnet/issues"
+  },
+  "homepage": "https://github.com/ntedgi/efficientnet#readme",
+  "dependencies": {
+    "@tensorflow/tfjs-node": "^2.7.0"
+  }
+}
