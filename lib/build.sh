@@ -1,4 +1,4 @@
 #!/bin/bash
 # download model from here
-# https://github.com/Callidior/keras-applications/releases/download/efficientnet/efficientnet-b2_weights_tf_dim_ordering_tf_kernels_autoaugment.h5
-tensorflowjs_converter --input_format keras efficientnet-b0_weights_tf_dim_ordering_tf_kernels_autoaugment.h5 tfjs
+https://tfhub.dev/tensorflow/efficientnet/b0/classification/1
+tensorflowjs_converter --input_format=tf_saved_model --output_format=tfjs_graph_model --signature_name=serving_default --saved_model_tags=serve efficientnet_b0_classification_1 ./tfjs/web_model

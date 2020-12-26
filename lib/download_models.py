@@ -1,3 +1,2 @@
-import efficientnet.keras as efn 
-
-model = efn.EfficientNetB2(weights='imagenet')
+from tensorflow.keras.applications import EfficientNetB0
+model = EfficientNetB0(weights='imagenet')
