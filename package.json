@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/ntedgi/efficientnet#readme",
   "dependencies": {
-    "@tensorflow/tfjs-node": "^2.7.0"
+    "@tensorflow/tfjs-node": "^2.7.0",
+    "jimp": "^0.16.1"
   }
 }
