@@ -1,4 +1,7 @@
-# EfficientNet using TensorflowJS
+# Under Construction 👷
+
+
+# TensorflowJS EfficientNet
 
 This repository contains a nodeJs wrappwer of **EfficientNet**, a lightweight convolutional neural network architecture achieving the [state-of-the-art accuracy with an order of magnitude fewer parameters and FLOPS](https://arxiv.org/abs/1905.11946), on both ImageNet and
 five other commonly used transfer learning datasets.
