@@ -5,6 +5,7 @@
       "declaration": true,
       "outDir": "./dist",
       "strict": true,
-      "skipLibCheck": true
+      "skipLibCheck": true,
+      "types": ["node"]
     }
   }
