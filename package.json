@@ -30,6 +30,7 @@
     "@babel/preset-env": "^7.12.11",
     "@babel/preset-typescript": "^7.12.7",
     "@types/jest": "^26.0.19",
+    "coveralls": "^3.1.0",
     "jest": "^26.6.3",
     "typescript": "^4.1.3"
   },
