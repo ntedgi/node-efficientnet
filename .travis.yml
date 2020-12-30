@@ -1,6 +1,7 @@
 language: node_js
 node_js:
-  - "stable"
-before_script: npm install
+  - "14"
+before_script:
+  - npm install
 after_success:
   - npm run coveralls
