@@ -6,9 +6,8 @@
     "outDir": "./dist",
     "strict": true,
     "skipLibCheck": true,
-    "types": [
-      "node"
-    ],
+    "types": [],
+    "typeRoots" : ["./node_modules","./node_modules/@types"],
     "resolveJsonModule": true,
     "esModuleInterop": true
   },
