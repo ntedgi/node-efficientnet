@@ -8,22 +8,58 @@ five other commonly used transfer learning datasets.
 
 The codebase is heavily inspired by the [TensorFlow implementation](https://github.com/tensorflow/tpu/tree/master/models/official/efficientnet).
 
+## Table of Contents
+
+ 1. [Installation](#installation)    
+ 2. [Examples](#examples)
+ 3. [About EfficientNet Models](#about-efficientnet-models)
+ 4. [Models](#models)
+
+## Installation
+
 ```node
+npm i --save node-efficientnet
+```
+
+## Examples
+
+```node
+const fs = require('fs');
+const nodeFetch = require('node-fetch');
+
 const {
     EfficientnetCheckPointFactory,
-    EfficientnetCheckPoint
+    EfficientnetCheckPoint,
+    EfficientnetModel
+} = require("./node-efficientnet")
 
-} = require("node-efficientnet")
-const samples = ['samples/car.jpg','samples/panda.jpg']
+const images = ['car.jpg', 'panda.jpg']
+const imageDir = "./samples"
+const imageDirRemoteUri = "https://raw.githubusercontent.com/ntedgi/node-efficientnet/main/samples"
 
-EfficientnetCheckPointFactory.create(EfficientnetCheckPoint.B0).then((model)=>{
-    samples.forEach(async (image) => {
-        const result = await model.inference(image)
-        console.log(result.result)
+fs.mkdirSync(imageDir)
+
+async function download(image: String, cb: Function) {
+    const response = await nodeFetch(`${imageDirRemoteUri}/${image}`);
+    const buffer = await response.buffer();
+    fs.writeFile(`${imageDir}/${image}`, buffer, cb)
+}
+
+
+EfficientnetCheckPointFactory.create(EfficientnetCheckPoint.B0)
+    .then((model: typeof EfficientnetModel) => {
+        images.forEach(async (image) => {
+            await download(image, () => {
+                model.inference(`${imageDir}/${image}`).then((result: { result: any; }) => {
+                    console.log(result.result)
+                })
+            })
+
+        })
     })
-}).catch((e)=>{
-    console.error(e)
-})
+    .catch((e: Error) => {
+        console.error(e)
+    })
 
 ```
 output :
@@ -51,14 +87,6 @@ output :
 ```
 
 
-## Table of Contents
-
- 1. [About EfficientNet Models](#about-efficientnet-models)
- 2. [Examples](#examples)
- 3. [Models](#models)
- 4. [Installation](#installation)
- 5. [Frequently Asked Questions](#frequently-asked-questions)
- 6. [Acknowledgements](#acknowledgements)
 
 ## About EfficientNet Models
 
@@ -82,11 +110,6 @@ EfficientNets achieve state-of-the-art accuracy on ImageNet with an order of mag
 * In middle-accuracy regime, EfficientNet-B1 is 7.6x smaller and 5.7x faster on CPU inference than [ResNet-152](https://arxiv.org/abs/1512.03385), with similar ImageNet accuracy.
 
 * Compared to the widely used [ResNet-50](https://arxiv.org/abs/1512.03385), EfficientNet-B4 improves the top-1 accuracy from 76.3% of ResNet-50 to 82.6% (+6.3%), under similar FLOPS constraints.
-
-## Examples
-
-* *Initializing the model*:
-
 
 ## Models
 
