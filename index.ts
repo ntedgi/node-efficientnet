@@ -1,6 +1,7 @@
-const tfnode = require("@tensorflow/tfjs-node");
-const Jimp = require("jimp");
-const labelsMap = require("./misc/labels_map.json");
+import * as tfnode from "@tensorflow/tfjs-node";
+import * as  Jimp from "jimp";
+import labelsMap from "./misc/labels_map.json";
+
 const NUM_OF_CHANNELS = 3;
 
 enum EfficientnetCheckPoint {
@@ -40,13 +41,17 @@ interface Prediction {
 }
 
 class EfficientnetResult {
-    result: Prediction[]= []
+    result: Prediction[] = []
+
     constructor(values: Float32Array) {
         const arr = Array.from(values);
         const topValues = values.sort((a: number, b: number) => b - a).slice(0, 3);
         const indexes = topValues.map((e: number) => arr.indexOf(e));
-        const sum = topValues.reduce((a: number, b: number) => {return a + b;}, 0);
+        const sum = topValues.reduce((a: number, b: number) => {
+            return a + b;
+        }, 0);
         indexes.forEach((value: number, index: number) => {
+            // @ts-ignore
             this.result.push({label: labelsMap[value], precision: topValues[index] / sum * 100} as Prediction);
         });
     }
@@ -89,6 +94,7 @@ class EfficientnetModel {
             }
         );
         const outShape = [this.imageSize, this.imageSize, NUM_OF_CHANNELS];
+        // @ts-ignore
         let imageTensor = tfnode.tensor3d(values, outShape, "float32");
         imageTensor = imageTensor.expandDims(0);
         return imageTensor;
@@ -118,7 +124,7 @@ class EfficientnetModel {
 
     private async predict(tensor: any): Promise<EfficientnetResult> {
         const objectArray = await this.model.predict(tensor);
-        const values =  objectArray.dataSync();
+        const values = objectArray.dataSync();
         return new EfficientnetResult(values)
     }
 

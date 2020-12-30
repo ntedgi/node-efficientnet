@@ -1,4 +1,5 @@
 lib/
 .idea
 */example.*
-misc
+samples
+prototype.js
