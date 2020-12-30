@@ -1,7 +1,5 @@
 node_modules
 lib/model
-dist/
-
 # Logs
 logs
 *.log

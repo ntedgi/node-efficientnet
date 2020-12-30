@@ -8,6 +8,49 @@ five other commonly used transfer learning datasets.
 
 The codebase is heavily inspired by the [TensorFlow implementation](https://github.com/tensorflow/tpu/tree/master/models/official/efficientnet).
 
+```node
+const {
+    EfficientnetCheckPointFactory,
+    EfficientnetCheckPoint
+
+} = require("node-efficientnet")
+const samples = ['samples/car.jpg','samples/panda.jpg']
+
+EfficientnetCheckPointFactory.create(EfficientnetCheckPoint.B0).then((model)=>{
+    samples.forEach(async (image) => {
+        const result = await model.inference(image)
+        console.log(result.result)
+    })
+}).catch((e)=>{
+    console.error(e)
+})
+
+```
+output :
+```
+[
+  { label: 'sports car, sport car', precision: 88.02440940394301 },
+  {
+    label: 'racer, race car, racing car',
+    precision: 6.647441678387659
+  },
+  { label: 'car wheel', precision: 5.3281489176693295 }
+]
+[
+  {
+    label: 'giant panda, panda, panda bear, coon bear, Ailuropoda melanoleuca',
+    precision: 83.60747593436018
+  },
+  { label: 'skunk, polecat, wood pussy', precision: 11.61300759424677 },
+  {
+    label: 'hog, pig, grunter, squealer, Sus scrofa',
+    precision: 4.779516471393051
+  }
+]
+
+```
+
+
 ## Table of Contents
 
  1. [About EfficientNet Models](#about-efficientnet-models)
@@ -44,9 +87,7 @@ EfficientNets achieve state-of-the-art accuracy on ImageNet with an order of mag
 
 * *Initializing the model*:
 
-```node
 
-```
 ## Models
 
 The performance of each model variant using the pre-trained weights converted from checkpoints provided by the authors is as follows:

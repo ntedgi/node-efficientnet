@@ -1,13 +1,13 @@
 {
   "name": "node-efficientnet",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Implementation of EfficientNet model.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "prepublish": "npm run build",
     "build": "tsc",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "ts-node example.ts"
   },
   "repository": {
     "type": "git",
@@ -22,6 +22,7 @@
   "dependencies": {
     "@tensorflow/tfjs-node": "^2.7.0",
     "jimp": "^0.16.1",
+    "ts-node": "^9.1.1",
     "winston": "^3.3.3"
   },
   "devDependencies": {
