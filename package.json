@@ -8,7 +8,8 @@
     "prepublish": "npm run build",
     "build": "rm -rf ./dist && tsc && cp -r misc ./dist",
     "exaple": "ts-node example.ts",
-    "test": "jest  --coverage"
+    "test": "jest  --coverage",
+    "coveralls": "cat ./coverage/lcov.info | coveralls"
   },
   "repository": {
     "type": "git",

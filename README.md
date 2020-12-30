@@ -1,6 +1,7 @@
 
 
-# TensorflowJS EfficientNet ![Node.js CI](https://github.com/ntedgi/node-efficientnet/workflows/Node.js%20CI/badge.svg?branch=main)
+# TensorflowJS EfficientNet  ![Node.js CI](https://github.com/ntedgi/node-efficientnet/workflows/Node.js%20CI/badge.svg?branch=main) [![Coverage Status](https://coveralls.io/repos/github/ntedgi/node-efficientnet/badge.svg?branch=main)](https://coveralls.io/github/ntedgi/node-efficientnet?branch=main) [![Build Status](https://travis-ci.org/ntedgi/node-efficientnet.svg?branch=main)](https://travis-ci.org/ntedgi/node-efficientnet)
+
 
 ### Under Construction 👷 currently supporting only B0 checkpoint
 
