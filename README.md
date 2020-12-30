@@ -1,7 +1,6 @@
 
 
-# TensorflowJS EfficientNet
-
+# TensorflowJS EfficientNet ![Node.js CI](https://github.com/ntedgi/node-efficientnet/workflows/Node.js%20CI/badge.svg?branch=main)
 
 ### Under Construction 👷 currently supporting only B0 checkpoint
 
