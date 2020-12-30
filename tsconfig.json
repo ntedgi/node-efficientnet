@@ -12,6 +12,7 @@
     "esModuleInterop": true
   },
   "exclude": [
+    "tests",
     "node_modules",
     "example.ts"
   ]
