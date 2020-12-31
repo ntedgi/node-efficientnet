@@ -15,10 +15,10 @@ The codebase is heavily inspired by the [TensorFlow implementation](https://gith
 
 ## Table of Contents
 
- 1. [Installation](#installation)    
- 2. [Examples](#examples)
- 3. [About EfficientNet Models](#about-efficientnet-models)
- 4. [Models](#models)
+1. [Installation](#installation)    
+2. [Examples](#examples)
+3. [About EfficientNet Models](#about-efficientnet-models)
+4. [Models](#models)
 
 ## Installation
 
