@@ -9,6 +9,7 @@
     "build": "rm -rf ./dist && tsc && cp -r misc ./dist",
     "example": "ts-node example.ts",
     "test": "jest  --coverage",
+    "lint": "eslint . --ext .ts",
     "coveralls": "cat ./coverage/lcov.info | coveralls"
   },
   "repository": {

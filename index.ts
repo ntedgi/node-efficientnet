@@ -1,6 +1,6 @@
 import * as tfnode from "@tensorflow/tfjs-node";
 import * as  Jimp from "jimp";
-import labelsMap from "./misc/labels_map.json";
+import * as labelsMap from "./misc/labels_map.json";
 
 const NUM_OF_CHANNELS = 3;
 
@@ -36,7 +36,7 @@ class EfficientnetCheckPointFactory {
 
 
 interface Prediction {
-    label: String
+    label: string
     precision: number
 }
 
@@ -60,20 +60,20 @@ class EfficientnetResult {
 class EfficientnetModel {
     modelPath: string;
     imageSize: number;
-    model: any;
+    model: tfnode.GraphModel | undefined;
 
     constructor(modelPath: string, imageSize: number) {
         this.modelPath = modelPath;
         this.imageSize = imageSize;
     }
 
-    async load() {
+    async load(): Promise<void> {
         const model = await tfnode.loadGraphModel(this.modelPath);
         this.model = model;
     }
 
-    private async createTensor(image: any): Promise<any> {
-        let values = new Float32Array(
+    private async createTensor(image: Jimp): Promise<tfnode.Tensor3D> {
+        const values = new Float32Array(
             this.imageSize * this.imageSize * NUM_OF_CHANNELS
         );
         let i = 0;
@@ -82,7 +82,7 @@ class EfficientnetModel {
             0,
             image.bitmap.width,
             image.bitmap.height,
-            (x: number, y: number, idx: number) => {
+            (x: number, y: number) => {
                 const pixel = Jimp.intToRGBA(image.getPixelColor(x, y));
                 pixel.r = ((pixel.r - 1) / 127.0) >> 0;
                 pixel.g = ((pixel.g - 1) / 127.0) >> 0;
@@ -93,14 +93,14 @@ class EfficientnetModel {
                 i++;
             }
         );
-        const outShape = [this.imageSize, this.imageSize, NUM_OF_CHANNELS];
+        const outShape: number[] = Array(...[this.imageSize, this.imageSize, NUM_OF_CHANNELS]);
         // @ts-ignore
         let imageTensor = tfnode.tensor3d(values, outShape, "float32");
         imageTensor = imageTensor.expandDims(0);
         return imageTensor;
     }
 
-    private async cropAndResize(image: any): Promise<any> {
+    private async cropAndResize(image: Jimp): Promise<Jimp> {
         const width = image.bitmap.width;
         const height = image.bitmap.height;
         const cropPadding = 32;
@@ -122,10 +122,12 @@ class EfficientnetModel {
     }
 
 
-    private async predict(tensor: any): Promise<EfficientnetResult> {
-        const objectArray = await this.model.predict(tensor);
+    private async predict(tensor: tfnode.Tensor3D): Promise<EfficientnetResult> {
+        // @ts-ignore
+        const objectArray = this.model.predict(tensor);
+        // @ts-ignore
         const values = objectArray.dataSync();
-        return new EfficientnetResult(values)
+        return new EfficientnetResult(values);
     }
 
     async inference(imgPath: string): Promise<EfficientnetResult> {
