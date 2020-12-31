@@ -1,27 +1,29 @@
-const fs = require('fs');
-const nodeFetch = require('node-fetch');
+import * as  fs from 'fs';
+import * as nodeFetch from 'node-fetch';
 
-const {
+import {
     EfficientnetCheckPointFactory,
     EfficientnetCheckPoint,
     EfficientnetModel
-} = require("./index")
+} from "./index"
 
 const images = ['car.jpg', 'panda.jpg']
 const imageDir = "./samples"
 const imageDirRemoteUri = "https://raw.githubusercontent.com/ntedgi/node-efficientnet/main/samples"
 
-fs.mkdirSync(imageDir)
+if (!fs.existsSync(imageDir)) {
+    fs.mkdirSync(imageDir);
+}
 
-async function download(image: String, cb: Function) {
-    const response = await nodeFetch(`${imageDirRemoteUri}/${image}`);
+async function download(image: String, cb: fs.NoParamCallback) {
+    const response = await nodeFetch.default(`${imageDirRemoteUri}/${image}`);
     const buffer = await response.buffer();
     fs.writeFile(`${imageDir}/${image}`, buffer, cb)
 }
 
 
 EfficientnetCheckPointFactory.create(EfficientnetCheckPoint.B0)
-    .then((model: typeof EfficientnetModel) => {
+    .then((model: EfficientnetModel) => {
         images.forEach(async (image) => {
             await download(image, () => {
                 model.inference(`${imageDir}/${image}`).then((result: { result: any; }) => {
