@@ -1,2 +1,2 @@
 language = "nodejs"
-run = "npm i && npm run example"
+run = "npm run example"
