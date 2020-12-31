@@ -1,7 +1,11 @@
 lib/
 .idea
-*/example.*
+example.ts
 samples
 prototype.js
 tests
 coverage/*
+.coveralls.yml
+.travis.yml
+.github/*
+
