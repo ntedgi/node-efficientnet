@@ -2,6 +2,9 @@
 // Sync object
 module.exports = {
     verbose: true,
-    testTimeout: 30000
+    testTimeout: 30000,
+    "transform": {
+        "^.+\\.ts$": "babel-jest"
+    },
 };
 

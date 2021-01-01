@@ -2,15 +2,15 @@ import * as  fs from 'fs';
 import * as nodeFetch from 'node-fetch';
 
 import {
-    EfficientnetCheckPointFactory,
-    EfficientnetCheckPoint,
-    EfficientnetModel,
-    EfficientnetResult
+    EfficientNetCheckPointFactory,
+    EfficientNetCheckPoint,
+    EfficientNetModel,
+    EfficientNetResult
 } from "./index"
 
 const images = ['car.jpg', 'panda.jpg']
 const imageDir = "./samples"
-const imageDirRemoteUri = "https://raw.githubusercontent.com/ntedgi/node-efficientnet/main/samples"
+const imageDirRemoteUri = "https://raw.githubusercontent.com/ntedgi/node-EfficientNet/main/samples"
 
 if (!fs.existsSync(imageDir)) {
     fs.mkdirSync(imageDir);
@@ -23,11 +23,11 @@ async function download(image: string, cb: fs.NoParamCallback) {
 }
 
 
-EfficientnetCheckPointFactory.create(EfficientnetCheckPoint.B0)
-    .then((model: EfficientnetModel) => {
+EfficientNetCheckPointFactory.create(EfficientNetCheckPoint.B0)
+    .then((model: EfficientNetModel) => {
         images.forEach(async (image) => {
             await download(image, () => {
-                model.inference(`${imageDir}/${image}`).then((result: EfficientnetResult) => {
+                model.inference(`${imageDir}/${image}`).then((result: EfficientNetResult) => {
                     console.log(result.result)
                 })
             })

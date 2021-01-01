@@ -8,11 +8,9 @@
     "skipLibCheck": true,
     "types": [],
     "typeRoots" : ["./node_modules","./node_modules/@types"],
-    "resolveJsonModule": true,
-    "esModuleInterop": true
+    "resolveJsonModule": true
   },
   "exclude": [
-    "tests",
     "node_modules",
     "example.ts"
   ]
