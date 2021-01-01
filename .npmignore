@@ -10,3 +10,4 @@ coverage/*
 .replit
 src
 *.config.*
+web

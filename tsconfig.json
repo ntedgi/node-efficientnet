@@ -7,12 +7,16 @@
     "strict": true,
     "skipLibCheck": true,
     "types": [],
-    "typeRoots" : ["./node_modules","./node_modules/@types"],
+    "typeRoots": [
+      "./node_modules",
+      "./node_modules/@types"
+    ],
     "resolveJsonModule": true,
     "moduleResolution": "node"
   },
   "exclude": [
     "node_modules",
-    "example.ts"
+    "example.ts",
+    "web"
   ]
 }
