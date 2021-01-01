@@ -69,7 +69,7 @@ export default class EfficientNetModel {
 
 
     private async predict(tensor: tf.Tensor3D): Promise<EfficientNetResult> {
-        const objectArray = this.model.predict(tensor) as tf.Tensor;
+        const objectArray = this.model!.predict(tensor) as tf.Tensor;
         const values = objectArray.dataSync() as Float32Array;
         return new EfficientNetResult(values);
     }
