@@ -1,12 +1,13 @@
 const {EfficientNetCheckPoint, EfficientNetCheckPointFactory} = require("../index");
 
 test('EfficientNetCheckPointFactory - create checkpoint other from B0 throws not implement yet ', done => {
-    [EfficientNetCheckPoint.B1, EfficientNetCheckPoint.B2, EfficientNetCheckPoint.B3, EfficientNetCheckPoint.B4, EfficientNetCheckPoint.B5, EfficientNetCheckPoint.B6, EfficientNetCheckPoint.B7].forEach(e => {
-        EfficientNetCheckPointFactory.create(e)
+    [EfficientNetCheckPoint.B1, EfficientNetCheckPoint.B2, EfficientNetCheckPoint.B3, EfficientNetCheckPoint.B4, EfficientNetCheckPoint.B5, EfficientNetCheckPoint.B6, EfficientNetCheckPoint.B7].forEach(checkPoint => {
+        EfficientNetCheckPointFactory.create(checkPoint)
             .then(model => {
-                done(new Error("NOT YET IMPLEMENTED"))
+                done(new Error(`${model} NOT YET IMPLEMENTED`))
             })
             .catch(error => {
+                expect(error.message).toBe(`${checkPoint} - Not Implemented Yet!`)
             })
     })
     done()
