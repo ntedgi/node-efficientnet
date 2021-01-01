@@ -4,7 +4,6 @@ import EfficientNetResult from "./EfficientNetResult"
 
 const NUM_OF_CHANNELS = 3;
 
-
 export default class EfficientNetModel {
     modelPath: string;
     imageSize: number;
@@ -41,8 +40,7 @@ export default class EfficientNetModel {
                 i++;
             }
         );
-        const outShape: number[] = Array(...[this.imageSize, this.imageSize, NUM_OF_CHANNELS]);
-        // @ts-ignore
+        const outShape: [number,number,number] =  [this.imageSize, this.imageSize, NUM_OF_CHANNELS];
         let imageTensor = tf.tensor3d(values, outShape, "float32");
         imageTensor = imageTensor.expandDims(0);
         return imageTensor;
@@ -71,10 +69,8 @@ export default class EfficientNetModel {
 
 
     private async predict(tensor: tf.Tensor3D): Promise<EfficientNetResult> {
-        // @ts-ignore
-        const objectArray = this.model.predict(tensor);
-        // @ts-ignore
-        const values = objectArray.dataSync();
+        const objectArray = this.model!.predict(tensor) as tf.Tensor;
+        const values = objectArray.dataSync() as Float32Array;
         return new EfficientNetResult(values);
     }
 

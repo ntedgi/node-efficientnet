@@ -1,4 +1,7 @@
-import * as labelsMap from "../misc/labels_map.json";
+import * as labelsJsonFile from "../misc/labels_map.json";
+
+const labelsMap = labelsJsonFile as Record<string, string>;
+
 
 interface Prediction {
     label: string
@@ -17,7 +20,6 @@ export default class EfficientNetResult {
             return a + b;
         }, 0);
         indexes.forEach((value: number, index: number) => {
-            // @ts-ignore
             this.result.push({label: labelsMap[value], precision: topValues[index] / sum * 100} as Prediction);
         });
     }
