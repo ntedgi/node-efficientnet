@@ -8,8 +8,8 @@
 ### Under Construction 👷 currently supporting only B0 checkpoint
 
 
-This repository contains a tensorflowJs implemantation of **EfficientNet**,
-an object detection model trained on [http://www.image-net.org/](ImageNet) and can detect 1000 diffrent objects.
+This repository contains a tensorflowJs implementation of **EfficientNet**,
+an object detection model trained on [ImageNet](http://www.image-net.org/) and can detect 1000 different objects.
 
 EfficientNet a lightweight convolutional neural network architecture achieving the [state-of-the-art accuracy with an order of magnitude fewer parameters and FLOPS](https://arxiv.org/abs/1905.11946), on both ImageNet and
 five other commonly used transfer learning datasets.
