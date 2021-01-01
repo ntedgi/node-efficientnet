@@ -8,7 +8,8 @@
     "skipLibCheck": true,
     "types": [],
     "typeRoots" : ["./node_modules","./node_modules/@types"],
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "moduleResolution": "node"
   },
   "exclude": [
     "node_modules",
