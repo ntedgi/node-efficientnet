@@ -3,7 +3,8 @@
   "parser": "@typescript-eslint/parser",
   "plugins": [
     "@typescript-eslint",
-    "import"
+    "import",
+    "jest"
   ],
   "extends": [
     "eslint:recommended",
@@ -12,6 +13,9 @@
   ],
   "rules": {
     "import/no-unresolved": "error"
+  },
+  "env": {
+    "jest/globals": true
   },
   "settings": {
     "import/parsers": {
