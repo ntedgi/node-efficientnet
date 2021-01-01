@@ -18,10 +18,10 @@ The codebase is heavily inspired by the [TensorFlow implementation](https://gith
 
 ## Table of Contents
 
-1. [Installation](#installation)    
-2. [Examples](#examples)
-3. [About EfficientNet Models](#about-efficientnet-models)
-4. [Models](#models)
+1.  [Installation](#installation)    
+2.  [Examples](#examples)
+3.  [About EfficientNet Models](#about-efficientnet-models)
+4.  [Models](#models)
 
 ## Installation
 
@@ -32,45 +32,43 @@ npm i --save node-efficientnet
 ## Examples
 
 ```node
-import * as  fs from 'fs';
-import * as nodeFetch from 'node-fetch';
+const fs = require('fs');
+const nodeFetch = require('node-fetch');
 
-import {
-    EfficientnetCheckPointFactory,
-    EfficientnetCheckPoint,
-    EfficientnetModel,
-    EfficientnetResult
-} from "node-efficientnet"
+const {
+  EfficientNetCheckPointFactory,
+  EfficientNetCheckPoint
+} = require("node-efficientnet")
 
 const images = ['car.jpg', 'panda.jpg']
 const imageDir = "./samples"
-const imageDirRemoteUri = "https://raw.githubusercontent.com/ntedgi/node-efficientnet/main/samples"
+const imageDirRemoteUri = "https://raw.githubusercontent.com/ntedgi/node-EfficientNet/main/samples"
 
 if (!fs.existsSync(imageDir)) {
-    fs.mkdirSync(imageDir);
+  fs.mkdirSync(imageDir);
 }
 
-async function download(image: string, cb: fs.NoParamCallback) {
-    const response = await nodeFetch.default(`${imageDirRemoteUri}/${image}`);
-    const buffer = await response.buffer();
-    fs.writeFile(`${imageDir}/${image}`, buffer, cb)
+async function download(image, cb) {
+  const response = await nodeFetch.default(`${imageDirRemoteUri}/${image}`);
+  const buffer = await response.buffer();
+  fs.writeFile(`${imageDir}/${image}`, buffer, cb)
 }
 
 
-EfficientnetCheckPointFactory.create(EfficientnetCheckPoint.B0)
-    .then((model: EfficientnetModel) => {
-        images.forEach(async (image) => {
-            await download(image, () => {
-                model.inference(`${imageDir}/${image}`).then((result: EfficientnetResult) => {
-                    console.log(result.result)
-                })
-            })
-
+EfficientNetCheckPointFactory.create(EfficientNetCheckPoint.B0)
+  .then((model) => {
+    images.forEach(async (image) => {
+      await download(image, () => {
+        model.inference(`${imageDir}/${image}`).then((result) => {
+          console.log(result.result)
         })
+      })
+
     })
-    .catch((e: Error) => {
-        console.error(e)
-    })
+  })
+  .catch((e) => {
+    console.error(e)
+  })
 ```
 output :
 ```
@@ -115,11 +113,11 @@ EfficientNets rely on AutoML and compound scaling to achieve superior performanc
 
 EfficientNets achieve state-of-the-art accuracy on ImageNet with an order of magnitude better efficiency:
 
-* In high-accuracy regime, EfficientNet-B7 achieves the state-of-the-art 84.4% top-1 / 97.1% top-5 accuracy on ImageNet with 66M parameters and 37B FLOPS. At the same time, the model is 8.4x smaller and 6.1x faster on CPU inference than the former leader, [Gpipe](https://arxiv.org/abs/1811.06965).
+*   In high-accuracy regime, EfficientNet-B7 achieves the state-of-the-art 84.4% top-1 / 97.1% top-5 accuracy on ImageNet with 66M parameters and 37B FLOPS. At the same time, the model is 8.4x smaller and 6.1x faster on CPU inference than the former leader, [Gpipe](https://arxiv.org/abs/1811.06965).
 
-* In middle-accuracy regime, EfficientNet-B1 is 7.6x smaller and 5.7x faster on CPU inference than [ResNet-152](https://arxiv.org/abs/1512.03385), with similar ImageNet accuracy.
+*   In middle-accuracy regime, EfficientNet-B1 is 7.6x smaller and 5.7x faster on CPU inference than [ResNet-152](https://arxiv.org/abs/1512.03385), with similar ImageNet accuracy.
 
-* Compared to the widely used [ResNet-50](https://arxiv.org/abs/1512.03385), EfficientNet-B4 improves the top-1 accuracy from 76.3% of ResNet-50 to 82.6% (+6.3%), under similar FLOPS constraints.
+*   Compared to the widely used [ResNet-50](https://arxiv.org/abs/1512.03385), EfficientNet-B4 improves the top-1 accuracy from 76.3% of ResNet-50 to 82.6% (+6.3%), under similar FLOPS constraints.
 
 ## Models
 

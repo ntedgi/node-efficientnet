@@ -9,8 +9,8 @@
     "build": "rm -rf ./dist && tsc && cp -r misc ./dist",
     "example": "ts-node example.ts",
     "test": "jest  --clearCache && jest  --coverage",
-    "lint": "eslint . --ext .ts",
-    "lint-md": "remark .",
+    "lint": "eslint . --ext .ts && npm run lint:md",
+    "lint:md": "remark .",
     "coveralls": "cat ./coverage/lcov.info | coveralls"
   },
   "repository": {
