@@ -2,10 +2,11 @@ lib/
 .idea
 example.ts
 samples
-prototype.js
 tests
 coverage/*
 .coveralls.yml
 .travis.yml
 .github/*
 .replit
+src
+*.config.*
