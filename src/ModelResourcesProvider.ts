@@ -1,28 +1,25 @@
-import {EfficientNetCheckPoint} from "./EfficientNetCheckPoint";
-import * as  fs from 'fs';
+import { EfficientNetCheckPoint } from "./EfficientNetCheckPoint";
+import * as fs from "fs";
+import * as nodeFetch from "node-fetch";
 
-const workspaceDir = "./workspace"
-const downloadUri = "https://tfhub.dev/tensorflow/efficientnet/b0/classification/1?tf-hub-format=compressed"
+const workspaceDir = "./workspace";
 
-class ModelResourcesProvider {
+export default class ModelResourcesProvider {
+  private static downloadUri = (checkPoint: EfficientNetCheckPoint) =>
+    `https://tfhub.dev/tensorflow/efficientnet/b${checkPoint}/classification/1?tf-hub-format=compressed`;
 
-    async download(checkPoint: EfficientNetCheckPoint, cb: fs.NoParamCallback) {
-        // const response = await nodeFetch.default(`${imageDirRemoteUri}/${image}`);
-        // const buffer = await response.buffer();
-        // fs.writeFile(`${imageDir}/${image}`, buffer, cb)
+  private static async download(url: string, outputFilePath: string) {
+    const response = await nodeFetch.default(url);
+    const buffer = await response.buffer();
+    await fs.writeFileSync(outputFilePath, buffer);
+  }
+
+  static async get(checkPoint: EfficientNetCheckPoint) {
+    const modelDir = `${workspaceDir}/B${checkPoint}/model.tgz`;
+    if (!fs.existsSync(workspaceDir)) {
+      fs.mkdirSync(workspaceDir);
+      await this.download(this.downloadUri(checkPoint), modelDir);
     }
-
-
-    static async get(checkPoint: EfficientNetCheckPoint): Promise<string> {
-        const modelDir = `${workspaceDir}/B${checkPoint}`
-        if (!fs.existsSync(workspaceDir)) fs.mkdirSync(workspaceDir);
-
-        return ""
-
-
-    }
-}
-
-for (const item in EfficientNetCheckPoint) {
-     ModelResourcesProvider.get(item)
+    return "";
+  }
 }
