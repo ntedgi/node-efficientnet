@@ -14,7 +14,7 @@ export default class ModelResourcesProvider {
     await fs.writeFileSync(outputFilePath, buffer);
   }
 
-  static async get(checkPoint: EfficientNetCheckPoint) {
+  static async get(checkPoint: EfficientNetCheckPoint): Promise<string> {
     const modelDir = `${workspaceDir}/B${checkPoint}/model.tgz`;
     if (!fs.existsSync(workspaceDir)) {
       fs.mkdirSync(workspaceDir);
