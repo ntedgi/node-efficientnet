@@ -3,15 +3,28 @@
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/09917d9ddf9c42648eb60d7d917f5026)](https://www.codacy.com/gh/ntedgi/node-efficientnet/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ntedgi/node-efficientnet&amp;utm_campaign=Badge_Grade)
 [![Run on Repl.it](https://repl.it/badge/github/ntedgi/node-efficientnet)](https://repl.it/github/ntedgi/node-efficientnet)
 
-Under Construction 👷 currently supporting only B0 checkpoint
-
 This repository contains a tensorflowJs implementation of **EfficientNet**,
-an object detection model trained on [ImageNet](http://www.image-net.org/) and can detect 1000 different objects.
+an object detection model trained on [ImageNet](http://www.image-net.org/) and can detect [1000 different objects](https://storage.googleapis.com/download.tensorflow.org/data/ImageNetLabels.txt).
 
 EfficientNet a lightweight convolutional neural network architecture achieving the [state-of-the-art accuracy with an order of magnitude fewer parameters and FLOPS](https://arxiv.org/abs/1905.11946), on both ImageNet and
 five other commonly used transfer learning datasets.
 
 The codebase is heavily inspired by the [TensorFlow implementation](https://github.com/tensorflow/tpu/tree/master/models/official/efficientnet).
+
+# Usage:
+EfficientNet has 8 different model checkpoints each checkpoint as different input layer resolution
+for larger input layer resolution, the greater the accuracy and the running time is slower.
+
+for example lets take this panda image:
+
+<img src="https://raw.githubusercontent.com/ntedgi/node-efficientnet/main/samples/panda.jpg" width="100%" />
+
+
+| Model | prediction 
+| -------------- | :----: |
+| EfficientNetB0 | ('Giant panda',83.607) , ( 'Skunk',11.61) , ('hog',4.772) |
+| EfficientNetB7 | ('Giant panda',90.406) , ( 'American black bear',7.07) , ('Badger',2.5192) |
+
 
 ## Table of Contents
 

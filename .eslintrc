@@ -4,22 +4,29 @@
   "plugins": [
     "@typescript-eslint",
     "import",
-    "jest"
+    "jest",
+    "prettier"
   ],
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/eslint-recommended",
-    "plugin:@typescript-eslint/recommended"
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended"
   ],
   "rules": {
-    "import/no-unresolved": "error"
+    "prettier/prettier": "error",
+    "import/no-unresolved": "error",
+    "@typescript-eslint/no-non-null-assertion": "off"
   },
   "env": {
     "jest/globals": true
   },
   "settings": {
     "import/parsers": {
-      "@typescript-eslint/parser": [".ts", ".tsx"]
+      "@typescript-eslint/parser": [
+        ".ts",
+        ".tsx"
+      ]
     },
     "import/resolver": {
       "typescript": {
