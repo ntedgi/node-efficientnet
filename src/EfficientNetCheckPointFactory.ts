@@ -10,7 +10,6 @@ export default class EfficientNetCheckPointFactory {
   static async create(
     checkPoint: EfficientNetCheckPoint
   ): Promise<EfficientNetModel> {
-    // const modelPath ="file:///Users/naortedgi/Desktop/projects/node-efficientnet/lib/models/B0/model.json"
     const modelPath = `${defaultModelsUrl}${checkPoint}/${modelFileName}`;
     const model = new EfficientNetModel(
       modelPath,
