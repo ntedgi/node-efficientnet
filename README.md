@@ -12,7 +12,7 @@ five other commonly used transfer learning datasets.
 The codebase is heavily inspired by the [TensorFlow implementation](https://github.com/tensorflow/tpu/tree/master/models/official/efficientnet).
 
 
-## Stargazers thanks!
+## 👏 Supporters
 [![Stargazers repo roster for @ntedgi/node-efficientnet](https://reporoster.com/stars/ntedgi/node-efficientnet)](https://github.com/ntedgi/node-efficientnet/stargazers)
 
 # Usage:
