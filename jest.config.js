@@ -6,5 +6,7 @@ module.exports = {
     "transform": {
         "^.+\\.ts$": "babel-jest"
     },
+    modulePathIgnorePatterns: ["<rootDir>/playground/"]
+
 };
 
