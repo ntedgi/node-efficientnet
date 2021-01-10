@@ -57,6 +57,10 @@ for example lets take this panda image:
           <td>EfficientNetB0</td>
           <td>('Sports Car',88.02) , ( 'racing car',6.647) , ('car wheel',5.32)</td>
         </tr>
+         <tr>
+          <td>EfficientNetB7</td>
+          <td>('Sports Car',87.68) , ( 'convertible'',7.831) , ('car wheel',4.485)</td>
+        </tr>
       </table>
     </td>
 </tr>
