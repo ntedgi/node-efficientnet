@@ -45,6 +45,27 @@ for example lets take this images:
 </tr>
 <tr>
     <td>
+      <img src="https://raw.githubusercontent.com/ntedgi/node-efficientnet/main/samples/fish.jpg" width="100%" />
+    </td>
+    <td>
+       <table border="0">
+        <tr>
+          <td>Model</td>
+          <td>Prediction</td>
+        </tr>
+        <tr>
+          <td>EfficientNetB3</td>
+          <td>('goldfish, Carassius auratus',82.5) , ( 'starfish, sea star',9.26) , ('corn'',7.33)</td>
+        </tr>
+        <tr>
+          <td>EfficientNetB7</td>
+          <td>('goldfish, Carassius auratus',97.5) , ( 'starfish, sea star',1.46) , ('corn'',0.93)</td>
+        </tr>
+      </table>
+    </td>
+</tr>
+<tr>
+    <td>
       <img src="https://raw.githubusercontent.com/ntedgi/node-efficientnet/main/samples/car.jpg" width="100%" />
     </td>
     <td>
