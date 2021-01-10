@@ -64,6 +64,29 @@ for example lets take this panda image:
       </table>
     </td>
 </tr>
+<tr>
+    <td>
+      <img src="https://raw.githubusercontent.com/ntedgi/node-efficientnet/main/samples/gun.jpg" width="100%" />
+    </td>
+    <td>
+       <table border="0">
+        <tr>
+          <td>Model</td>
+          <td>Prediction</td>
+        </tr>
+        <tr>
+          <td>EfficientNetB0</td>
+              <td>('revolver',85.52) , ( 'assault rifle',9.85) , ('rifle',4.6197)</td>
+        </tr>
+        <tr>
+          <td>EfficientNetB7</td>
+          <td>('revolver',88.13) , ( 'rifle',8.29) , ('assault rifle',3.56)</td>
+        </tr>
+      </table>
+    </td>
+</tr>
+    
+    
 </table>
 
 ## Table of Contents
@@ -105,7 +128,7 @@ async function download(image, cb) {
 }
 
 
-EfficientNetCheckPointFactory.create(EfficientNetCheckPoint.B0)
+EfficientNetCheckPointFactory.create(EfficientNetCheckPoint.B2)
   .then((model) => {
     images.forEach(async (image) => {
       await download(image, () => {
