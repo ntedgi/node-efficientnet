@@ -8,6 +8,5 @@ coverage/*
 .travis.yml
 .github/*
 .replit
-src
 *.config.*
 web
