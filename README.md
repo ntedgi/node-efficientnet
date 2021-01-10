@@ -19,7 +19,7 @@ The codebase is heavily inspired by the [TensorFlow implementation](https://gith
 EfficientNet has 8 different model checkpoints each checkpoint as different input layer resolution
 for larger input layer resolution, the greater the accuracy and the running time is slower.
 
-for example lets take this panda image:
+for example lets take this images:
 
 <table border="0">
 <tr>
