@@ -21,14 +21,46 @@ for larger input layer resolution, the greater the accuracy and the running time
 
 for example lets take this panda image:
 
-<img src="https://raw.githubusercontent.com/ntedgi/node-efficientnet/main/samples/panda.jpg" width="100%" />
-
-
-| Model | prediction 
-| -------------- | :----: |
-| EfficientNetB0 | ('Giant panda',83.607) , ( 'Skunk',11.61) , ('hog',4.772) |
-| EfficientNetB7 | ('Giant panda',90.406) , ( 'American black bear',7.07) , ('Badger',2.5192) |
-
+<table border="0">
+<tr>
+    <td>
+      <img src="https://raw.githubusercontent.com/ntedgi/node-efficientnet/main/samples/panda.jpg" width="100%" />
+    </td>
+    <td>
+       <table border="0">
+        <tr>
+          <td>Model</td>
+          <td>Prediction</td>
+        </tr>
+        <tr>
+          <td>EfficientNetB0</td>
+          <td>('Giant panda',83.607) , ( 'Skunk',11.61) , ('hog',4.772)</td>
+        </tr>
+        <tr>
+          <td>EfficientNetB7</td>
+          <td>('Giant panda',90.406) , ( 'American black bear',7.07) , ('Badger',2.5192)</td>
+        </tr>
+      </table>
+    </td>
+</tr>
+<tr>
+    <td>
+      <img src="https://raw.githubusercontent.com/ntedgi/node-efficientnet/main/samples/car.jpg" width="100%" />
+    </td>
+    <td>
+       <table border="0">
+        <tr>
+          <td>Model</td>
+          <td>Prediction</td>
+        </tr>
+        <tr>
+          <td>EfficientNetB0</td>
+          <td>('Sports Car',88.02) , ( 'racing car',6.647) , ('car wheel',5.32)</td>
+        </tr>
+      </table>
+    </td>
+</tr>
+</table>
 
 ## Table of Contents
 
