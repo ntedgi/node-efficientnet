@@ -145,3 +145,6 @@ The performance of each model variant using the pre-trained weights converted fr
 | EfficientNetB7 | 0.844  |0.869|
 
 **\*** - topK accuracy score for converted models (imagenet `val` set)
+
+## Stargazers
+[![Stargazers repo roster for @ntedgi/node-efficientnet](https://reporoster.com/stars/ntedgi/node-efficientnet)](https://github.com/ntedgi/node-efficientnet/stargazers)
