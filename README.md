@@ -11,6 +11,10 @@ five other commonly used transfer learning datasets.
 
 The codebase is heavily inspired by the [TensorFlow implementation](https://github.com/tensorflow/tpu/tree/master/models/official/efficientnet).
 
+
+## Stargazers thanks!
+[![Stargazers repo roster for @ntedgi/node-efficientnet](https://reporoster.com/stars/ntedgi/node-efficientnet)](https://github.com/ntedgi/node-efficientnet/stargazers)
+
 # Usage:
 EfficientNet has 8 different model checkpoints each checkpoint as different input layer resolution
 for larger input layer resolution, the greater the accuracy and the running time is slower.
@@ -146,5 +150,3 @@ The performance of each model variant using the pre-trained weights converted fr
 
 **\*** - topK accuracy score for converted models (imagenet `val` set)
 
-## Stargazers
-[![Stargazers repo roster for @ntedgi/node-efficientnet](https://reporoster.com/stars/ntedgi/node-efficientnet)](https://github.com/ntedgi/node-efficientnet/stargazers)
