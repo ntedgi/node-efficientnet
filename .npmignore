@@ -9,4 +9,4 @@ coverage/*
 .github/*
 .replit
 *.config.*
-web
+playground
