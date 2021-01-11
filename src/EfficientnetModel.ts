@@ -2,6 +2,7 @@ import * as tf from "@tensorflow/tfjs-node";
 import * as Jimp from "jimp";
 import * as cliProgress from "cli-progress";
 import EfficientNetResult from "./EfficientNetResult";
+
 const NUM_OF_CHANNELS = 3;
 
 export default class EfficientNetModel {
@@ -23,7 +24,7 @@ export default class EfficientNetModel {
     const model = await tf.loadGraphModel(this.modelPath, {
       onProgress: (p) => {
         bar.update(p * 100);
-      },
+      }
     });
     bar.stop();
     this.model = model;
@@ -53,7 +54,7 @@ export default class EfficientNetModel {
     const outShape: [number, number, number] = [
       this.imageSize,
       this.imageSize,
-      NUM_OF_CHANNELS,
+      NUM_OF_CHANNELS
     ];
     let imageTensor = tf.tensor3d(values, outShape, "float32");
     imageTensor = imageTensor.expandDims(0);
@@ -87,7 +88,10 @@ export default class EfficientNetModel {
     return new EfficientNetResult(values);
   }
 
-  async inference(imgPath: string): Promise<EfficientNetResult> {
+
+
+  async inference(imgPath: string | Buffer): Promise<EfficientNetResult> {
+    // @ts-ignore
     let image = await Jimp.read(imgPath);
     image = await this.cropAndResize(image);
     const tensor = await this.createTensor(image);

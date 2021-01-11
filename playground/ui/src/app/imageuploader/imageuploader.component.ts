@@ -17,11 +17,17 @@ export class ImageuploaderComponent implements OnInit {
   ngOnInit(): void {
   }
   onUpload(event) {
+    console.log(event)
+
     for(let file of event.files) {
+      console.log(file)
       this.uploadedFiles.push(file);
     }
 
     this.messageService.add({severity: 'info', summary: 'File Uploaded', detail: ''});
+  }
+  onSend(event){
+    console.log(event)
   }
 
 }

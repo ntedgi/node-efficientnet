@@ -1,8 +1,8 @@
 <p-toast></p-toast>
 
 <div upload-image-wrapper>
-  <p-fileUpload name="demo[]" url="./upload.php" (onUpload)="onUpload($event)"
-                multiple="multiple" accept="image/*" maxFileSize="1000000">
+  <p-fileUpload name="file" url="/api/upload" (onUpload)="onUpload($event)" (onSend)="onSend($event)"
+                multiple="multiple" accept="image/*" maxFileSize="1000000" [auto]="true">
     <ng-template pTemplate="content">
       <ul *ngIf="uploadedFiles.length">
         <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
