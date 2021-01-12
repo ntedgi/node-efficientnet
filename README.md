@@ -16,6 +16,8 @@ The codebase is heavily inspired by the [TensorFlow implementation](https://gith
 [![Stargazers repo roster for @ntedgi/node-efficientnet](https://reporoster.com/stars/ntedgi/node-efficientnet)](https://github.com/ntedgi/node-efficientnet/stargazers)
 
 
+![Alt Text](https://raw.githubusercontent.com/ntedgi/node-efficientnet/main/misc/sample.gif)
+
 
 ## Table of Contents
 1.  [Just Want to Play With The Model](#how-i-run-this-project-locally-)
