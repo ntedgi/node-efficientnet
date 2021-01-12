@@ -1,0 +1,23 @@
+version: '3.2'
+services:
+  node-server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - INSTANCE=node-server
+    volumes:
+      - ./:/server
+  nginx:
+    build:
+      context: ./ui
+      dockerfile: Dockerfile
+    depends_on:
+      - node-server
+    ports:
+      - "8080:80"
+    links:
+      - node-server:node-server
+    restart: always
