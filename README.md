@@ -1,4 +1,4 @@
-# TensorflowJS EfficientNet  
+v# TensorflowJS EfficientNet  
 ![npm](https://img.shields.io/npm/v/node-efficientnet) ![Node.js CI](https://github.com/ntedgi/node-efficientnet/workflows/Node.js%20CI/badge.svg?branch=main) [![Coverage Status](https://coveralls.io/repos/github/ntedgi/node-efficientnet/badge.svg?branch=main&service=github)](https://coveralls.io/github/ntedgi/node-efficientnet?branch=main) [![Build Status](https://travis-ci.org/ntedgi/node-efficientnet.svg?branch=main)](https://travis-ci.org/ntedgi/node-efficientnet)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/09917d9ddf9c42648eb60d7d917f5026)](https://www.codacy.com/gh/ntedgi/node-efficientnet/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ntedgi/node-efficientnet&amp;utm_campaign=Badge_Grade)
 [![Run on Repl.it](https://repl.it/badge/github/ntedgi/node-efficientnet)](https://repl.it/github/ntedgi/node-efficientnet)
@@ -14,6 +14,24 @@ The codebase is heavily inspired by the [TensorFlow implementation](https://gith
 
 ## 👏 Supporters
 [![Stargazers repo roster for @ntedgi/node-efficientnet](https://reporoster.com/stars/ntedgi/node-efficientnet)](https://github.com/ntedgi/node-efficientnet/stargazers)
+
+
+
+## Table of Contents
+1.  [How I Run This Project Locally?](#how-i-run-this-project-locally-)
+2.  [Installation](#installation)
+3.  [Examples](#examples)
+4.  [Usage](#usgae)
+5.  [About EfficientNet Models](#about-efficientnet-models)
+6.  [Models](#models)
+
+
+
+## How I Run This Project Locally ?
+- clone this repository
+- Just Want to Play ?
+    - At the root project go to playground directory, Run: `docker-compose up`
+    - Navigate to http://localhost:8080
 
 # Usage:
 EfficientNet has 8 different model checkpoints each checkpoint as different input layer resolution
@@ -110,12 +128,6 @@ for example lets take this images:
     
 </table>
 
-## Table of Contents
-
-1.  [Installation](#installation)    
-2.  [Examples](#examples)
-3.  [About EfficientNet Models](#about-efficientnet-models)
-4.  [Models](#models)
 
 ## Installation
 
