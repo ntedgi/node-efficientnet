@@ -1,0 +1,7 @@
+<div *ngIf="show()">
+  <p text>{{acc}}</p>
+  <p-progressBar [value]="title"></p-progressBar>
+</div>
+<div placeholder *ngIf="!show()">
+  <p-skeleton shape="rectangle"></p-skeleton>
+</div>

@@ -10,6 +10,7 @@ import { ImageuploaderComponent } from './imageuploader/imageuploader.component'
 import {HttpClientModule} from '@angular/common/http';
 import { NoteComponent } from './note/note.component';
 import { ResultsComponent } from './results/results.component';
+import { SingleResultComponent } from './single-result/single-result.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { ResultsComponent } from './results/results.component';
     HeaderComponent,
     ImageuploaderComponent,
     NoteComponent,
-    ResultsComponent
+    ResultsComponent,
+    SingleResultComponent
   ],
   imports: [
     HttpClientModule,

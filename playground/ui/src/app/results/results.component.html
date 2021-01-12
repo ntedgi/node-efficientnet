@@ -1,14 +1,21 @@
 <div results-container>
   <div flex-container image-contianer>
-    <img src="{{image2Display}}" />
+    <p-skeleton *ngIf="!show()" width="100%" height="100%"></p-skeleton>
+    <img *ngIf="show()" src="{{image2Display}}" />
   </div>
+
   <div flex-container results>
-    <p text>Giant panda</p>
-    <p-progressBar [value]="90.40"></p-progressBar>
-    <p text>American black bear</p>
-    <p-progressBar [value]="7.0"></p-progressBar>
-    <p text>Skunk</p>
-    <p-progressBar [value]="1.8"></p-progressBar>
+    <div *ngIf="show()">
+      <div *ngFor="let user of classifications">
+        <app-single-result [acc]="user.label" [title]="user.precision" [loading]="show()"></app-single-result>
+      </div>
+    </div>
+    <div *ngIf="!show()">
+      <div *ngFor="let user of [1,2,3]">
+        <app-single-result [acc]="" [title]="" [loading]="show()"></app-single-result>
+      </div>
+    </div>
   </div>
+
 
 </div>

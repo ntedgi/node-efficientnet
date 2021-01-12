@@ -34,7 +34,7 @@ const initServer = (model) => {
   }
 ;
 
-EfficientNetCheckPointFactory.create(EfficientNetCheckPoint.B0).then(model => {
+EfficientNetCheckPointFactory.create(EfficientNetCheckPoint.B7).then(model => {
   initServer(model);
 }).catch(err => {
   console.error(err);

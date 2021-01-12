@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import Prediction from "../interfces";
 
 @Component({
   selector: "app-uploader",
@@ -11,7 +12,8 @@ export class UploaderComponent implements OnInit {
   }
 
   image2Display: string | ArrayBuffer;
-  classificatins: {};
+  classifications: Prediction[];
+  loading: boolean;
 
   updateImage(imgPath: File) {
     console.log(imgPath);
@@ -24,11 +26,14 @@ export class UploaderComponent implements OnInit {
     };
 
   }
+  isLoading(loading: boolean) {
+    this.loading = loading;
+  }
 
-  updateClassification(result: object) {
+  updateClassification(result: Prediction[]) {
     console.log("updateClassification");
     console.log(result);
-
+    this.classifications = result;
   }
 
   ngOnInit(): void {
