@@ -22,10 +22,11 @@ The codebase is heavily inspired by the [TensorFlow implementation](https://gith
 ## Table of Contents
 1.  [Just Want to Play With The Model](#how-i-run-this-project-locally-)
 2.  [Installation](#installation)
-3.  [Examples](#examples)
-4.  [Usage](#usgae)
-5.  [About EfficientNet Models](#about-efficientnet-models)
-6.  [Models](#models)
+3.  [API](#api)   
+4.  [Examples](#examples)
+5.  [Usage](#usgae)
+6.  [About EfficientNet Models](#about-efficientnet-models)
+7.  [Models](#models)
 
 
 
@@ -137,7 +138,28 @@ for example lets take this images:
 npm i --save node-efficientnet
 ```
 
+
+## API
+
+### `EfficientNetCheckPointFactory.create(checkPoint: EfficientNetCheckPoint): Promise<EfficientNetModel>`
+Example: to create an efficientnet model you need to pass  `EfficientNetCheckPoint`
+(available checkpoint [B0..B7]) each one of them represent different model
+
+```javascript
+
+const { EfficientNetCheckPointFactory, EfficientNetCheckPoint } = require("node-efficientnet")
+
+const model = await EfficientNetCheckPointFactory.create(EfficientNetCheckPoint.B7)
+
+const path2image = "..."
+
+const result = await model.inference(path2image)
+
+```
+
 ## Examples
+
+download files from remote and predict using model 
 
 ```node
 const fs = require('fs');
