@@ -7,7 +7,7 @@ import { PrimeNGConfig } from 'primeng/api';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'playground';
+  title = 'node-efficientnet playground';
   constructor(private primengConfig: PrimeNGConfig) {}
   ngOnInit() {
     this.primengConfig.ripple = true;
