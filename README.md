@@ -18,7 +18,7 @@ The codebase is heavily inspired by the [TensorFlow implementation](https://gith
 
 
 ## Table of Contents
-1.  [How I Run This Project Locally?](#how-i-run-this-project-locally-)
+1.  [Just Want to Play With The Model](#how-i-run-this-project-locally-)
 2.  [Installation](#installation)
 3.  [Examples](#examples)
 4.  [Usage](#usgae)
