@@ -10,3 +10,4 @@ coverage/*
 .replit
 *.config.*
 playground
+misc/sample.gif
