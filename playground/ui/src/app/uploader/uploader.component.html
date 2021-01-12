@@ -1,6 +1,6 @@
 <div upload-page>
   <app-header></app-header>
   <app-note></app-note>
-  <app-imageuploader></app-imageuploader>
-  <app-results></app-results>
+  <app-imageuploader (updateImage)="updateImage($event)"  (updateClassification)="updateClassification($event)"></app-imageuploader>
+  <app-results [image2Display]="image2Display"></app-results>
 </div>

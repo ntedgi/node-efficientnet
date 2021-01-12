@@ -2,7 +2,7 @@
 
 <div upload-image-wrapper>
   <p-fileUpload name="file" url="/api/upload" (onUpload)="onUpload($event)" (onSend)="onSend($event)"
-                multiple="multiple" accept="image/*" maxFileSize="1000000" [auto]="true">
+                multiple="multiple" accept="image/*" maxFileSize="1000000" fileLimit="1" [auto]="true" >
     <ng-template pTemplate="content">
       <ul *ngIf="uploadedFiles.length">
         <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
