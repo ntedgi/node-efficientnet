@@ -24,7 +24,7 @@ export default class EfficientNetModel {
     const model = await tf.loadGraphModel(this.modelPath, {
       onProgress: (p) => {
         bar.update(p * 100);
-      }
+      },
     });
     bar.stop();
     this.model = model;
@@ -54,7 +54,7 @@ export default class EfficientNetModel {
     const outShape: [number, number, number] = [
       this.imageSize,
       this.imageSize,
-      NUM_OF_CHANNELS
+      NUM_OF_CHANNELS,
     ];
     let imageTensor = tf.tensor3d(values, outShape, "float32");
     imageTensor = imageTensor.expandDims(0);
@@ -87,8 +87,6 @@ export default class EfficientNetModel {
     const values = objectArray.dataSync() as Float32Array;
     return new EfficientNetResult(values);
   }
-
-
 
   async inference(imgPath: string | Buffer): Promise<EfficientNetResult> {
     // @ts-ignore
