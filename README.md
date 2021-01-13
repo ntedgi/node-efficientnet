@@ -2,6 +2,9 @@
 ![npm](https://img.shields.io/npm/v/node-efficientnet) ![Node.js CI](https://github.com/ntedgi/node-efficientnet/workflows/Node.js%20CI/badge.svg?branch=main) [![Coverage Status](https://coveralls.io/repos/github/ntedgi/node-efficientnet/badge.svg?branch=main&service=github)](https://coveralls.io/github/ntedgi/node-efficientnet?branch=main) [![Build Status](https://travis-ci.org/ntedgi/node-efficientnet.svg?branch=main)](https://travis-ci.org/ntedgi/node-efficientnet)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/09917d9ddf9c42648eb60d7d917f5026)](https://www.codacy.com/gh/ntedgi/node-efficientnet/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ntedgi/node-efficientnet&amp;utm_campaign=Badge_Grade)
 [![Run on Repl.it](https://repl.it/badge/github/ntedgi/node-efficientnet)](https://repl.it/github/ntedgi/node-efficientnet)
+<a href="https://www.npmjs.com/package/node-efficientnet"><img src="https://img.shields.io/npm/l/node-efficientnet.svg" alt="License"></a>  
+<a href="https://npmcharts.com/compare/node-efficientnet?minimal=true"><img src="https://img.shields.io/npm/dm/node-efficientnet.svg" alt="Downloads"></a>
+<a href="https://npmcharts.com/compare/node-efficientnet?minimal=true"><img src="https://img.shields.io/npm/dt/node-efficientnet.svg" alt="Downloads"></a>
 
 This repository contains a tensorflowJs implementation of **EfficientNet**,
 an object detection model trained on [ImageNet](http://www.image-net.org/) and can detect [1000 different objects](https://storage.googleapis.com/download.tensorflow.org/data/ImageNetLabels.txt).
