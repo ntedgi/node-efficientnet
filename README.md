@@ -6,6 +6,10 @@
 <a href="https://npmcharts.com/compare/node-efficientnet?minimal=true"><img src="https://img.shields.io/npm/dm/node-efficientnet.svg" alt="Downloads"></a>
 <a href="https://npmcharts.com/compare/node-efficientnet?minimal=true"><img src="https://img.shields.io/npm/dt/node-efficientnet.svg" alt="Downloads"></a>
 
+#
+
+[![NPM](https://nodei.co/npm/node-efficientnet.png?downloads=true)](https://www.npmjs.com/package/node-efficientnet)  
+
 This repository contains a tensorflowJs implementation of **EfficientNet**,
 an object detection model trained on [ImageNet](http://www.image-net.org/) and can detect [1000 different objects](https://storage.googleapis.com/download.tensorflow.org/data/ImageNetLabels.txt).
 
