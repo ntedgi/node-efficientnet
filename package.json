@@ -1,12 +1,12 @@
 {
   "name": "node-efficientnet",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "description": "Implementation of efficientNet model in nodejs",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "prepublish": "npm run build",
-    "build": "rm -rf ./dist && tsc && cp -r misc ./dist",
+    "build": "rm -rf ./dist && tsc && cp -r misc/labels_map.json ./dist/misc/labels_map.json",
     "example": "ts-node example.ts",
     "test": "jest  --clearCache && jest  --coverage",
     "lint": "eslint . --fix --ext .ts && npm run lint:md",
