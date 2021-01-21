@@ -10,9 +10,9 @@ interface Prediction {
 export default class EfficientNetResult {
   result: Prediction[] = [];
 
-  constructor(values: Float32Array) {
+  constructor(values: Float32Array, topK: number) {
     const arr = Array.from(values);
-    const topValues = values.sort((a: number, b: number) => b - a).slice(0, 3);
+    const topValues = values.sort((a: number, b: number) => b - a).slice(0, topK);
     const indexes = topValues.map((e: number) => arr.indexOf(e));
     const sum = topValues.reduce((a: number, b: number) => {
       return a + b;
