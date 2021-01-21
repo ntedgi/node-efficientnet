@@ -28,7 +28,7 @@ EfficientNetCheckPointFactory.create(EfficientNetCheckPoint.B0)
     images.forEach(async (image) => {
       await download(image, () => {
         model
-          .inference(`${imageDir}/${image}`)
+          .inference(`${imageDir}/${image}`, 3)
           .then((result: EfficientNetResult) => {
             console.log(result.result);
           });

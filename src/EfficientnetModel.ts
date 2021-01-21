@@ -88,7 +88,9 @@ export default class EfficientNetModel {
     return new EfficientNetResult(values, topK);
   }
 
-  async inference(imgPath: string | Buffer, topK: number = 3): Promise<EfficientNetResult> {
+  async inference(imgPath: string | Buffer, topK?: number): Promise<EfficientNetResult> {
+    if (typeof topK === 'undefined' || topK === null)
+      topK = 3
     // @ts-ignore
     let image = await Jimp.read(imgPath);
     image = await this.cropAndResize(image);

@@ -164,7 +164,9 @@ const model = await EfficientNetCheckPointFactory.create(EfficientNetCheckPoint.
 
 const path2image = "..."
 
-const result = await model.inference(path2image)
+const topResults = 5
+
+const result = await model.inference(path2image,topResults)
 
 ```
 
