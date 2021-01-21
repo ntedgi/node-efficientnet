@@ -5,7 +5,7 @@
 <a href="https://www.npmjs.com/package/node-efficientnet"><img src="https://img.shields.io/npm/l/node-efficientnet.svg" alt="License"></a>  
 <a href="https://npmcharts.com/compare/node-efficientnet?minimal=true"><img src="https://img.shields.io/npm/dm/node-efficientnet.svg" alt="Downloads"></a>
 <a href="https://npmcharts.com/compare/node-efficientnet?minimal=true"><img src="https://img.shields.io/npm/dt/node-efficientnet.svg" alt="Downloads"></a>
-
+[![Gitter](https://badges.gitter.im/node-efficientnet/community.svg)](https://gitter.im/node-efficientnet/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 #
 [![NPM](https://nodei.co/npm/node-efficientnet.png?downloads=true)](https://www.npmjs.com/package/node-efficientnet)  
 
