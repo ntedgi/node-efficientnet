@@ -42,3 +42,18 @@ test("EfficientNetCheckPointFactory - checkpoint B0 should predict car at top pr
     })
     .catch((error) => done(error));
 });
+
+
+test("EfficientNetCheckPointFactory - checkpoint B0 should return top 5 answers", (done) => {
+  EfficientNetCheckPointFactory.create(EfficientNetCheckPoint.B0)
+    .then(async (model) => {
+      expect(model).toBeDefined();
+      const image = "samples/car.jpg";
+      model.inference(image,5).then((predictions) => {
+        expect(predictions.result[0].label).toEqual("sports car, sport car");
+        expect(predictions.result.length).toEqual(5);
+        done();
+      });
+    })
+    .catch((error) => done(error));
+});
