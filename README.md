@@ -24,7 +24,10 @@ The codebase is heavily inspired by the [TensorFlow implementation](https://gith
 
 
 ## 👏 Supporters
+### &#8627; Stargazers
 [![Stargazers repo roster for @ntedgi/node-efficientnet](https://reporoster.com/stars/ntedgi/node-efficientnet)](https://github.com/ntedgi/node-efficientnet/stargazers)
+### &#8627; Forkers
+[![Forkers repo roster for @ntedgi/node-efficientnet](https://reporoster.com/forks/ntedgi/node-efficientnet)](https://github.com/ntedgi/node-efficientnet/network/members)
 
 
 ![Alt Text](https://raw.githubusercontent.com/ntedgi/node-efficientnet/main/misc/sample.gif)
