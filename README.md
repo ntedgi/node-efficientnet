@@ -231,7 +231,7 @@ output :
     label: 'giant panda, panda, panda bear, coon bear, Ailuropoda melanoleuca',
     precision: 83.60747593436018
   },
-  { label: 'skunk, polecat, wood pussy', precision: 11.61300759424677 },
+  { label: 'skunk, poleca', precision: 11.61300759424677 },
   {
     label: 'hog, pig, grunter, squealer, Sus scrofa',
     precision: 4.779516471393051
