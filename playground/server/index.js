@@ -10,6 +10,7 @@ const {
   EfficientNetCheckPoint
 } = require("node-efficientnet");
 
+const objects = require("./labels_map.json")
 
 const initServer = (model) => {
 
@@ -17,6 +18,11 @@ const initServer = (model) => {
       console.info(`${serverName} |  ${req.url}  ${req.method} -- ${new Date()}`);
       next();
     });
+
+    router.get("/api/objects",(req, res) => {
+      res.status(200).send(objects);
+    });
+
 
     router.post("/api/upload", async (req, res) => {
       const result = await model.inference(req.files.file.path);

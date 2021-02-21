@@ -9,10 +9,11 @@ import { FileUploadModule } from "primeng/fileupload";
 import { DividerModule } from "primeng/divider";
 import { ProgressBarModule } from "primeng/progressbar";
 import { SkeletonModule } from "primeng/skeleton";
+import { OrderListModule } from 'primeng/orderlist';
 
 @NgModule({
   exports: [
-    ButtonModule, ProgressBarModule, PanelModule, TabViewModule, InputTextModule, ToastModule, RippleModule, FileUploadModule, DividerModule, SkeletonModule
+    ButtonModule, ProgressBarModule, PanelModule, TabViewModule, InputTextModule, ToastModule, RippleModule, FileUploadModule, DividerModule, SkeletonModule, OrderListModule
   ]
 })
 export class PrimeNgModuleLoaders {

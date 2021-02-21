@@ -1,0 +1,12 @@
+<div available-objects>
+<p header text>Available-objects</p>
+<div list-wrapper>
+    <p-orderList [value]="objects">
+        <ng-template let-car pTemplate="item">
+            <div>   
+                <div style="font-size:14px;float:left;margin:5px 5px 0 0">{{car.name}} </div>
+            </div>
+        </ng-template>
+    </p-orderList>
+</div>
+</div>

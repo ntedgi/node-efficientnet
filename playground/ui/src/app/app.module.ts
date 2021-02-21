@@ -11,6 +11,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { NoteComponent } from './note/note.component';
 import { ResultsComponent } from './results/results.component';
 import { SingleResultComponent } from './single-result/single-result.component';
+import { ObjectsComponent } from './objects/objects.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { SingleResultComponent } from './single-result/single-result.component';
     ImageuploaderComponent,
     NoteComponent,
     ResultsComponent,
-    SingleResultComponent
+    SingleResultComponent,
+    ObjectsComponent
   ],
   imports: [
     HttpClientModule,
