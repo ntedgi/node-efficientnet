@@ -25,7 +25,7 @@ jobs:
     - name: Coveralls Parallel
       uses: coverallsapp/github-action@master
       with:
-        github-token: ${{ secrets.github_token }}
+        github-token: ${{ secrets.AUTH_TOKEN }}
         flag-name: run-${{ matrix.test_number }}
         parallel: true
 
