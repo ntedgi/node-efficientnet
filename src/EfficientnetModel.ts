@@ -82,10 +82,7 @@ export default class EfficientNetModel {
     return image;
   }
 
-  private async predict(
-    tensor: tf.Tensor3D,
-    topK: number
-  ): Promise<EfficientNetResult> {
+  private async predict(tensor: tf.Tensor3D, topK: number): Promise<EfficientNetResult> {
     const objectArray = this.model!.predict(tensor) as tf.Tensor;
     const values = objectArray.dataSync() as Float32Array;
     return new EfficientNetResult(values, topK);
@@ -96,6 +93,7 @@ export default class EfficientNetModel {
     topK?: number
   ): Promise<EfficientNetResult> {
     if (typeof topK === "undefined" || topK === null) topK = 3;
+    // @ts-ignore
     let image = await Jimp.read(imgPath);
     image = await this.cropAndResize(image);
     const tensor = await this.createTensor(image);
