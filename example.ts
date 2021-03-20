@@ -8,7 +8,7 @@ import {
   EfficientNetResult,
 } from "./index";
 
-const images = ["car.jpg", "panda.jpg"];
+const images = ["car.jpg", "panda.jpg", "fish.jpg"];
 const imageDir = "./samples";
 const imageDirRemoteUri =
   "https://raw.githubusercontent.com/ntedgi/node-EfficientNet/main/samples";
