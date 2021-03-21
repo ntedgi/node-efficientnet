@@ -22,4 +22,11 @@ export default class ModelResourcesProvider {
     }
     return "";
   }
+  static async get(modelDir: File): Promise<string> {
+    if (!fs.existsSync(workspaceDir)) {
+      fs.mkdirSync(workspaceDir);
+      await this.download(this.downloadUri(checkPoint), modelDir);
+    }
+    return "";
+  }
 }
