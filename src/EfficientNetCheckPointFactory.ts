@@ -1,3 +1,6 @@
+import * as tf from "@tensorflow/tfjs-node";
+import { io } from "@tensorflow/tfjs-core";
+
 import EfficientNetModel from "./EfficientnetModel";
 import { EfficientNetCheckPoint } from "./EfficientNetCheckPoint";
 
@@ -16,10 +19,14 @@ export default class EfficientNetCheckPointFactory {
     options?: EfficientNetCheckPointFactoryOptions
   ): Promise<EfficientNetModel> {
     const { localModelRootDirectory } = options || {};
-    let modelPath = `${defaultModelsUrl}${checkPoint}/${modelFileName}`;
+    let modelPath:
+      | string
+      | io.IOHandler = `${defaultModelsUrl}${checkPoint}/${modelFileName}`;
 
     if (localModelRootDirectory) {
-      modelPath = `file://${localModelRootDirectory}/B${checkPoint}/${modelFileName}`;
+      modelPath = tf.io.fileSystem(
+        `${localModelRootDirectory}/B${checkPoint}/${modelFileName}`
+      );
     }
 
     const model = new EfficientNetModel(

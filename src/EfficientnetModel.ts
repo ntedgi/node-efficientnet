@@ -1,16 +1,18 @@
 import * as tf from "@tensorflow/tfjs-node";
 import * as Jimp from "jimp";
 import * as cliProgress from "cli-progress";
+import { io } from "@tensorflow/tfjs-core";
+
 import EfficientNetResult from "./EfficientNetResult";
 
 const NUM_OF_CHANNELS = 3;
 
 export default class EfficientNetModel {
-  modelPath: string;
+  modelPath: string | io.IOHandler;
   imageSize: number;
   model: tf.GraphModel | undefined;
 
-  constructor(modelPath: string, imageSize: number) {
+  constructor(modelPath: string | io.IOHandler, imageSize: number) {
     this.modelPath = modelPath;
     this.imageSize = imageSize;
   }
@@ -82,7 +84,10 @@ export default class EfficientNetModel {
     return image;
   }
 
-  private async predict(tensor: tf.Tensor3D, topK: number): Promise<EfficientNetResult> {
+  private async predict(
+    tensor: tf.Tensor3D,
+    topK: number
+  ): Promise<EfficientNetResult> {
     const objectArray = this.model!.predict(tensor) as tf.Tensor;
     const values = objectArray.dataSync() as Float32Array;
     return new EfficientNetResult(values, topK);
