@@ -155,7 +155,7 @@ npm i --save node-efficientnet
 
 ## API
 
-### `EfficientNetCheckPointFactory.create(checkPoint: EfficientNetCheckPoint): Promise<EfficientNetModel>`
+### `EfficientNetCheckPointFactory.create(checkPoint: EfficientNetCheckPoint, options?: EfficientNetCheckPointFactoryOptions): Promise<EfficientNetModel>`
 Example: to create an efficientnet model you need to pass  `EfficientNetCheckPoint`
 (available checkpoint [B0..B7]) each one of them represent different model
 
@@ -171,6 +171,37 @@ const topResults = 5
 
 const result = await model.inference(path2image,topResults)
 
+```
+
+Of course, you can use local model file to speed up loading
+
+You can download model file from [efficientnet-tensorflowjs-binaries](https://github.com/ntedgi/efficientnet-tensorflowjs-binaries), please keep the directory structure consistent, just like:
+
+```
+local_model
+  └── B0
+    ├── group1-shard1of6.bin
+    ├── group1-shard2of6.bin
+    ├── group1-shard3of6.bin
+    ├── group1-shard4of6.bin
+    ├── group1-shard5of6.bin
+    ├── group1-shard6of6.bin
+    └── model.json
+```
+
+```javascript
+const path = require('path');
+const { EfficientNetCheckPointFactory, EfficientNetCheckPoint } = require("node-efficientnet")
+
+const model = await EfficientNetCheckPointFactory.create(EfficientNetCheckPoint.B7, {
+  localModelRootDirectory: path.join(__dirname, 'local_model'),
+})
+
+const path2image = "..."
+
+const topResults = 5
+
+const result = await model.inference(path2image,topResults)
 ```
 
 ## Examples
