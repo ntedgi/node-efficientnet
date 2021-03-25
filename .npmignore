@@ -11,3 +11,9 @@ coverage/*
 *.config.*
 playground
 misc/s*
+web
+.eslintrc
+.eslintignore
+LICENSE
+CODE_OF_CONDUCT.md
+
