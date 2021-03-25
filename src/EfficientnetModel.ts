@@ -98,6 +98,7 @@ export default class EfficientNetModel {
     topK?: number
   ): Promise<EfficientNetResult> {
     topK = topK ?? NUM_OF_CHANNELS;
+    // @ts-ignore
     let image = await Jimp.read(imgPath);
     image = await this.cropAndResize(image);
     const tensor = await this.createTensor(image);
