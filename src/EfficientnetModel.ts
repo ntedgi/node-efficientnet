@@ -1,4 +1,4 @@
-import * as tf from "@tensorflow/tfjs-node";
+import * as tf from "@tensorflow/tfjs-node-gpu";
 import * as Jimp from "jimp";
 import * as cliProgress from "cli-progress";
 import { io } from "@tensorflow/tfjs-core";
@@ -97,8 +97,7 @@ export default class EfficientNetModel {
     imgPath: string | Buffer,
     topK?: number
   ): Promise<EfficientNetResult> {
-    if (typeof topK === "undefined" || topK === null) topK = 3;
-    // @ts-ignore
+    topK = topK ?? NUM_OF_CHANNELS;
     let image = await Jimp.read(imgPath);
     image = await this.cropAndResize(image);
     const tensor = await this.createTensor(image);
