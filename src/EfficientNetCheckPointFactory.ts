@@ -1,4 +1,4 @@
-import * as tf from "@tensorflow/tfjs-node";
+import * as tf from "@tensorflow/tfjs-node-gpu";
 import { io } from "@tensorflow/tfjs-core";
 
 import EfficientNetModel from "./EfficientnetModel";
