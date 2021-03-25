@@ -1,5 +1,5 @@
 const path = require("path");
-const { execSync } = require("child_process");
+const shelljs = require("shelljs");
 
 const {
   EfficientNetCheckPoint,
@@ -63,11 +63,10 @@ test("EfficientNetCheckPointFactory - checkpoint B0 should return top 5 answers"
 test("EfficientNetCheckPointFactory - load model from local file", (done) => {
   const rootDir = path.join(__dirname, "../lib/tfjs/web_model");
 
-  execSync(
-    `mkdir -p ${path.join(rootDir, "B0")} \\
-    && cp -r ${path.join(rootDir, "*.json")} ${path.join(rootDir, "B0")} \\
-    && cp -r ${path.join(rootDir, "*.bin")} ${path.join(rootDir, "B0")}`
-  );
+  shelljs.mkdir("-p", path.join(rootDir, "B0"));
+  shelljs.cp("-r", path.join(rootDir, "*.json"), path.join(rootDir, "B0"));
+  shelljs.cp("-r", path.join(rootDir, "*.bin"), path.join(rootDir, "B0"));
+
   EfficientNetCheckPointFactory.create(EfficientNetCheckPoint.B0, {
     localModelRootDirectory: path.join(__dirname, "../lib/tfjs/web_model"),
   })
@@ -76,12 +75,12 @@ test("EfficientNetCheckPointFactory - load model from local file", (done) => {
       const image = "samples/car.jpg";
       model.inference(image).then((predictions) => {
         expect(predictions.result[0].label).toEqual("sports car, sport car");
-        execSync(`rm -rf ${path.join(rootDir, "B0")}`);
+        shelljs.rm("-rf", path.join(rootDir, "B0"));
         done();
       });
     })
     .catch((error) => {
-      execSync(`rm -rf ${path.join(rootDir, "B0")}`);
+      shelljs.rm("-rf", path.join(rootDir, "B0"));
       done(error);
     });
 });
