@@ -11,7 +11,8 @@
     "test": "jest  --clearCache && jest  --coverage",
     "lint": "eslint . --fix --ext .ts && npm run lint:md",
     "lint:md": "remark .",
-    "coveralls": "cat ./coverage/lcov.info | coveralls"
+    "coveralls": "cat ./coverage/lcov.info | coveralls",
+    "playground:test": "cd playground/server && npm i && npm test"
   },
   "repository": {
     "type": "git",
