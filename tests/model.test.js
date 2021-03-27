@@ -100,9 +100,7 @@ test("EfficientNetCheckPointFactory - load model from local file", (done) => {
 });
 
 test("EfficientNetCheckPointFactory - load model from remote defoult", (done) => {
-  EfficientNetCheckPointFactory.create(EfficientNetCheckPoint.B0, {
-    localModelRootDirectory: rootDir,
-  })
+  EfficientNetCheckPointFactory.create(EfficientNetCheckPoint.B0)
     .then(async (model) => {
       expect(model).toBeDefined();
       const image = "samples/car.jpg";
