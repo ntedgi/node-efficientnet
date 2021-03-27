@@ -1,10 +1,10 @@
-const path = require("path");
-const shelljs = require("shelljs");
+import * as path from "path";
+import * as shelljs from "shelljs";
 
-const {
+import {
   EfficientNetCheckPoint,
   EfficientNetCheckPointFactory,
-} = require("../index");
+} from "../index";
 
 test("EfficientNetCheckPointFactory - create checkpoint B0 without throwing exception", (done) => {
   EfficientNetCheckPointFactory.create(EfficientNetCheckPoint.B0)

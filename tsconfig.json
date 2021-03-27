@@ -6,7 +6,7 @@
     "outDir": "./dist",
     "strict": true,
     "skipLibCheck": true,
-    "types": [],
+    "types": ["@types/jest"],
     "typeRoots": [
       "./node_modules",
       "./node_modules/@types"
