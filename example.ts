@@ -23,7 +23,7 @@ async function download(image: string, cb: fs.NoParamCallback) {
   fs.writeFile(`${imageDir}/${image}`, buffer, cb);
 }
 
-EfficientNetCheckPointFactory.create(EfficientNetCheckPoint.B0)
+EfficientNetCheckPointFactory.create(EfficientNetCheckPoint.B7)
   .then((model: EfficientNetModel) => {
     images.forEach(async (image) => {
       await download(image, () => {

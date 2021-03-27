@@ -99,7 +99,7 @@ test("EfficientNetCheckPointFactory - load model from local file", (done) => {
     });
 });
 
-test("EfficientNetCheckPointFactory - load model from remote defoult", (done) => {
+test("EfficientNetCheckPointFactory - load model from remote default", (done) => {
   EfficientNetCheckPointFactory.create(EfficientNetCheckPoint.B0)
     .then(async (model) => {
       expect(model).toBeDefined();
