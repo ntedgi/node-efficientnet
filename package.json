@@ -36,6 +36,7 @@
   "devDependencies": {
     "@types/jest": "^26.0.22",
     "@types/sharp": "^0.27.2",
+    "@types/shelljs": "^0.8.8",
     "@typescript-eslint/eslint-plugin": "^4.11.1",
     "@typescript-eslint/parser": "^4.11.1",
     "coveralls": "^3.1.0",
