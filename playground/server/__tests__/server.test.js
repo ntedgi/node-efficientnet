@@ -11,6 +11,7 @@ beforeAll(async (done) => {
 
 describe("Post Endpoints", () => {
     it("should predict simple gold fish", async (done) => {
+        jest.setTimeout(60000);
         const filePath = path.join(__dirname, "fish.jpg");
         const res = await request(app)
             .post("/api/upload")
