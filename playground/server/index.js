@@ -1,7 +1,9 @@
 /* eslint-disable no-undef */
 import express, { Router } from "express";
-import { urlencoded, json } from "body-parser";
+import bodyParser from "body-parser";
 import formidable from "express-formidable";
+const { urlencoded, json } = bodyParser;
+
 const port = process.env.PORT || 3000;
 const app = express();
 const router = Router();
