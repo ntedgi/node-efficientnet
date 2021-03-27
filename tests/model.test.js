@@ -84,3 +84,28 @@ test("EfficientNetCheckPointFactory - load model from local file", (done) => {
       done(error);
     });
 });
+
+test("EfficientNetModel - use different locale", (done) => {
+  EfficientNetCheckPointFactory.create(EfficientNetCheckPoint.B0)
+    .then(async (model) => {
+      expect(model).toBeDefined();
+      const image = "samples/car.jpg";
+      Promise.all([
+        model.inference({
+          imgPath: image,
+          locale: "en",
+        }),
+        model.inference({
+          imgPath: image,
+          locale: "zh",
+        }),
+      ]).then(([localeEnResult, localeZhResult]) => {
+        expect(localeEnResult.result[0].label).toEqual("sports car, sport car");
+        expect(localeZhResult.result[0].label).toEqual("跑车");
+        done();
+      });
+    })
+    .catch((error) => {
+      done(error);
+    });
+});
