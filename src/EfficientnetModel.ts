@@ -1,5 +1,5 @@
 import * as tf from "@tensorflow/tfjs-node-gpu";
-import * as Jimp from "jimp";
+import * as sharp from "sharp";
 import * as cliProgress from "cli-progress";
 import { io } from "@tensorflow/tfjs-core";
 
@@ -32,27 +32,42 @@ export default class EfficientNetModel {
     this.model = model;
   }
 
-  private async createTensor(image: Jimp): Promise<tf.Tensor3D> {
+  private async createTensor(image: sharp.Sharp): Promise<tf.Tensor3D> {
     const values = new Float32Array(
       this.imageSize * this.imageSize * NUM_OF_CHANNELS
     );
-    let i = 0;
-    image.scan(
-      0,
-      0,
-      image.bitmap.width,
-      image.bitmap.height,
-      (x: number, y: number) => {
-        const pixel = Jimp.intToRGBA(image.getPixelColor(x, y));
-        pixel.r = ((pixel.r - 1) / 127.0) >> 0;
-        pixel.g = ((pixel.g - 1) / 127.0) >> 0;
-        pixel.b = ((pixel.b - 1) / 127.0) >> 0;
-        values[i * NUM_OF_CHANNELS + 0] = pixel.r;
-        values[i * NUM_OF_CHANNELS + 1] = pixel.g;
-        values[i * NUM_OF_CHANNELS + 2] = pixel.b;
-        i++;
+
+    const { width = 0, height = 0 } = await image.metadata();
+
+    let resultWidth = this.imageSize;
+    let resultHeight = this.imageSize;
+
+    // auto adjust result w h
+    if (width > height) {
+      resultHeight = (height / width) * this.imageSize;
+    } else {
+      resultWidth = (width / height) * this.imageSize;
+    }
+
+    const x = 0;
+    const y = 0;
+    const w = resultWidth;
+    const h = resultHeight;
+
+    const bufferData = await image
+      .resize(resultWidth, resultHeight)
+      .raw()
+      .toBuffer();
+
+    for (let _y = y; _y < y + h; _y++) {
+      for (let _x = x; _x < x + w; _x++) {
+        const offset = NUM_OF_CHANNELS * (w * _y + _x);
+        values[offset + 0] = ((bufferData[offset + 0] - 1) / 127.0) >> 0;
+        values[offset + 1] = ((bufferData[offset + 1] - 1) / 127.0) >> 0;
+        values[offset + 2] = ((bufferData[offset + 2] - 1) / 127.0) >> 0;
       }
-    );
+    }
+
     const outShape: [number, number, number] = [
       this.imageSize,
       this.imageSize,
@@ -61,27 +76,6 @@ export default class EfficientNetModel {
     let imageTensor = tf.tensor3d(values, outShape, "float32");
     imageTensor = imageTensor.expandDims(0);
     return imageTensor;
-  }
-
-  private async cropAndResize(image: Jimp): Promise<Jimp> {
-    const width = image.bitmap.width;
-    const height = image.bitmap.height;
-    const cropPadding = 32;
-    const paddedCenterCropSize =
-      ((this.imageSize / (this.imageSize + cropPadding)) *
-        Math.min(height, width)) >>
-      0;
-    const offsetHeight = ((height - paddedCenterCropSize + 1) / 2) >> 0;
-    const offsetWidth = (((width - paddedCenterCropSize + 1) / 2) >> 0) + 1;
-
-    await image.crop(
-      offsetWidth,
-      offsetHeight,
-      paddedCenterCropSize,
-      paddedCenterCropSize
-    );
-    await image.resize(this.imageSize, this.imageSize, Jimp.RESIZE_BICUBIC);
-    return image;
   }
 
   private async predict(
@@ -98,9 +92,7 @@ export default class EfficientNetModel {
     topK?: number
   ): Promise<EfficientNetResult> {
     topK = topK ?? NUM_OF_CHANNELS;
-    // @ts-ignore
-    let image = await Jimp.read(imgPath);
-    image = await this.cropAndResize(image);
+    const image = sharp(imgPath);
     const tensor = await this.createTensor(image);
     return this.predict(tensor, topK);
   }
