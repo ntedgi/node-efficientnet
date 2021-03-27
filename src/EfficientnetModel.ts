@@ -44,9 +44,9 @@ export default class EfficientNetModel {
 
     // auto adjust result w h
     if (width > height) {
-      resultHeight = (height / width) * this.imageSize;
+      resultHeight = Math.ceil((height / width) * this.imageSize);
     } else {
-      resultWidth = (width / height) * this.imageSize;
+      resultWidth = Math.ceil((width / height) * this.imageSize);
     }
 
     const x = 0;
