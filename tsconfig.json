@@ -17,6 +17,7 @@
   "exclude": [
     "node_modules",
     "example.ts",
-    "playground"
+    "playground",
+    "tests"
   ]
 }
