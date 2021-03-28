@@ -91,12 +91,10 @@ test("EfficientNetModel - use different locale", (done) => {
       expect(model).toBeDefined();
       const image = "samples/car.jpg";
       Promise.all([
-        model.inference({
-          imgPath: image,
+        model.inference(image, {
           locale: "en",
         }),
-        model.inference({
-          imgPath: image,
+        model.inference(image, {
           locale: "zh",
         }),
       ]).then(([localeEnResult, localeZhResult]) => {
