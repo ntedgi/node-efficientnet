@@ -9,7 +9,6 @@
 #
 [![NPM](https://nodei.co/npm/node-efficientnet.png?downloads=true)](https://www.npmjs.com/package/node-efficientnet)  
 
-
 #
 [Test The Model Online (http://nodeefficientnet.ml/) ](http://nodeefficientnet.ml/)
 
@@ -41,8 +40,6 @@ The codebase is heavily inspired by the [TensorFlow implementation](https://gith
 5.  [Usage](#usgae)
 6.  [About EfficientNet Models](#about-efficientnet-models)
 7.  [Models](#models)
-
-
 
 ## How I Run This Project Locally ?
 - clone this repository
@@ -152,7 +149,6 @@ for example lets take this images:
 npm i --save node-efficientnet
 ```
 
-
 ## API
 
 ### `EfficientNetCheckPointFactory.create(checkPoint: EfficientNetCheckPoint, options?: EfficientNetCheckPointFactoryOptions): Promise<EfficientNetModel>`
@@ -169,8 +165,10 @@ const path2image = "..."
 
 const topResults = 5
 
-const result = await model.inference(path2image,topResults)
-
+const result = await model.inference(path2image, {
+  topK: topResults,
+  locale: 'zh', // will return label use specified locale, you can find all locales in https://github.com/luoye-fe/imagenet-labels-i18n
+})
 ```
 
 Of course, you can use local model file to speed up loading
@@ -201,14 +199,17 @@ const path2image = "..."
 
 const topResults = 5
 
-const result = await model.inference(path2image,topResults)
+const result = await model.inference(path2image, {
+  topK: topResults,
+  locale: 'zh',
+})
 ```
 
 ## Examples
 
 download files from remote and predict using model 
 
-```node
+```js
 const fs = require('fs');
 const nodeFetch = require('node-fetch');
 
@@ -231,7 +232,6 @@ async function download(image, cb) {
   fs.writeFile(`${imageDir}/${image}`, buffer, cb)
 }
 
-
 EfficientNetCheckPointFactory.create(EfficientNetCheckPoint.B2)
   .then((model) => {
     images.forEach(async (image) => {
@@ -248,7 +248,7 @@ EfficientNetCheckPointFactory.create(EfficientNetCheckPoint.B2)
   })
 ```
 output :
-```
+```js
 [
   { label: 'sports car, sport car', precision: 88.02440940394301 },
   {
@@ -270,8 +270,6 @@ output :
 ]
 
 ```
-
-
 
 ## About EfficientNet Models
 
@@ -300,17 +298,15 @@ EfficientNets achieve state-of-the-art accuracy on ImageNet with an order of mag
 
 The performance of each model variant using the pre-trained weights converted from checkpoints provided by the authors is as follows:
 
-| Architecture   | @top1* Imagenet| @top1* Noisy-Student| 
-| -------------- | :----: |:---:|
-| EfficientNetB0 | 0.772  |0.788|
-| EfficientNetB1 | 0.791  |0.815|
-| EfficientNetB2 | 0.802  |0.824|
-| EfficientNetB3 | 0.816  |0.841|
-| EfficientNetB4 | 0.830  |0.853|
-| EfficientNetB5 | 0.837  |0.861|
-| EfficientNetB6 | 0.841  |0.864|
-| EfficientNetB7 | 0.844  |0.869|
+| Architecture   | @top1* Imagenet | @top1* Noisy-Student |
+| -------------- | :-------------: | :------------------: |
+| EfficientNetB0 |      0.772      |        0.788         |
+| EfficientNetB1 |      0.791      |        0.815         |
+| EfficientNetB2 |      0.802      |        0.824         |
+| EfficientNetB3 |      0.816      |        0.841         |
+| EfficientNetB4 |      0.830      |        0.853         |
+| EfficientNetB5 |      0.837      |        0.861         |
+| EfficientNetB6 |      0.841      |        0.864         |
+| EfficientNetB7 |      0.844      |        0.869         |
 
 **\*** - topK accuracy score for converted models (imagenet `val` set)
-
-

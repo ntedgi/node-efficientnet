@@ -73,11 +73,15 @@ test("EfficientNetCheckPointFactory - checkpoint B0 should return top 5 answers"
     .then(async (model) => {
       expect(model).toBeDefined();
       const image = "samples/car.jpg";
-      model.inference(image, 5).then((predictions) => {
-        expect(predictions.result[0].label).toEqual("sports car, sport car");
-        expect(predictions.result.length).toEqual(5);
-        done();
-      });
+      model
+        .inference(image, {
+          topK: 5,
+        })
+        .then((predictions) => {
+          expect(predictions.result[0].label).toEqual("sports car, sport car");
+          expect(predictions.result.length).toEqual(5);
+          done();
+        });
     })
     .catch((error) => done(error));
 });
@@ -106,6 +110,29 @@ test("EfficientNetCheckPointFactory - load model from remote default", (done) =>
       const image = "samples/car.jpg";
       model.inference(image).then((predictions) => {
         expect(predictions.result[0].label).toEqual("sports car, sport car");
+        done();
+      });
+    })
+    .catch((error) => {
+      done(error);
+    });
+});
+
+test("EfficientNetModel - use different locale", (done) => {
+  EfficientNetCheckPointFactory.create(EfficientNetCheckPoint.B0)
+    .then(async (model) => {
+      expect(model).toBeDefined();
+      const image = "samples/car.jpg";
+      Promise.all([
+        model.inference(image, {
+          locale: "en",
+        }),
+        model.inference(image, {
+          locale: "zh",
+        }),
+      ]).then(([localeEnResult, localeZhResult]) => {
+        expect(localeEnResult.result[0].label).toEqual("sports car, sport car");
+        expect(localeZhResult.result[0].label).toEqual("跑车");
         done();
       });
     })
