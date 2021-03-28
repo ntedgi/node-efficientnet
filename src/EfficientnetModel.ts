@@ -8,7 +8,6 @@ import EfficientNetResult from "./EfficientNetResult";
 const NUM_OF_CHANNELS = 3;
 
 interface EfficientNetModelInferenceOptions {
-  imgPath: string | Buffer;
   topK?: number;
   locale?: string;
 }
@@ -101,33 +100,14 @@ export default class EfficientNetModel {
   }
 
   async inference(
-    options: EfficientNetModelInferenceOptions
-  ): Promise<EfficientNetResult>;
-  async inference(
-    options: string | Buffer,
-    topK?: number
-  ): Promise<EfficientNetResult>;
-  async inference(
-    options: EfficientNetModelInferenceOptions | string | Buffer,
-    topK?: number
+    imgPath: string | Buffer,
+    options?: EfficientNetModelInferenceOptions
   ): Promise<EfficientNetResult> {
-    let resultOptions = {} as EfficientNetModelInferenceOptions;
-    if (Object.prototype.toString.call(options) === "[object Object]") {
-      resultOptions = options as EfficientNetModelInferenceOptions;
-    } else {
-      resultOptions.imgPath = options as string | Buffer;
-      resultOptions.topK = topK;
-      resultOptions.locale = "en";
-    }
-
+    const { topK = NUM_OF_CHANNELS, locale = "en" } = options || {};
     // @ts-ignore
-    let image = await Jimp.read(resultOptions.imgPath);
+    let image = await Jimp.read(imgPath);
     image = await this.cropAndResize(image);
     const tensor = await this.createTensor(image);
-    return this.predict(
-      tensor,
-      resultOptions.topK || NUM_OF_CHANNELS,
-      resultOptions.locale || "en"
-    );
+    return this.predict(tensor, topK, locale);
   }
 }
