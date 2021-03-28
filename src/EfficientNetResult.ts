@@ -1,4 +1,4 @@
-import ImageNetLabelsI18n from "imagenet-labels-i18n";
+import * as ImageNetLabelsI18n from "imagenet-labels-i18n";
 interface Prediction {
   label: string;
   precision: number;
