@@ -11,7 +11,7 @@
 
 
 #
-[Test The Model Online](http://ec2-52-57-25-230.eu-central-1.compute.amazonaws.com:8080/)
+[Test The Model Online (http://nodeefficientnet.ml/) ](http://nodeefficientnet.ml/)
 
 #
 This repository contains a tensorflowJs implementation of **EfficientNet**,
