@@ -167,7 +167,7 @@ const topResults = 5
 
 const result = await model.inference(path2image, {
   topK: topResults,
-  locale: 'zh', // will return label use specified locale, you can find all locales in https://github.com/luoye-fe/imagenet-labels-i18n
+  locale: 'zh', 
 })
 ```
 

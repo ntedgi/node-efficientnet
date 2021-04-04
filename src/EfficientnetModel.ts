@@ -2,24 +2,24 @@ import * as tf from "@tensorflow/tfjs-node-gpu";
 import * as Jimp from "jimp";
 import * as cliProgress from "cli-progress";
 import { io } from "@tensorflow/tfjs-core";
-
+import { EfficientNetLableLanguage, EfficientNetLanguageProvider } from './EfficientNetLanguageProvider'
 import EfficientNetResult from "./EfficientNetResult";
 
 const NUM_OF_CHANNELS = 3;
 
 interface EfficientNetModelInferenceOptions {
   topK?: number;
-  locale?: string;
 }
 
 export default class EfficientNetModel {
   modelPath: string | io.IOHandler;
   imageSize: number;
   model: tf.GraphModel | undefined;
-
-  constructor(modelPath: string | io.IOHandler, imageSize: number) {
+  languageProvider: EfficientNetLanguageProvider;
+  constructor(modelPath: string | io.IOHandler, imageSize: number, local: EfficientNetLableLanguage | undefined) {
     this.modelPath = modelPath;
     this.imageSize = imageSize;
+    this.languageProvider = new EfficientNetLanguageProvider(local);
   }
 
   async load(): Promise<void> {
@@ -35,6 +35,7 @@ export default class EfficientNetModel {
     });
     bar.stop();
     this.model = model;
+    await this.languageProvider.load()
   }
 
   private async createTensor(image: Jimp): Promise<tf.Tensor3D> {
@@ -91,23 +92,22 @@ export default class EfficientNetModel {
 
   private async predict(
     tensor: tf.Tensor3D,
-    topK: number,
-    locale: string
+    topK: number
   ): Promise<EfficientNetResult> {
     const objectArray = this.model!.predict(tensor) as tf.Tensor;
     const values = objectArray.dataSync() as Float32Array;
-    return new EfficientNetResult(values, topK, locale);
+    return new EfficientNetResult(values, topK, this.languageProvider);
   }
 
   async inference(
     imgPath: string | Buffer,
     options?: EfficientNetModelInferenceOptions
   ): Promise<EfficientNetResult> {
-    const { topK = NUM_OF_CHANNELS, locale = "en" } = options || {};
+    const { topK = NUM_OF_CHANNELS } = options || {};
     // @ts-ignore
     let image = await Jimp.read(imgPath);
     image = await this.cropAndResize(image);
     const tensor = await this.createTensor(image);
-    return this.predict(tensor, topK, locale);
+    return this.predict(tensor, topK);
   }
 }
