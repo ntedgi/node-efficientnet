@@ -1,5 +1,4 @@
 export default interface Prediction {
-  label: string
-  precision: number
+  label: string;
+  precision: number;
 }
-

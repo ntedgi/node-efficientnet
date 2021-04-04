@@ -1,5 +1,4 @@
-
-import { EfficientNetLanguageProvider } from './EfficientNetLanguageProvider';
+import { EfficientNetLanguageProvider } from "./EfficientNetLanguageProvider";
 interface Prediction {
   label: string;
   precision: number;
@@ -8,7 +7,11 @@ interface Prediction {
 export default class EfficientNetResult {
   result: Prediction[] = [];
 
-  constructor(values: Float32Array, topK: number, languageProvider: EfficientNetLanguageProvider) {
+  constructor(
+    values: Float32Array,
+    topK: number,
+    languageProvider: EfficientNetLanguageProvider
+  ) {
     const arr = Array.from(values);
     const topValues = values
       .sort((a: number, b: number) => b - a)

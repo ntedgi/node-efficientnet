@@ -2,7 +2,10 @@ import * as tf from "@tensorflow/tfjs-node-gpu";
 import * as Jimp from "jimp";
 import * as cliProgress from "cli-progress";
 import { io } from "@tensorflow/tfjs-core";
-import { EfficientNetLableLanguage, EfficientNetLanguageProvider } from './EfficientNetLanguageProvider'
+import {
+  EfficientNetLableLanguage,
+  EfficientNetLanguageProvider,
+} from "./EfficientNetLanguageProvider";
 import EfficientNetResult from "./EfficientNetResult";
 
 const NUM_OF_CHANNELS = 3;
@@ -16,7 +19,11 @@ export default class EfficientNetModel {
   imageSize: number;
   model: tf.GraphModel | undefined;
   languageProvider: EfficientNetLanguageProvider;
-  constructor(modelPath: string | io.IOHandler, imageSize: number, local: EfficientNetLableLanguage | undefined) {
+  constructor(
+    modelPath: string | io.IOHandler,
+    imageSize: number,
+    local: EfficientNetLableLanguage | undefined
+  ) {
     this.modelPath = modelPath;
     this.imageSize = imageSize;
     this.languageProvider = new EfficientNetLanguageProvider(local);
@@ -35,7 +42,7 @@ export default class EfficientNetModel {
     });
     bar.stop();
     this.model = model;
-    await this.languageProvider.load()
+    await this.languageProvider.load();
   }
 
   private async createTensor(image: Jimp): Promise<tf.Tensor3D> {

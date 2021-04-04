@@ -1,20 +1,17 @@
-import { Component, Input, OnInit, OnChanges } from "@angular/core";
-import Prediction from "../interfces";
+import { Component, Input, OnInit, OnChanges } from '@angular/core';
+import Prediction from '../interfces';
 
 @Component({
-  selector: "app-results",
-  templateUrl: "./results.component.html",
-  styleUrls: ["./results.component.scss"]
+  selector: 'app-results',
+  templateUrl: './results.component.html',
+  styleUrls: ['./results.component.scss'],
 })
 export class ResultsComponent implements OnInit, OnChanges {
-
-
   @Input() image2Display: string | ArrayBuffer;
   @Input() loading: boolean;
   @Input() classifications: Prediction[];
 
-  constructor() {
-  }
+  constructor() {}
 
   show(): boolean {
     if (this.loading === undefined) {
@@ -23,10 +20,7 @@ export class ResultsComponent implements OnInit, OnChanges {
     return this.loading;
   }
 
-  ngOnChanges() {
-  }
+  ngOnChanges() {}
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

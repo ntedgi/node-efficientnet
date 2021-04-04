@@ -1,4 +1,3 @@
-const defaultLabelsFilePath = '../misc/en.json'
 import * as fs from 'fs';
 import * as  path from 'path';
 
@@ -8,7 +7,7 @@ export enum EfficientNetLableLanguage {
 }
 
 export class EfficientNetLanguageProvider {
-    private filePath: string = defaultLabelsFilePath;
+    private filePath: string = '../misc/en.json';
     private labelsMap = null;
 
     constructor(language: EfficientNetLableLanguage | undefined) {
@@ -25,17 +24,18 @@ export class EfficientNetLanguageProvider {
 
             }
         }
-        this.filePath = fileName ? `../misc/${fileName}.json` : defaultLabelsFilePath
+        this.filePath = fileName ? `../misc/${fileName}.json` : this.filePath
     }
 
     async load(): Promise<void> {
         const jsonFile = path.join(__dirname, this.filePath)
-        let translationFile = fs.readFileSync(jsonFile);
+        const translationFile = fs.readFileSync(jsonFile, 'utf8');
         this.labelsMap = JSON.parse(translationFile);
     }
 
-    get(value: number): string | null {
-        return this.labelsMap ? this.labelsMap[value] : null
+    get(value: number): string | undefined {
+        if (!!this.labelsMap) throw ("EfficientNetLanguageProvider error faild loading translation file.")
+        return this.labelsMap?.[value]
     }
 
 }

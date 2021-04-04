@@ -3,7 +3,7 @@ import { io } from "@tensorflow/tfjs-core";
 
 import EfficientNetModel from "./EfficientnetModel";
 import { EfficientNetCheckPoint } from "./EfficientNetCheckPoint";
-import { EfficientNetLableLanguage } from './EfficientNetLanguageProvider'
+import { EfficientNetLableLanguage } from "./EfficientNetLanguageProvider";
 const defaultModelsUrl =
   "https://raw.githubusercontent.com/ntedgi/efficientnet-tensorflowjs-binaries/main/models/B";
 const modelFileName = "model.json";
