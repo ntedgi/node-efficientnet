@@ -30,6 +30,8 @@ export default class EfficientNetModel {
   }
 
   async load(): Promise<void> {
+    await this.languageProvider.load();
+
     const bar = new cliProgress.SingleBar(
       {},
       cliProgress.Presets.shades_classic
@@ -42,7 +44,6 @@ export default class EfficientNetModel {
     });
     bar.stop();
     this.model = model;
-    await this.languageProvider.load();
   }
 
   private async createTensor(image: Jimp): Promise<tf.Tensor3D> {

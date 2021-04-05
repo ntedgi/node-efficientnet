@@ -126,7 +126,7 @@ test("EfficientNetModel - use different locale chinese", (done) => {
     .then(async (model) => {
       expect(model).toBeDefined();
       const image = "samples/car.jpg";
-      model.inference(image).then(([localeZhResult]) => {
+      model.inference(image).then((localeZhResult) => {
         expect(localeZhResult.result[0].label).toEqual("跑车");
         done();
       });

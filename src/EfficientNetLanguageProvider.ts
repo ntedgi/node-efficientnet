@@ -28,12 +28,12 @@ export class EfficientNetLanguageProvider {
 
   async load(): Promise<void> {
     const jsonFile = path.join(__dirname, this.filePath);
-    const translationFile = fs.readFileSync(jsonFile, "utf8");
+    const translationFile = await fs.readFileSync(jsonFile, "utf8");
     this.labelsMap = JSON.parse(translationFile);
   }
 
   get(value: number): string | undefined {
-    if (this.labelsMap)
+    if (!this.labelsMap)
       throw "EfficientNetLanguageProvider error faild loading translation file.";
     return this.labelsMap?.[value];
   }
