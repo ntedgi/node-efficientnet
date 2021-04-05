@@ -4,7 +4,7 @@ const shelljs = require("shelljs");
 const {
   EfficientNetCheckPoint,
   EfficientNetCheckPointFactory,
-  EfficientNetLableLanguage
+  EfficientNetLableLanguage,
 } = require("../index");
 
 const rootDir = path.join(__dirname, "../lib/tfjs/web_model");
@@ -120,7 +120,9 @@ test("EfficientNetCheckPointFactory - load model from remote default", (done) =>
 });
 
 test("EfficientNetModel - use different locale chinese", (done) => {
-  EfficientNetCheckPointFactory.create(EfficientNetCheckPoint.B0, { locale: EfficientNetLableLanguage.CHINESE })
+  EfficientNetCheckPointFactory.create(EfficientNetCheckPoint.B0, {
+    locale: EfficientNetLableLanguage.CHINESE,
+  })
     .then(async (model) => {
       expect(model).toBeDefined();
       const image = "samples/car.jpg";
@@ -134,9 +136,10 @@ test("EfficientNetModel - use different locale chinese", (done) => {
     });
 });
 
-
 test("EfficientNetModel - use different locale english", (done) => {
-  EfficientNetCheckPointFactory.create(EfficientNetCheckPoint.B0, { locale: EfficientNetLableLanguage.ENGLISH })
+  EfficientNetCheckPointFactory.create(EfficientNetCheckPoint.B0, {
+    locale: EfficientNetLableLanguage.ENGLISH,
+  })
     .then(async (model) => {
       expect(model).toBeDefined();
       const image = "samples/car.jpg";
