@@ -319,5 +319,5 @@ The performance of each model variant using the pre-trained weights converted fr
 | :----: | :-----------------------: |
 |  `en`  |             ✅             |
 |  `zh`  |             ✅             |
-|  `jp`  | ⏩ (need help, welcome pr) |
+|  `other`  | ⏩ (need help, welcome pr) |
 
