@@ -40,6 +40,7 @@ The codebase is heavily inspired by the [TensorFlow implementation](https://gith
 5.  [Usage](#usgae)
 6.  [About EfficientNet Models](#about-efficientnet-models)
 7.  [Models](#models)
+8.  [Multilingual status](#multilingual-status)
 
 ## How I Run This Project Locally ?
 - clone this repository
@@ -310,3 +311,13 @@ The performance of each model variant using the pre-trained weights converted fr
 | EfficientNetB7 |      0.844      |        0.869         |
 
 **\*** - topK accuracy score for converted models (imagenet `val` set)
+
+
+## Multilingual status
+
+| locale |          status           |
+| :----: | :-----------------------: |
+|  `en`  |             ✅             |
+|  `zh`  |             ✅             |
+|  `jp`  | ⏩ (need help, welcome pr) |
+
