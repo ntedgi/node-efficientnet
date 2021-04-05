@@ -1,23 +1,20 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: "app-single-result",
-  templateUrl: "./single-result.component.html",
-  styleUrls: ["./single-result.component.scss"]
+  selector: 'app-single-result',
+  templateUrl: './single-result.component.html',
+  styleUrls: ['./single-result.component.scss'],
 })
 export class SingleResultComponent implements OnInit {
   @Input() acc: number;
   @Input() title: string;
   @Input() loading: boolean;
 
-  constructor() {
-  }
+  constructor() {}
 
-  show(): Boolean {
+  show(): boolean {
     return this.loading;
   }
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

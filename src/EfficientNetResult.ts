@@ -1,4 +1,4 @@
-import * as ImageNetLabelsI18n from "imagenet-labels-i18n";
+import { EfficientNetLanguageProvider } from "./EfficientNetLanguageProvider";
 interface Prediction {
   label: string;
   precision: number;
@@ -7,7 +7,11 @@ interface Prediction {
 export default class EfficientNetResult {
   result: Prediction[] = [];
 
-  constructor(values: Float32Array, topK: number, locale: string) {
+  constructor(
+    values: Float32Array,
+    topK: number,
+    languageProvider: EfficientNetLanguageProvider
+  ) {
     const arr = Array.from(values);
     const topValues = values
       .sort((a: number, b: number) => b - a)
@@ -16,12 +20,9 @@ export default class EfficientNetResult {
     const sum = topValues.reduce((a: number, b: number) => {
       return a + b;
     }, 0);
-
-    ImageNetLabelsI18n.setLocale(locale);
-
     indexes.forEach((value: number, index: number) => {
       this.result.push({
-        label: ImageNetLabelsI18n.__(String(value)),
+        label: languageProvider.get(value),
         precision: (topValues[index] / sum) * 100,
       } as Prediction);
     });

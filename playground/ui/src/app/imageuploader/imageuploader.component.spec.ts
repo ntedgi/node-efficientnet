@@ -8,9 +8,8 @@ describe('ImageuploaderComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ImageuploaderComponent ]
-    })
-    .compileComponents();
+      declarations: [ImageuploaderComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
