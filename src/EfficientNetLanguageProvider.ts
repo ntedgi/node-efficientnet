@@ -5,9 +5,8 @@ export enum EfficientNetLableLanguage {
   ENGLISH,
   CHINESE,
 }
-
 export class EfficientNetLanguageProvider {
-  private filePath = "../misc/en.json";
+  private filePath = "misc/en.json";
   private labelsMap = null;
 
   constructor(language: EfficientNetLableLanguage | undefined) {
@@ -23,7 +22,7 @@ export class EfficientNetLanguageProvider {
           break;
       }
     }
-    this.filePath = fileName ? `../misc/${fileName}.json` : this.filePath;
+    this.filePath = fileName ? `misc/${fileName}.json` : this.filePath;
   }
 
   async load(): Promise<void> {
