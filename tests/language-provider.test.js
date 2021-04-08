@@ -31,3 +31,17 @@ test("EfficientNetLanguageProvider - check chinese translation file", (done) => 
     })
     .catch((error) => done(error));
 });
+test("EfficientNetLanguageProvider - check spanish translation file", (done) => {
+  const spanishProvider = new EfficientNetLanguageProvider(
+    EfficientNetLableLanguage.SPANISH
+  );
+  spanishProvider
+    .load()
+    .then(() => {
+      const result = spanishProvider.get(0);
+      expect(result).toBeDefined();
+      expect(result).toEqual("tenca, Tinca tinca");
+      done();
+    })
+    .catch((error) => done(error));
+});

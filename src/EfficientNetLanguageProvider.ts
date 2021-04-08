@@ -4,6 +4,7 @@ import * as path from "path";
 export enum EfficientNetLableLanguage {
   ENGLISH,
   CHINESE,
+  SPANISH,
 }
 export class EfficientNetLanguageProvider {
   private filePath = "misc/en.json";
@@ -20,6 +21,9 @@ export class EfficientNetLanguageProvider {
         case EfficientNetLableLanguage.ENGLISH:
           fileName = "en";
           break;
+        case EfficientNetLableLanguage.SPANISH:
+        fileName = "es";
+        break;
       }
     }
     this.filePath = fileName ? `misc/${fileName}.json` : this.filePath;
