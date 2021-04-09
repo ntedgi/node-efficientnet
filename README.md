@@ -9,9 +9,13 @@
 [![Gitter](https://badges.gitter.im/node-efficientnet/community.svg)](https://gitter.im/node-efficientnet/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)![Node.js CI](https://github.com/ntedgi/node-efficientnet/workflows/Node.js%20CI/badge.svg?branch=main)
 
 
-[![NPM](https://nodei.co/npm/node-efficientnet.png?downloads=true)](https://www.npmjs.com/package/node-efficientnet)
 
+## Test The Model Online 
+[(http://nodeefficientnet.ml/) ](http://nodeefficientnet.ml/)
 
+![Alt Text](https://raw.githubusercontent.com/ntedgi/node-efficientnet/main/media/sample.gif)
+
+## Background
 This repository contains a tensorflowJs implementation of **EfficientNet**,
 an object detection model trained on [ImageNet](http://www.image-net.org/) and can detect [1000 different objects](https://storage.googleapis.com/download.tensorflow.org/data/ImageNetLabels.txt).
 
@@ -19,12 +23,6 @@ EfficientNet a lightweight convolutional neural network architecture achieving t
 five other commonly used transfer learning datasets.
 
 The codebase is heavily inspired by the [TensorFlow implementation](https://github.com/tensorflow/tpu/tree/master/models/official/efficientnet).
-
-
-[Test The Model Online (http://nodeefficientnet.ml/) ](http://nodeefficientnet.ml/)
-
-![Alt Text](https://raw.githubusercontent.com/ntedgi/node-efficientnet/main/media/sample.gif)
-
 
 ## 👏 Supporters
 
@@ -300,16 +298,9 @@ output :
 
 EfficientNets rely on AutoML and compound scaling to achieve superior performance without compromising resource efficiency. The [AutoML Mobile framework](https://ai.googleblog.com/2018/08/mnasnet-towards-automating-design-of.html) has helped develop a mobile-size baseline network, **EfficientNet-B0**, which is then improved by the compound scaling method to obtain EfficientNet-B1 to B7.
 
-<table border="0">
-<tr>
-    <td>
-    <img src="https://raw.githubusercontent.com/tensorflow/tpu/master/models/official/efficientnet/g3doc/params.png" width="100%" />
-    </td>
-    <td>
-    <img src="https://raw.githubusercontent.com/tensorflow/tpu/master/models/official/efficientnet/g3doc/flops.png", width="90%" />
-    </td>
-</tr>
-</table>
+![Alt Text](https://raw.githubusercontent.com/tensorflow/tpu/master/models/official/efficientnet/g3doc/params.png)
+
+![Alt Text](https://raw.githubusercontent.com/tensorflow/tpu/master/models/official/efficientnet/g3doc/flops.png)
 
 EfficientNets achieve state-of-the-art accuracy on ImageNet with an order of magnitude better efficiency:
 
