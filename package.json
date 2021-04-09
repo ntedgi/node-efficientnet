@@ -8,12 +8,13 @@
     "prepublish": "npm run build",
     "build": "rm -rf ./dist && tsc &&  cp -r src/misc ./dist/src/misc",
     "example": "ts-node example.ts",
-    "test": "npm run test:prapare && jest  --clearCache && jest  --coverage",
+    "coveralls": "cat ./coverage/lcov.info | coveralls",
+    "test": "npm run test:prapare && npm run test:unit",
     "lint": "eslint . --fix --ext .ts && npm run lint:md",
     "lint:md": "remark .",
-    "coveralls": "cat ./coverage/lcov.info | coveralls",
-    "test:playground": "cd playground/server && npm i && npm test",
-    "test:prapare":"npm link && cd tester && npm link node-efficientnet" 
+    "test:unit":"jest  --clearCache && jest  --coverage",
+    "test:prapare":"npm link && cd tester && npm link node-efficientnet",
+    "test:playground": "cd playground/server && npm i && npm test"
   },
   "repository": {
     "type": "git",
