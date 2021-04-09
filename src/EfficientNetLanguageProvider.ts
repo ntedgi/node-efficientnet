@@ -22,7 +22,7 @@ export class EfficientNetLanguageProvider {
           fileName = "en";
           break;
         case EfficientNetLableLanguage.SPANISH:
-        fileName = "es";
+          fileName = "es";
         break;
       }
     }
