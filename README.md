@@ -14,10 +14,6 @@
 
 #
 
-[Test The Model Online (http://nodeefficientnet.ml/) ](http://nodeefficientnet.ml/)
-
-#
-
 This repository contains a tensorflowJs implementation of **EfficientNet**,
 an object detection model trained on [ImageNet](http://www.image-net.org/) and can detect [1000 different objects](https://storage.googleapis.com/download.tensorflow.org/data/ImageNetLabels.txt).
 
@@ -26,6 +22,12 @@ five other commonly used transfer learning datasets.
 
 The codebase is heavily inspired by the [TensorFlow implementation](https://github.com/tensorflow/tpu/tree/master/models/official/efficientnet).
 
+#
+[Test The Model Online (http://nodeefficientnet.ml/) ](http://nodeefficientnet.ml/)
+
+![Alt Text](https://raw.githubusercontent.com/ntedgi/node-efficientnet/main/media/sample.gif)
+
+#
 ## 👏 Supporters
 
 ### &#8627; Stargazers
@@ -36,7 +38,7 @@ The codebase is heavily inspired by the [TensorFlow implementation](https://gith
 
 [![Forkers repo roster for @ntedgi/node-efficientnet](https://reporoster.com/forks/ntedgi/node-efficientnet)](https://github.com/ntedgi/node-efficientnet/network/members)
 
-![Alt Text](https://raw.githubusercontent.com/ntedgi/node-efficientnet/main/media/sample.gif)
+
 
 ## Table of Contents
 
@@ -333,9 +335,9 @@ The performance of each model variant using the pre-trained weights converted fr
 
 ## Multilingual status
 
-| locale  |           status           |
-| :-----: | :------------------------: |
-|  `en`   |             ✅             |
-|  `zh`   |             ✅             |
-|  `es`   |             ✅             |
-| `other` | ⏩ (need help, welcome pr) |
+| locale  |           status           |   translate by 👑  | 
+| :-----: | :------------------------: | :----------:   |
+|  `en`   |             ✅             |             |
+|  `zh`   |             ✅             | [@luoye-fe](https://github.com/luoye-fe)|
+|  `es`   |             ✅             | [@h383r](https://github.com/h383r)|
+| `other` | ⏩ (need help, PR welcome ) |                |
