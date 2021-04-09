@@ -23,15 +23,16 @@ const initServer = (model) => {
   router.post("/api/upload", async (req, res) => {
     try {
       const result = await model.inference(req.files.file.path);
-      res.status(200).send(result);
+      res.send(result);
     }
     catch (err) {
-      res.status(500).send(err);
+      console.error(err);
+      res.status(500).send("Something went wrong");
     }
   });
 
   router.get("/api/version", async (req, res) => {
-    res.status(200).send({ version: "1.0" });
+    res.send({ version: "1.0" });
   });
 
   app.use(urlencoded({ extended: true }));
