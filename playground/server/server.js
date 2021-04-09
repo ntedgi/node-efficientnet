@@ -26,7 +26,8 @@ const initServer = (model) => {
       res.send(result);
     }
     catch (err) {
-      res.status(500).send(err);
+      console.error(err);
+      res.status(500).send("Something went wrong");
     }
   });
 
