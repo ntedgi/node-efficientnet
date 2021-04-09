@@ -23,7 +23,7 @@ export class EfficientNetLanguageProvider {
           break;
         case EfficientNetLableLanguage.SPANISH:
           fileName = "es";
-        break;
+          break;
       }
     }
     this.filePath = fileName ? `misc/${fileName}.json` : this.filePath;
