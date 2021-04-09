@@ -37,8 +37,16 @@ The codebase is heavily inspired by the [TensorFlow implementation](https://gith
 ### &#8627; Forkers
 
 [![Forkers repo roster for @ntedgi/node-efficientnet](https://reporoster.com/forks/ntedgi/node-efficientnet)](https://github.com/ntedgi/node-efficientnet/network/members)
+## Multilingual status
 
+| locale  |           status           |   translate by 👑  | 
+| :-----: | :------------------------: | :----------:   |
+|  `en`   |             ✅             |             |
+|  `zh`   |             ✅             | [@luoye-fe](https://github.com/luoye-fe)|
+|  `es`   |             ✅             | [@h383r](https://github.com/h383r)|
+| `other` | ⏩ (need help, PR welcome ) |                |
 
+#
 
 ## Table of Contents
 
@@ -154,6 +162,8 @@ for example lets take this images:
     
 </table>
 
+#
+
 ## Installation
 
 ```node
@@ -226,6 +236,7 @@ const result = await model.inference(path2image, {
   locale: "zh"
 });
 ```
+#
 
 ## Examples
 
@@ -292,6 +303,7 @@ output :
   })
 ];
 ```
+#
 
 ## About EfficientNet Models
 
@@ -308,6 +320,8 @@ EfficientNets rely on AutoML and compound scaling to achieve superior performanc
 </tr>
 </table>
 
+#
+
 EfficientNets achieve state-of-the-art accuracy on ImageNet with an order of magnitude better efficiency:
 
 - In high-accuracy regime, EfficientNet-B7 achieves the state-of-the-art 84.4% top-1 / 97.1% top-5 accuracy on ImageNet with 66M parameters and 37B FLOPS. At the same time, the model is 8.4x smaller and 6.1x faster on CPU inference than the former leader, [Gpipe](https://arxiv.org/abs/1811.06965).
@@ -315,6 +329,7 @@ EfficientNets achieve state-of-the-art accuracy on ImageNet with an order of mag
 - In middle-accuracy regime, EfficientNet-B1 is 7.6x smaller and 5.7x faster on CPU inference than [ResNet-152](https://arxiv.org/abs/1512.03385), with similar ImageNet accuracy.
 
 - Compared to the widely used [ResNet-50](https://arxiv.org/abs/1512.03385), EfficientNet-B4 improves the top-1 accuracy from 76.3% of ResNet-50 to 82.6% (+6.3%), under similar FLOPS constraints.
+#
 
 ## Models
 
@@ -333,11 +348,3 @@ The performance of each model variant using the pre-trained weights converted fr
 
 **\*** - topK accuracy score for converted models (imagenet `val` set)
 
-## Multilingual status
-
-| locale  |           status           |   translate by 👑  | 
-| :-----: | :------------------------: | :----------:   |
-|  `en`   |             ✅             |             |
-|  `zh`   |             ✅             | [@luoye-fe](https://github.com/luoye-fe)|
-|  `es`   |             ✅             | [@h383r](https://github.com/h383r)|
-| `other` | ⏩ (need help, PR welcome ) |                |
