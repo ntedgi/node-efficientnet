@@ -170,6 +170,8 @@ for example lets take this images:
 npm i --save node-efficientnet
 ```
 
+`node-efficientnet` use [`sharp`](https://github.com/lovell/sharp) to process image, if you will detect more image format, such as `HEIC` `TIFF` `AVIF`, you maybe need globally-installed version of [`libvips`](https://libvips.github.io/libvips/)
+
 ## API
 
 ### `EfficientNetCheckPointFactory.create(checkPoint: EfficientNetCheckPoint, options?: EfficientNetCheckPointFactoryOptions): Promise<EfficientNetModel>`
