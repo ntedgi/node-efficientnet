@@ -12,5 +12,5 @@ jobs:
         host: ${{ secrets.DEPLOY_HOST }}
         username: ${{ secrets.DEPLOY_USER }}
         key: ${{ secrets.DEPLOY_KEY }}
-        script: cd node-efficientnet && git pull && cd playground && docker-compose down && docker system prune -a && docker-compose up -d
+        script: cd node-efficientnet && git pull && npm run deploy:playground
       
