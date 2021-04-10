@@ -14,7 +14,8 @@
     "lint:md": "remark .",
     "test:unit":"jest  --clearCache && jest  --coverage",
     "test:prapare":"npm link && cd tester && npm link node-efficientnet",
-    "test:playground": "cd playground/server && npm i && npm test"
+    "test:playground": "cd playground/server && npm i && npm test",
+    "deploy:playground": "sh deploy.sh"
   },
   "repository": {
     "type": "git",
