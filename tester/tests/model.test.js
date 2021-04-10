@@ -121,6 +121,7 @@ test("EfficientNetCheckPointFactory - load model from remote default", (done) =>
 
 test("EfficientNetModel - use different locale chinese", (done) => {
   EfficientNetCheckPointFactory.create(EfficientNetCheckPoint.B0, {
+    localModelRootDirectory: rootDir,
     locale: EfficientNetLableLanguage.CHINESE,
   })
     .then(async (model) => {
@@ -138,6 +139,7 @@ test("EfficientNetModel - use different locale chinese", (done) => {
 
 test("EfficientNetModel - use different locale english", (done) => {
   EfficientNetCheckPointFactory.create(EfficientNetCheckPoint.B0, {
+    localModelRootDirectory: rootDir,
     locale: EfficientNetLableLanguage.ENGLISH,
   })
     .then(async (model) => {
@@ -145,6 +147,33 @@ test("EfficientNetModel - use different locale english", (done) => {
       const image = "samples/car.jpg";
       model.inference(image).then((localeEnResult) => {
         expect(localeEnResult.result[0].label).toEqual("sports car, sport car");
+        done();
+      });
+    })
+    .catch((error) => {
+      done(error);
+    });
+});
+
+test("EfficientNetModel - more image format test", (done) => {
+  EfficientNetCheckPointFactory.create(EfficientNetCheckPoint.B0, {
+    localModelRootDirectory: rootDir,
+    locale: EfficientNetLableLanguage.ENGLISH,
+  })
+    .then(async (model) => {
+      expect(model).toBeDefined();
+      Promise.all([
+        model.inference("samples/car.jpg"),
+        model.inference("samples/car.png"),
+        model.inference("samples/car.gif"),
+        model.inference("samples/car.webp"),
+        model.inference("samples/car.avif"),
+        model.inference("samples/car.heic"),
+        model.inference("samples/car.pdf"),
+      ]).then((result) => {
+        result.forEach((item) => {
+          expect(item.result[0].label).toEqual("sports car, sport car");
+        });
         done();
       });
     })

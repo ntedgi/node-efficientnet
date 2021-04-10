@@ -1,7 +1,7 @@
 const {
   EfficientNetLableLanguage,
   EfficientNetLanguageProvider,
-} = require("node-efficientnet")
+} = require("node-efficientnet");
 
 test("EfficientNetLanguageProvider - check english translation file", (done) => {
   const englishProvider = new EfficientNetLanguageProvider(
