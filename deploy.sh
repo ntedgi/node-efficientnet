@@ -2,4 +2,4 @@
 set -e
 set -x
 cd playground 
-docker-compose up --build 
+docker-compose up --build -d
