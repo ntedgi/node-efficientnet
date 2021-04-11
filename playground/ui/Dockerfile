@@ -1,4 +1,4 @@
-FROM node:10.19.0 as node-efficientnet-client
+FROM node:14.16.1-buster as node-efficientnet-client
 WORKDIR /app
 COPY package*.json ./
 RUN npm install
