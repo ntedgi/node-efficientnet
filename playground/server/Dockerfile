@@ -1,4 +1,4 @@
-FROM node:10.19.0
+FROM node:14.16.1-buster
 EXPOSE 3000
 WORKDIR /home/app
 
