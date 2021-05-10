@@ -13,9 +13,9 @@ const imageDir = "./samples";
 const imageDirRemoteUri =
   "https://raw.githubusercontent.com/ntedgi/node-EfficientNet/main/samples";
 
-if (!fs.existsSync(imageDir)) {
+if (!fs.existsSync(imageDir)) 
   fs.mkdirSync(imageDir);
-}
+
 
 async function download(image: string, cb: fs.NoParamCallback) {
   const response = await nodeFetch.default(`${imageDirRemoteUri}/${image}`);
