@@ -344,3 +344,9 @@ The performance of each model variant using the pre-trained weights converted fr
 
 **\*** - topK accuracy score for converted models (imagenet `val` set)
 
+---
+```ts
+if (this.repo.isAwesome || this.repo.isHelpful) {
+  Star(this.repo);
+}
+```
