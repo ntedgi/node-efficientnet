@@ -13,9 +13,7 @@ const imageDir = "./samples";
 const imageDirRemoteUri =
   "https://raw.githubusercontent.com/ntedgi/node-EfficientNet/main/samples";
 
-if (!fs.existsSync(imageDir)) 
-  fs.mkdirSync(imageDir);
-
+if (!fs.existsSync(imageDir)) fs.mkdirSync(imageDir);
 
 async function download(image: string, cb: fs.NoParamCallback) {
   const response = await nodeFetch.default(`${imageDirRemoteUri}/${image}`);
@@ -23,12 +21,12 @@ async function download(image: string, cb: fs.NoParamCallback) {
   fs.writeFile(`${imageDir}/${image}`, buffer, cb);
 }
 
-EfficientNetCheckPointFactory.create(EfficientNetCheckPoint.B7)
+EfficientNetCheckPointFactory.create(EfficientNetCheckPoint.B0)
   .then((model: EfficientNetModel) => {
     images.forEach(async (image) => {
       await download(image, () => {
         model
-          .inference(`${imageDir}/${image}`, 3)
+          .inference(`${imageDir}/${image}`, { topK: 3 })
           .then((result: EfficientNetResult) => {
             console.log(result.result);
           });
