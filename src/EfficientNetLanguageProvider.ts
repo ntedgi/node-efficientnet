@@ -25,7 +25,7 @@ export class EfficientNetLanguageProvider {
         case EfficientNetLableLanguage.SPANISH:
           fileName = "es";
           break;
-       case EfficientNetLableLanguage.ARABIC:
+        case EfficientNetLableLanguage.ARABIC:
           fileName = "ar";
           break;
       }
