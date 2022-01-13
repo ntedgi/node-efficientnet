@@ -49,6 +49,7 @@ test("EfficientNetLanguageProvider - check arabic translation file", (done) => {
   const arabicProvider = new EfficientNetLanguageProvider(
     EfficientNetLableLanguage.ARABIC
   );
+  
   arabicProvider
     .load()
     .then(() => {
