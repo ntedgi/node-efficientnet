@@ -40,6 +40,7 @@ The codebase is heavily inspired by the [TensorFlow implementation](https://gith
 |  `en`   |             ✅             |             |
 |  `zh`   |             ✅             | [@luoye-fe](https://github.com/luoye-fe)|
 |  `es`   |             ✅             | [@h383r](https://github.com/h383r)|
+|  `ar`   |             ✅             | [@lamamyf](https://github.com/lamamyf)|
 | `other` | ⏩ (need help, PR welcome ) |                |
 
 #

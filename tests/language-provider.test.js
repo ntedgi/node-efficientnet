@@ -45,3 +45,18 @@ test("EfficientNetLanguageProvider - check spanish translation file", (done) => 
     })
     .catch((error) => done(error));
 });
+test("EfficientNetLanguageProvider - check arabic translation file", (done) => {
+  const arabicProvider = new EfficientNetLanguageProvider(
+    EfficientNetLableLanguage.ARABIC
+  );
+  
+  arabicProvider
+    .load()
+    .then(() => {
+      const result = arabicProvider.get(0);
+      expect(result).toBeDefined();
+      expect(result).toEqual("تنش ، تينكا تينكا");
+      done();
+    })
+    .catch((error) => done(error));
+});
