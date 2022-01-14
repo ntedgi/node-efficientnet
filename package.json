@@ -1,6 +1,6 @@
 {
   "name": "node-efficientnet",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "Implementation of efficientNet model in nodejs",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -12,8 +12,8 @@
     "test": "npm run test:prapare && npm run test:unit",
     "lint": "eslint . --fix --ext .ts && npm run lint:md",
     "lint:md": "remark .",
-    "test:unit":"jest  --clearCache && jest  --coverage",
-    "test:prapare":"npm link && cd tester && npm link node-efficientnet",
+    "test:unit": "jest  --clearCache && jest  --coverage",
+    "test:prapare": "npm link && cd tester && npm link node-efficientnet",
     "test:playground": "cd playground/server && npm i && npm test",
     "deploy:playground": "sh deploy.sh"
   },
