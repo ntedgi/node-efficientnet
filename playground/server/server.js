@@ -3,6 +3,8 @@
 import express, { Router } from "express";
 import bodyParser from "body-parser";
 import formidable from "express-formidable";
+import bodyParserErrorHandler from "express-body-parser-error-handler";
+
 const { urlencoded, json } = bodyParser;
 
 import {
@@ -38,6 +40,7 @@ const initServer = (model) => {
   app.use(urlencoded({ extended: true }));
   app.use(json());
   app.use(formidable());
+  app.use(bodyParserErrorHandler());
   app.use(router);
   return app;
 };
