@@ -26,8 +26,8 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain(
-      'playground app is running!'
+    expect(compiled.querySelector('.github-fork-ribbon').textContent).toContain(
+      'Fork me on GitHub'
     );
   });
 });
