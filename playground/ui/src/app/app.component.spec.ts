@@ -19,7 +19,7 @@ describe('AppComponent', () => {
   it(`should have as title 'playground'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('playground');
+    expect(app.title).toEqual('node-efficientnet playground');
   });
 
   it('should render title', () => {
