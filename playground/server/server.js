@@ -5,11 +5,14 @@ import bodyParser from "body-parser";
 import formidable from "express-formidable";
 import bodyParserErrorHandler from "express-body-parser-error-handler";
 
+
 const { urlencoded, json } = bodyParser;
 
 import {
   EfficientNetCheckPointFactory,
   EfficientNetCheckPoint,
+  EfficientNetLanguageProvider,
+  EfficientNetLableLanguage
 } from "node-efficientnet";
 
 const initServer = (model) => {
@@ -24,6 +27,12 @@ const initServer = (model) => {
 
   router.post("/api/upload", async (req, res) => {
     try {
+      const language = typeof req.fields.language;
+      const labelLanguage =  EfficientNetLableLanguage[EfficientNetLableLanguage[language]];
+      const languageProvider = new EfficientNetLanguageProvider(labelLanguage);
+
+      model.setLanguageProvider(languageProvider);
+
       const result = await model.inference(req.files.file.path);
       res.send(result);
     }
@@ -32,6 +41,19 @@ const initServer = (model) => {
       res.status(500).send("Something went wrong");
     }
   });
+
+  router.get("/api/languages", async(req,res)=>{
+    try{
+      const languagesEnumKeys = Object.keys(EfficientNetLableLanguage);
+      const languagesAmount = languagesEnumKeys.length/2;
+      const languagesArr = languagesEnumKeys.slice(languagesAmount);
+      res.send(languagesArr);
+    }
+    catch(err){
+      console.error(err);
+      res.status(500).send("Something went wrong");
+    }
+  })
 
   router.get("/api/version", async (req, res) => {
     res.send({ version: "1.0" });
