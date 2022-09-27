@@ -1,7 +1,8 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { MessageService } from 'primeng/api';
-import { HttpClient } from '@angular/common/http';
+import {Component, OnInit, Output, EventEmitter} from '@angular/core';
+import {MessageService, SelectItem} from 'primeng/api';
+import {HttpClient} from '@angular/common/http';
 import Prediction from '../interfces';
+import {LanguagesApiService} from '../languages-api.service'
 
 @Component({
   selector: 'app-imageuploader',
@@ -10,7 +11,12 @@ import Prediction from '../interfces';
   providers: [MessageService, HttpClient],
 })
 export class ImageuploaderComponent implements OnInit {
-  constructor(private messageService: MessageService) {}
+  constructor(private messageService: MessageService, private languagesApi: LanguagesApiService) {
+  }
+
+  languages: SelectItem[];
+  selectedLanguage: SelectItem;
+  selectedLanguageName: string;
 
   uploadedFiles: any[] = [];
 
@@ -18,7 +24,18 @@ export class ImageuploaderComponent implements OnInit {
   @Output() updateClassification = new EventEmitter<Prediction[]>();
   @Output() isLoading = new EventEmitter<boolean>();
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.languagesApi.getLanguages().subscribe((data) => {
+      const languagesArray = Object.values(data);
+      this.languages = languagesArray.map(language => ({label: language, value: null}));
+      this.selectedLanguage = this.languages[0];
+      this.selectedLanguageName = this.getSelectedLanguageName();
+    });
+  }
+
+  onChange(event) {
+    this.selectedLanguageName = this.getSelectedLanguageName();;
+  }
 
   onUpload(event) {
     const result = event.originalEvent.body.result as Prediction[];
@@ -36,5 +53,8 @@ export class ImageuploaderComponent implements OnInit {
     this.isLoading.emit(false);
     this.uploadedFiles = [];
     this.updateImage.emit(event.formData.get('file'));
+  }
+  getSelectedLanguageName(){
+    return this.selectedLanguage.label.toLowerCase();
   }
 }
