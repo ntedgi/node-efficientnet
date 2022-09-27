@@ -14,7 +14,7 @@ describe("Post Endpoints", () => {
         jest.setTimeout(60000);
         const filePath = path.join(__dirname, "fish.jpg");
         const res = await request(app)
-            .post("/api/upload")
+            .post("/api/upload/english")
             .attach("file", filePath)
             .expect(200)
             .then((output, err) => {
@@ -32,6 +32,28 @@ describe("Post Endpoints", () => {
                 done(err);
             });
     });
+  it("should predict simple gold fish in spanish", async (done) => {
+    jest.setTimeout(60000);
+    const filePath = path.join(__dirname, "fish.jpg");
+    const res = await request(app)
+    .post("/api/upload/spanish")
+    .attach("file", filePath)
+    .expect(200)
+    .then((output, err) => {
+      const expectedLabel = "pez dorado, Carassius auratus"
+      if (output) {
+        const { result } = output.body;
+        expect(result[0].label).toEqual(expectedLabel)
+        done()
+      }
+      else {
+        done(err)
+      }
+    })
+    .catch((err, res) => {
+      done(err);
+    });
+  });
     it("sanity test server/version", async (done) => {
         const res = await request(app)
             .get("/api/version/")
