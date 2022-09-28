@@ -12,8 +12,15 @@ import {
   EfficientNetCheckPoint,
 } from "node-efficientnet";
 
-const initServer = (model) => {
+const safeGet = (fn, fallBack) => {
+  try {
+    return fn();
+  } catch (e) {
+    return fallBack;
+  }
+};
 
+const initServer = (model) => {
   const app = express();
   const router = Router();
   const serverName = "back-end";
@@ -24,10 +31,15 @@ const initServer = (model) => {
 
   router.post("/api/upload", async (req, res) => {
     try {
-      const result = await model.inference(req.files.file.path);
-      res.send(result);
-    }
-    catch (err) {
+      const filePath = safeGet(() => req.files.file.path, null);
+      if (!filePath) {
+        res.status(400);
+        res.send({ error: "should pass file to inference" });
+      } else {
+        const result = await model.inference(req.files.file.path);
+        res.send(result);
+      }
+    } catch (err) {
       console.error(err);
       res.status(500).send("Something went wrong");
     }
