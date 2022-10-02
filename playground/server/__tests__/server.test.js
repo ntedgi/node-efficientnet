@@ -60,5 +60,5 @@ describe("Post Endpoints", () => {
             .catch((err, res) => {
                 done(err);
             });
-    }); 
+    });
 });
