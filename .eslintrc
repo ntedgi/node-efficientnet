@@ -1,12 +1,7 @@
 {
   "root": true,
   "parser": "@typescript-eslint/parser",
-  "plugins": [
-    "@typescript-eslint",
-    "import",
-    "jest",
-    "prettier"
-  ],
+  "plugins": ["@typescript-eslint", "import", "jest", "prettier"],
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/eslint-recommended",
@@ -19,14 +14,13 @@
     "@typescript-eslint/no-non-null-assertion": "off"
   },
   "env": {
-    "jest/globals": true
+    "jest/globals": true,
+    "node": true,
+    "browser": true
   },
   "settings": {
     "import/parsers": {
-      "@typescript-eslint/parser": [
-        ".ts",
-        ".tsx"
-      ]
+      "@typescript-eslint/parser": [".ts", ".tsx"]
     },
     "import/resolver": {
       "typescript": {

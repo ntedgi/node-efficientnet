@@ -1,11 +1,10 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 /* eslint-disable no-undef */
 import express, { Router } from "express";
-import bodyParser from "body-parser";
 import formidable from "express-formidable";
 import bodyParserErrorHandler from "express-body-parser-error-handler";
 
-const { urlencoded, json } = bodyParser;
+const { urlencoded, json } = express;
 
 import {
   EfficientNetCheckPointFactory,
@@ -20,14 +19,15 @@ const safeGet = (fn, fallBack) => {
   }
 };
 
-const initServer = (model) => {
+const loggerMiddleware = (serverName) => (req, _res, next) => {
+  console.info(`${serverName} |  ${req.url}  ${req.method} -- ${new Date()}`);
+  next();
+};
+
+const initServer = (model, serverName = "back-end") => {
   const app = express();
   const router = Router();
-  const serverName = "back-end";
-  app.use((req, res, next) => {
-    console.info(`${serverName} |  ${req.url}  ${req.method} -- ${new Date()}`);
-    next();
-  });
+  app.use(loggerMiddleware(serverName));
 
   router.post("/api/upload", async (req, res) => {
     try {
@@ -61,7 +61,7 @@ const createServer = async () => {
   const model = await EfficientNetCheckPointFactory.create(
     EfficientNetCheckPoint.B7
   );
-  return await initServer(model);
+  return initServer(model);
 };
 
 export { createServer };

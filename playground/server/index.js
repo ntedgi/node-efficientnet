@@ -1,4 +1,3 @@
-// eslint-disable-next-line no-undef
 import { createServer } from "./server.js";
 const port = 3000;
 createServer()
