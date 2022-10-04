@@ -1,15 +1,16 @@
 /* eslint-disable no-undef */
 import request from "supertest";
 import { createServer } from "../server.js";
-const path = require("path");
+import { join } from "path";
 
 let app = null;
 beforeAll(async (done) => {
-    app = await createServer();
-    done();
+  app = await createServer();
+  done();
 }, 60000);
 
 describe("Post Endpoints", () => {
+
     it("/api/upload should throw exception when not passing a file", async (done) => {
         jest.setTimeout(60000);
         const res = await request(app)
