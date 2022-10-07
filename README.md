@@ -35,14 +35,15 @@ The codebase is heavily inspired by the [TensorFlow implementation](https://gith
 [![Forkers repo roster for @ntedgi/node-efficientnet](https://reporoster.com/forks/ntedgi/node-efficientnet)](https://github.com/ntedgi/node-efficientnet/network/members)
 ## Multilingual status
 
-| locale  |           status           |   translate by 👑  | 
-| :-----: | :------------------------: | :----------:   |
-|  `en`   |             ✅             |             |
-|  `zh`   |             ✅             | [@luoye-fe](https://github.com/luoye-fe)|
-|  `es`   |             ✅             | [@h383r](https://github.com/h383r)|
-|  `ar`   |             ✅             | [@lamamyf](https://github.com/lamamyf)|
-|  `ru`   |             ✅             | [@Abhighyaa](https://github.com/Abhighyaa)|
-| `other` | ⏩ (need help, PR welcome ) |                |
+| locale  |           status           |              translate by 👑               | 
+|:-------:|:--------------------------:|:------------------------------------------:|
+|  `en`   |             ✅              |                                            |
+|  `zh`   |             ✅              |  [@luoye-fe](https://github.com/luoye-fe)  |
+|  `es`   |             ✅              |     [@h383r](https://github.com/h383r)     |
+|  `ar`   |             ✅              |   [@lamamyf](https://github.com/lamamyf)   |
+|  `ru`   |             ✅              | [@Abhighyaa](https://github.com/Abhighyaa) |
+|  `he`   |             ✅              | [@jhonDoe15](https://github.com/jhonDoe15) |
+| `other` | ⏩ (need help, PR welcome ) |                                            |
 
 #
 
