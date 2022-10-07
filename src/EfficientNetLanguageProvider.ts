@@ -27,14 +27,10 @@ export class EfficientNetLanguageProvider {
         case EfficientNetLabelLanguage.SPANISH:
           fileName = "es";
           break;
-<<<<<<< HEAD
-        case EfficientNetLableLanguage.RUSSIAN:
+        case EfficientNetLabelLanguage.RUSSIAN:
           fileName = "ru";
           break;
-        case EfficientNetLableLanguage.ARABIC:
-=======
         case EfficientNetLabelLanguage.ARABIC:
->>>>>>> 524fe35 (fixed typo, added enum to requierd file)
           fileName = "ar";
           break;
         case EfficientNetLabelLanguage.HEBREW:
