@@ -1,11 +1,11 @@
 const {
-  EfficientNetLableLanguage,
+  EfficientNetLabelLanguage,
   EfficientNetLanguageProvider,
 } = require("../index");
 
 test("EfficientNetLanguageProvider - check english translation file", (done) => {
   const englishProvider = new EfficientNetLanguageProvider(
-    EfficientNetLableLanguage.ENGLISH
+    EfficientNetLabelLanguage.ENGLISH
   );
   englishProvider
     .load()
@@ -19,7 +19,7 @@ test("EfficientNetLanguageProvider - check english translation file", (done) => 
 });
 test("EfficientNetLanguageProvider - check chinese translation file", (done) => {
   const chineseProvider = new EfficientNetLanguageProvider(
-    EfficientNetLableLanguage.CHINESE
+    EfficientNetLabelLanguage.CHINESE
   );
   chineseProvider
     .load()
@@ -33,7 +33,7 @@ test("EfficientNetLanguageProvider - check chinese translation file", (done) => 
 });
 test("EfficientNetLanguageProvider - check spanish translation file", (done) => {
   const spanishProvider = new EfficientNetLanguageProvider(
-    EfficientNetLableLanguage.SPANISH
+    EfficientNetLabelLanguage.SPANISH
   );
   spanishProvider
     .load()
@@ -47,7 +47,7 @@ test("EfficientNetLanguageProvider - check spanish translation file", (done) => 
 });
 test("EfficientNetLanguageProvider - check arabic translation file", (done) => {
   const arabicProvider = new EfficientNetLanguageProvider(
-    EfficientNetLableLanguage.ARABIC
+    EfficientNetLabelLanguage.ARABIC
   );
   
   arabicProvider
