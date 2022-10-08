@@ -152,3 +152,29 @@ test("EfficientNetModel - use different locale english", (done) => {
       done(error);
     });
 });
+
+test("EfficientNetModel - use different locale hebrew", (done) => {
+  EfficientNetCheckPointFactory.create(EfficientNetCheckPoint.B0, {
+    locale: EfficientNetLabelLanguage.HEBREW,
+  })
+    .then(async (model) => {
+      expect(model).toBeDefined();
+      const image = "samples/car.jpg";
+      model.inference(image).then((localeEnResult) => {
+        expect(localeEnResult.result[0].label).toEqual(
+          "מכונית ספורט, מכונית ספורט"
+        );
+        done();
+      });
+    })
+    .catch((error) => {
+      done(error);
+    });
+});
+
+
+
+
+
+
+
