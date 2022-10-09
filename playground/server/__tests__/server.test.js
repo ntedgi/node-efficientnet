@@ -13,7 +13,7 @@ describe("Post Endpoints", () => {
     it("/api/upload should throw exception when not passing a file", async (done) => {
         jest.setTimeout(60000);
         const res = await request(app)
-            .post("/api/upload")
+            .post("/api/upload/english")
             .expect(400)
             .then((_, err) => {
                 if (err) {
@@ -31,7 +31,7 @@ describe("Post Endpoints", () => {
       jest.setTimeout(60000);
       const filePath = join(__dirname, "fish.jpg");
       await request(app)
-      .post("/api/upload")
+      .post("/api/upload/english")
       .attach("file", filePath)
       .expect(200)
       .then((output, err) => {

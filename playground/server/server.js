@@ -40,23 +40,18 @@ const initServer = (model, serverName = 'back-end') => {
         res.send({ error: 'should pass file to inference' })
       }
       else {
-        let result
         const language = req.params.language
 
-        if (!!language) {
-          const formattedLanguage = language.toUpperCase()
-          const labelLanguage = EfficientNetLableLanguage[EfficientNetLableLanguage[formattedLanguage]]
-          const languageProvider = new EfficientNetLanguageProvider(
-            labelLanguage)
+        const formattedLanguage = language.toUpperCase()
+        const labelLanguage = EfficientNetLableLanguage[EfficientNetLableLanguage[formattedLanguage]]
+        const languageProvider = new EfficientNetLanguageProvider(
+          labelLanguage)
 
-          //Use other language provider for the model
-          await languageProvider.load()
-          result = await model.inference(req.files.file.path,
-            languageProvider)
-        }
-        else {
-          result = await model.inference(req.files.file.path)
-        }
+        //Use other language provider for the model
+        await languageProvider.load()
+        const result = await model.inference(req.files.file.path,
+          languageProvider)
+
         res.send(result)
       }
     }
