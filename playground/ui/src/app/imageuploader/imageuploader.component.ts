@@ -1,4 +1,4 @@
-import {Component, OnInit, Output, EventEmitter} from '@angular/core';
+import {Component, OnInit, Output, EventEmitter, ViewChild} from '@angular/core';
 import {MessageService, SelectItem} from 'primeng/api';
 import {HttpClient} from '@angular/common/http';
 import Prediction from '../interfces';
@@ -23,6 +23,7 @@ export class ImageuploaderComponent implements OnInit {
   @Output() updateImage = new EventEmitter<string>();
   @Output() updateClassification = new EventEmitter<Prediction[]>();
   @Output() isLoading = new EventEmitter<boolean>();
+  @Output("resetFields") resetFields: EventEmitter<any> = new EventEmitter();
 
   ngOnInit(): void {
     this.languagesApi.getLanguages().subscribe((data) => {
@@ -34,7 +35,11 @@ export class ImageuploaderComponent implements OnInit {
   }
 
   onChange(event) {
-    this.selectedLanguageName = this.getSelectedLanguageName();;
+    this.selectedLanguageName = this.getSelectedLanguageName();
+    //Reset component file field
+    this.uploadedFiles=[];
+    //Reset parent fields
+    this.resetFields.emit();
   }
 
   onUpload(event) {
