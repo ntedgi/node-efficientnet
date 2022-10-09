@@ -32,7 +32,7 @@ const initServer = (model, serverName = 'back-end') => {
   const router = Router()
   app.use(loggerMiddleware(serverName))
 
-  router.post('/api/upload:language', async (req, res) => {
+  router.post('/api/upload/:language', async (req, res) => {
     try {
       const filePath = safeGet(() => req.files.file.path, null)
       if (!filePath) {
