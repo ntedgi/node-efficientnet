@@ -37,19 +37,22 @@ const initServer = (model, serverName = "back-end") => {
       if (!filePath) {
         res.status(400);
         res.send({ error: "should pass file to inference" });
-      }
-      else {
+      } else {
         const language = req.params.language;
 
         const formattedLanguage = language.toUpperCase();
-        const labelLanguage = EfficientNetLableLanguage[EfficientNetLableLanguage[formattedLanguage]];
+        const labelLanguage = EfficientNetLableLanguage[formattedLanguage];
         const languageProvider = new EfficientNetLanguageProvider(
-          labelLanguage);
+          labelLanguage
+        );
 
         //Use other language provider for the model
         await languageProvider.load();
-        const result = await model.inference(req.files.file.path,
-          languageProvider);
+        const result = await model.inference(
+          req.files.file.path,
+          null,
+          languageProvider
+        );
 
         res.send(result);
       }
@@ -59,23 +62,22 @@ const initServer = (model, serverName = "back-end") => {
     }
   });
 
-  router.get('/api/languages', async (req, res) => {
+  router.get("/api/languages", async (req, res) => {
     try {
-      const languagesEnumKeys = Object.keys(EfficientNetLableLanguage)
-      const languagesAmount = languagesEnumKeys.length / 2
-      const languagesArr = languagesEnumKeys.slice(languagesAmount)
+      const languagesEnumKeys = Object.keys(EfficientNetLableLanguage);
+      const languagesAmount = languagesEnumKeys.length / 2;
+      const languagesArr = languagesEnumKeys.slice(languagesAmount);
 
-      const formattedLanguagesArr = languagesArr.map(
-        language => language.toLowerCase()).
-        map(item => item.charAt(0).toUpperCase() + item.slice(1))
+      const formattedLanguagesArr = languagesArr
+        .map((language) => language.toLowerCase())
+        .map((item) => item.charAt(0).toUpperCase() + item.slice(1));
 
-      res.send(formattedLanguagesArr)
+      res.send(formattedLanguagesArr);
+    } catch (err) {
+      console.error(err);
+      res.status(500).send("Something went wrong");
     }
-    catch (err) {
-      console.error(err)
-      res.status(500).send('Something went wrong')
-    }
-  })
+  });
 
   router.get("/api/version", async (req, res) => {
     res.send({ version: "1.0" });
