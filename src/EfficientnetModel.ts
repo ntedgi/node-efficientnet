@@ -99,20 +99,22 @@ export default class EfficientNetModel {
   }
 
   private async predict(
-      tensor: tf.Tensor3D,
-      topK: number,
-      overrideLanguageProvider?:  EfficientNetLanguageProvider
+    tensor: tf.Tensor3D,
+    topK: number,
+    overrideLanguageProvider?: EfficientNetLanguageProvider
   ): Promise<EfficientNetResult> {
     const objectArray = this.model!.predict(tensor) as tf.Tensor;
     const values = objectArray.dataSync() as Float32Array;
-    const languageProvider = !!overrideLanguageProvider? overrideLanguageProvider : this.languageProvider;
+    const languageProvider = overrideLanguageProvider
+      ? overrideLanguageProvider
+      : this.languageProvider;
     return new EfficientNetResult(values, topK, languageProvider);
   }
 
   async inference(
-      imgPath: string | Buffer,
-      options?: EfficientNetModelInferenceOptions,
-      overrideLanguageProvider?:  EfficientNetLanguageProvider
+    imgPath: string | Buffer,
+    options?: EfficientNetModelInferenceOptions,
+    overrideLanguageProvider?: EfficientNetLanguageProvider
   ): Promise<EfficientNetResult> {
     const { topK = NUM_OF_CHANNELS } = options || {};
     // @ts-ignore
@@ -122,4 +124,3 @@ export default class EfficientNetModel {
     return this.predict(tensor, topK, overrideLanguageProvider);
   }
 }
-
