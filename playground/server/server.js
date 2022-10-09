@@ -59,6 +59,24 @@ const initServer = (model, serverName = "back-end") => {
     }
   });
 
+  router.get('/api/languages', async (req, res) => {
+    try {
+      const languagesEnumKeys = Object.keys(EfficientNetLableLanguage)
+      const languagesAmount = languagesEnumKeys.length / 2
+      const languagesArr = languagesEnumKeys.slice(languagesAmount)
+
+      const formattedLanguagesArr = languagesArr.map(
+        language => language.toLowerCase()).
+        map(item => item.charAt(0).toUpperCase() + item.slice(1))
+
+      res.send(formattedLanguagesArr)
+    }
+    catch (err) {
+      console.error(err)
+      res.status(500).send('Something went wrong')
+    }
+  })
+
   router.get("/api/version", async (req, res) => {
     res.send({ version: "1.0" });
   });
