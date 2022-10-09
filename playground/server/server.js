@@ -26,14 +26,24 @@ const initServer = (model) => {
 
   router.post('/api/upload/:language', async (req, res) => {
     try {
-      const language = !!req.params.language ? req.params.language : "english";
-      const formattedLanguage = language.toUpperCase();
-      const labelLanguage = EfficientNetLableLanguage[EfficientNetLableLanguage[formattedLanguage]]
-      const languageProvider = new EfficientNetLanguageProvider(labelLanguage)
+      let result
+      const language = req.params.language
 
-      model.setLanguageProvider(languageProvider)
+      if (!!language) {
+        const formattedLanguage = language.toUpperCase()
+        const labelLanguage = EfficientNetLableLanguage[EfficientNetLableLanguage[formattedLanguage]]
+        const languageProvider = new EfficientNetLanguageProvider(labelLanguage)
 
-      const result = await model.inference(req.files.file.path)
+        //Use other language provider for the model
+        await languageProvider.load()
+        result = await model.inference(req.files.file.path,
+          languageProvider)
+      }
+
+      else {
+        result = await model.inference(req.files.file.path)
+      }
+
       res.send(result)
     }
     catch (err) {
@@ -50,7 +60,7 @@ const initServer = (model) => {
 
       const formattedLanguagesArr = languagesArr.map(
         language => language.toLowerCase()).
-        map(item => item.charAt(0).toUpperCase() + item.slice(1));
+        map(item => item.charAt(0).toUpperCase() + item.slice(1))
 
       res.send(formattedLanguagesArr)
     }
