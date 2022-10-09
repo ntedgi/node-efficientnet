@@ -14,7 +14,7 @@
     "lint:md": "remark .",
     "test:unit": "jest  --clearCache && jest  --coverage",
     "test:prapare": "npm link && cd tester && npm link ${npm_package_name}",
-    "test:playground": "npm run pack && cd playground/server && npm i && npm test && cd ../../ && npm run remove:pack",
+    "test:playground": "npm i && npm run pack && cd playground/server && npm i && npm test && cd ../../ && npm run remove:pack",
     "prepare:pack": "npm run build && npm pack",
     "apply:pack": "cd playground/server && npm i file:../../${npm_package_name}-${npm_package_version}.tgz",
     "pack": "npm run prepare:pack && npm run apply:pack",
