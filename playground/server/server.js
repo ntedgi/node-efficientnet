@@ -9,8 +9,6 @@ const { urlencoded, json } = express;
 import {
   EfficientNetCheckPointFactory,
   EfficientNetCheckPoint,
-  EfficientNetLableLanguage,
-  EfficientNetLanguageProvider,
 } from "node-efficientnet";
 
 const safeGet = (fn, fallBack) => {
@@ -34,50 +32,13 @@ const initServer = (model, serverName = "back-end") => {
   router.post("/api/upload", async (req, res) => {
     try {
       const filePath = safeGet(() => req.files.file.path, null);
-      console.log("<<<"+filePath);
       if (!filePath) {
         res.status(400);
         res.send({ error: "should pass file to inference" });
       } else {
-        // const language = safeGet(() => req.params.language, null);
-        //
-        // if (!language) {
-        //   res.status(400);
-        //   res.send({ error: "should pass file to inference" });
-        // } else {
-        //   const formattedLanguage = language.toUpperCase();
-        //   const labelLanguage = EfficientNetLableLanguage[formattedLanguage];
-        //   const languageProvider = new EfficientNetLanguageProvider(
-        //     labelLanguage
-        //   );
-        //
-        //   //Use other language provider for the model
-        //   await languageProvider.load();
-          const result = await model.inference(
-            req.files.file.path,
-            // null,
-            // languageProvider
-          );
-
-          res.send(result);
-        }
-    } catch (err) {
-      console.error(err);
-      res.status(500).send("Something went wrong");
-    }
-  });
-
-  router.get("/api/languages", async (req, res) => {
-    try {
-      const languagesEnumKeys = Object.keys(EfficientNetLableLanguage);
-      const languagesAmount = languagesEnumKeys.length / 2;
-      const languagesArr = languagesEnumKeys.slice(languagesAmount);
-
-      const formattedLanguagesArr = languagesArr
-        .map((language) => language.toLowerCase())
-        .map((item) => item.charAt(0).toUpperCase() + item.slice(1));
-
-      res.send(formattedLanguagesArr);
+        const result = await model.inference(req.files.file.path);
+        res.send(result);
+      }
     } catch (err) {
       console.error(err);
       res.status(500).send("Something went wrong");
