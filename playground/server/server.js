@@ -1,59 +1,49 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 /* eslint-disable no-undef */
 import express, { Router } from "express";
-import bodyParser from "body-parser";
 import formidable from "express-formidable";
 import bodyParserErrorHandler from "express-body-parser-error-handler";
 
-
-const { urlencoded, json } = bodyParser;
+const { urlencoded, json } = express;
 
 import {
   EfficientNetCheckPointFactory,
   EfficientNetCheckPoint,
-  EfficientNetLanguageProvider,
-  EfficientNetLableLanguage
 } from "node-efficientnet";
 
-const initServer = (model) => {
+const safeGet = (fn, fallBack) => {
+  try {
+    return fn();
+  } catch (e) {
+    return fallBack;
+  }
+};
 
+const loggerMiddleware = (serverName) => (req, _res, next) => {
+  console.info(`${serverName} |  ${req.url}  ${req.method} -- ${new Date()}`);
+  next();
+};
+
+const initServer = (model, serverName = "back-end") => {
   const app = express();
   const router = Router();
-  const serverName = "back-end";
-  app.use((req, res, next) => {
-    console.info(`${serverName} |  ${req.url}  ${req.method} -- ${new Date()}`);
-    next();
-  });
+  app.use(loggerMiddleware(serverName));
 
   router.post("/api/upload", async (req, res) => {
     try {
-      const language = typeof req.fields.language;
-      const labelLanguage =  EfficientNetLableLanguage[EfficientNetLableLanguage[language]];
-      const languageProvider = new EfficientNetLanguageProvider(labelLanguage);
-
-      model.setLanguageProvider(languageProvider);
-
-      const result = await model.inference(req.files.file.path);
-      res.send(result);
-    }
-    catch (err) {
+      const filePath = safeGet(() => req.files.file.path, null);
+      if (!filePath) {
+        res.status(400);
+        res.send({ error: "should pass file to inference" });
+      } else {
+        const result = await model.inference(req.files.file.path);
+        res.send(result);
+      }
+    } catch (err) {
       console.error(err);
       res.status(500).send("Something went wrong");
     }
   });
-
-  router.get("/api/languages", async(req,res)=>{
-    try{
-      const languagesEnumKeys = Object.keys(EfficientNetLableLanguage);
-      const languagesAmount = languagesEnumKeys.length/2;
-      const languagesArr = languagesEnumKeys.slice(languagesAmount);
-      res.send(languagesArr);
-    }
-    catch(err){
-      console.error(err);
-      res.status(500).send("Something went wrong");
-    }
-  })
 
   router.get("/api/version", async (req, res) => {
     res.send({ version: "1.0" });
@@ -71,7 +61,7 @@ const createServer = async () => {
   const model = await EfficientNetCheckPointFactory.create(
     EfficientNetCheckPoint.B7
   );
-  return await initServer(model);
+  return initServer(model);
 };
 
 export { createServer };
