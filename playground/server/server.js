@@ -41,8 +41,10 @@ const initServer = (model, serverName = "back-end") => {
           res.status(400);
           res.send({ error: "should pass file to inference" });
         }
-        const result = await model.inference(filePath);
-        res.send(result);
+        else {
+          const result = await model.inference(filePath,null);
+          res.send(result);
+        }
       }
     } catch (err) {
       console.error(err);
