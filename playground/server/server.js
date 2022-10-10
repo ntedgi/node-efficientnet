@@ -34,6 +34,7 @@ const initServer = (model, serverName = "back-end") => {
   router.post("/api/upload", async (req, res) => {
     try {
       const filePath = safeGet(() => req.files.file.path, null);
+      console.log("<<<"+filePath);
       if (!filePath) {
         res.status(400);
         res.send({ error: "should pass file to inference" });
@@ -60,7 +61,6 @@ const initServer = (model, serverName = "back-end") => {
 
           res.send(result);
         }
-      }
     } catch (err) {
       console.error(err);
       res.status(500).send("Something went wrong");
