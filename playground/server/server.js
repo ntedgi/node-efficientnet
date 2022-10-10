@@ -42,14 +42,17 @@ const initServer = (model, serverName = "back-end") => {
         if (!language) {
           res.status(400);
           res.send({ error: "should pass file to inference" });
-        }
-        else {
+        } else {
           const formattedLanguage = language.toUpperCase();
           const labelLanguage = EfficientNetLableLanguage[formattedLanguage];
           const languageProvider = new EfficientNetLanguageProvider(
             labelLanguage
           );
-          const result = await model.inference(filePath,null);
+          const result = await model.inference(
+            filePath,
+            null,
+            languageProvider
+          );
           res.send(result);
         }
       }
