@@ -9,6 +9,8 @@ const { urlencoded, json } = express;
 import {
   EfficientNetCheckPointFactory,
   EfficientNetCheckPoint,
+  EfficientNetLableLanguage,
+  EfficientNetLanguageProvider
 } from "node-efficientnet";
 
 const safeGet = (fn, fallBack) => {
@@ -40,9 +42,19 @@ const initServer = (model, serverName = "back-end") => {
         if (!language) {
           res.status(400);
           res.send({ error: "should pass file to inference" });
-        }
-        else {
-          const result = await model.inference(filePath,null);
+        } else {
+          const formattedLanguage = language.toUpperCase();
+          const labelLanguage = EfficientNetLableLanguage[formattedLanguage];
+          const languageProvider = new EfficientNetLanguageProvider(
+            labelLanguage
+          );
+
+          //Use other language provider for the model
+          await languageProvider.load();
+          const result = await model.inference(
+            req.files.file.path,
+            null);
+
           res.send(result);
         }
       }
