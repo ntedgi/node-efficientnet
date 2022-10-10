@@ -1,5 +1,10 @@
 {
-  "/api/upload": {
+  "/api/upload/*": {
+    "target": "http://localhost:3000",
+    "secure": false,
+    "logLevel": "debug"
+  },
+  "/api/languages": {
     "target": "http://localhost:3000",
     "secure": false,
     "logLevel": "debug"

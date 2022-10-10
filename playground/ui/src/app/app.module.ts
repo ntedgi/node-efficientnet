@@ -11,6 +11,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { NoteComponent } from './note/note.component';
 import { ResultsComponent } from './results/results.component';
 import { SingleResultComponent } from './single-result/single-result.component';
+import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -29,6 +31,7 @@ import { SingleResultComponent } from './single-result/single-result.component';
     AppRoutingModule,
     PrimeNgModuleLoaders,
     BrowserAnimationsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

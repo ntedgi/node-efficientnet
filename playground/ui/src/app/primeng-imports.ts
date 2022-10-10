@@ -9,6 +9,8 @@ import { FileUploadModule } from 'primeng/fileupload';
 import { DividerModule } from 'primeng/divider';
 import { ProgressBarModule } from 'primeng/progressbar';
 import { SkeletonModule } from 'primeng/skeleton';
+import {DropdownModule} from 'primeng/dropdown';
+
 
 @NgModule({
   exports: [
@@ -22,6 +24,7 @@ import { SkeletonModule } from 'primeng/skeleton';
     FileUploadModule,
     DividerModule,
     SkeletonModule,
+    DropdownModule
   ],
 })
 export class PrimeNgModuleLoaders {}

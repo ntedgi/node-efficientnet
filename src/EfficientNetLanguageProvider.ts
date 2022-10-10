@@ -7,6 +7,7 @@ export enum EfficientNetLabelLanguage {
   SPANISH,
   ARABIC,
   HEBREW,
+  RUSSIAN
 }
 export class EfficientNetLanguageProvider {
   private filePath = "misc/en.json";
@@ -26,7 +27,10 @@ export class EfficientNetLanguageProvider {
         case EfficientNetLabelLanguage.SPANISH:
           fileName = "es";
           break;
-        case EfficientNetLabelLanguage.ARABIC:
+        case EfficientNetLableLanguage.RUSSIAN:
+          fileName = "ru";
+          break;
+        case EfficientNetLableLanguage.ARABIC:
           fileName = "ar";
           break;
         case EfficientNetLabelLanguage.HEBREW:
@@ -44,8 +48,6 @@ export class EfficientNetLanguageProvider {
   }
 
   get(value: number): string | undefined {
-    if (!this.labelsMap)
-      throw "EfficientNetLanguageProvider error faild loading translation file.";
     return this.labelsMap?.[value];
   }
 }
