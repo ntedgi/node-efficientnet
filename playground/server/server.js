@@ -44,7 +44,7 @@ const initServer = (model, serverName = "back-end") => {
           res.send({ error: "should pass file to inference" });
         }
         else {
-
+          const formattedLanguage = language.toUpperCase();
           const result = await model.inference(filePath,null);
           res.send(result);
         }
