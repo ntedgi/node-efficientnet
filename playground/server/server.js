@@ -54,8 +54,8 @@ const initServer = (model, serverName = "back-end") => {
           await languageProvider.load();
           const result = await model.inference(
             req.files.file.path,
-            null,
-            languageProvider
+            // null,
+            // languageProvider
           );
 
           res.send(result);
