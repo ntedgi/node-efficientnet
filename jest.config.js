@@ -5,5 +5,5 @@ module.exports = {
     "^.+\\.ts$": "babel-jest",
   },
   modulePathIgnorePatterns: ["<rootDir>/playground/"],
-  coverageReporters: ["lcov"],
+  coverageReporters: ["text", "cobertura"],
 };
