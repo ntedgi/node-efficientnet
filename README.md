@@ -41,6 +41,7 @@ The codebase is heavily inspired by the [TensorFlow implementation](https://gith
 |  `zh`   |             ✅             | [@luoye-fe](https://github.com/luoye-fe)|
 |  `es`   |             ✅             | [@h383r](https://github.com/h383r)|
 |  `ar`   |             ✅             | [@lamamyf](https://github.com/lamamyf)|
+|  `ru`   |             ✅             | [@Abhighyaa](https://github.com/Abhighyaa)|
 | `other` | ⏩ (need help, PR welcome ) |                |
 
 #

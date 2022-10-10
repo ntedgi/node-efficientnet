@@ -31,6 +31,20 @@ test("EfficientNetLanguageProvider - check chinese translation file", (done) => 
     })
     .catch((error) => done(error));
 });
+test("EfficientNetLanguageProvider - check russian translation file", (done) => {
+  const russianLanguageProvider = new EfficientNetLanguageProvider(
+    EfficientNetLableLanguage.RUSSIAN
+  );
+  russianLanguageProvider
+    .load()
+    .then(() => {
+      const result = russianLanguageProvider.get(0);
+      expect(result).toBeDefined();
+      expect(result).toEqual("линь, Тинка-тинка");
+      done();
+    })
+    .catch((error) => done(error));
+});
 test("EfficientNetLanguageProvider - check spanish translation file", (done) => {
   const spanishProvider = new EfficientNetLanguageProvider(
     EfficientNetLableLanguage.SPANISH
