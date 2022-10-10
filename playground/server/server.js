@@ -10,7 +10,7 @@ import {
   EfficientNetCheckPointFactory,
   EfficientNetCheckPoint,
   EfficientNetLableLanguage,
-  EfficientNetLanguageProvider
+  EfficientNetLanguageProvider,
 } from "node-efficientnet";
 
 const safeGet = (fn, fallBack) => {
@@ -42,19 +42,10 @@ const initServer = (model, serverName = "back-end") => {
         if (!language) {
           res.status(400);
           res.send({ error: "should pass file to inference" });
-        } else {
-          //const formattedLanguage = language.toUpperCase();
-          // const labelLanguage = EfficientNetLableLanguage[formattedLanguage];
-          // const languageProvider = new EfficientNetLanguageProvider(
-          //   labelLanguage
-          // );
+        }
+        else {
 
-          //Use other language provider for the model
-          //await languageProvider.load();
-          const result = await model.inference(
-            req.files.file.path,
-            null);
-
+          const result = await model.inference(filePath,null);
           res.send(result);
         }
       }
