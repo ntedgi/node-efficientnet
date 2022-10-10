@@ -33,7 +33,7 @@
     "@types/cli-progress": "^3.8.0",
     "cli-progress": "^3.8.2",
     "jimp": "^0.16.1",
-    "node-fetch": "^2.6.1",
+    "node-fetch": "^3.2.10",
     "ts-node": "^9.1.1"
   },
   "devDependencies": {
