@@ -6,6 +6,7 @@ export enum EfficientNetLableLanguage {
   CHINESE,
   SPANISH,
   ARABIC,
+  RUSSIAN,
 }
 export class EfficientNetLanguageProvider {
   private filePath = "misc/en.json";
@@ -24,6 +25,9 @@ export class EfficientNetLanguageProvider {
           break;
         case EfficientNetLableLanguage.SPANISH:
           fileName = "es";
+          break;
+        case EfficientNetLableLanguage.RUSSIAN:
+          fileName = "ru";
           break;
         case EfficientNetLableLanguage.ARABIC:
           fileName = "ar";
