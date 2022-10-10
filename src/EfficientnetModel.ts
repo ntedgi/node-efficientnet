@@ -3,7 +3,7 @@ import * as Jimp from "jimp";
 import * as cliProgress from "cli-progress";
 import { io } from "@tensorflow/tfjs-core";
 import {
-  EfficientNetLableLanguage,
+  EfficientNetLabelLanguage,
   EfficientNetLanguageProvider,
 } from "./EfficientNetLanguageProvider";
 import EfficientNetResult from "./EfficientNetResult";
@@ -22,7 +22,7 @@ export default class EfficientNetModel {
   constructor(
     modelPath: string | io.IOHandler,
     imageSize: number,
-    local: EfficientNetLableLanguage | undefined
+    local: EfficientNetLabelLanguage | undefined
   ) {
     this.modelPath = modelPath;
     this.imageSize = imageSize;
