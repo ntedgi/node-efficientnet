@@ -1,6 +1,6 @@
 # TensorflowJS EfficientNet
 
-![npm](https://img.shields.io/npm/v/node-efficientnet) ![Node.js CI](https://github.com/ntedgi/node-efficientnet/workflows/Node.js%20CI/badge.svg?branch=main) [![codecov](https://codecov.io/gh/ntedgi/node-efficientnet/branch/main/graph/badge.svg?token=gkNPxmyry3)](https://codecov.io/gh/ntedgi/node-efficientnet) [![Build Status](https://travis-ci.org/ntedgi/node-efficientnet.svg?branch=main)](https://travis-ci.org/ntedgi/node-efficientnet)
+![npm](https://img.shields.io/npm/v/node-efficientnet) ![Node.js CI](https://github.com/ntedgi/node-efficientnet/workflows/Node.js%20CI/badge.svg?branch=main) [![codecov](https://codecov.io/gh/ntedgi/node-efficientnet/branch/main/graph/badge.svg?token=gkNPxmyry3)](https://codecov.io/gh/ntedgi/node-efficientnet)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/09917d9ddf9c42648eb60d7d917f5026)](https://www.codacy.com/gh/ntedgi/node-efficientnet/dashboard?utm_source=github.com&utm_medium=referral&utm_content=ntedgi/node-efficientnet&utm_campaign=Badge_Grade)
 [![Run on Repl.it](https://repl.it/badge/github/ntedgi/node-efficientnet)](https://repl.it/github/ntedgi/node-efficientnet)
 <a href="https://www.npmjs.com/package/node-efficientnet"><img src="https://img.shields.io/npm/l/node-efficientnet.svg" alt="License"></a>  
