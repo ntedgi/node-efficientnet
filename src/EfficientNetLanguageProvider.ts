@@ -44,8 +44,6 @@ export class EfficientNetLanguageProvider {
   }
 
   get(value: number): string | undefined {
-    if (!this.labelsMap)
-      throw "EfficientNetLanguageProvider error faild loading translation file.";
     return this.labelsMap?.[value];
   }
 }
