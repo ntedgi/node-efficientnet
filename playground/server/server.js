@@ -36,7 +36,12 @@ const initServer = (model, serverName = "back-end") => {
         res.status(400);
         res.send({ error: "should pass file to inference" });
       } else {
-        const result = await model.inference(req.files.file.path);
+        const language = safeGet(() => req.params.language, null);
+        if (!language) {
+          res.status(400);
+          res.send({ error: "should pass file to inference" });
+        }
+        const result = await model.inference(filePath);
         res.send(result);
       }
     } catch (err) {
