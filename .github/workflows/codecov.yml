@@ -1,4 +1,4 @@
-name: Running Code Coverage
+name: CodeCov - Running Code Coverage 
 
 on: [push, pull_request]
 
@@ -33,4 +33,3 @@ jobs:
       with:
           token: ${{ secrets.CODECOV_TOKEN }}
           directory: ./coverage
-          
