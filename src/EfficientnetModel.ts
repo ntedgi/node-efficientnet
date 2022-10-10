@@ -118,7 +118,4 @@ export default class EfficientNetModel {
     const tensor = await this.createTensor(image);
     return this.predict(tensor, topK);
   }
-  setLanguageProvider(languageProvider: EfficientNetLanguageProvider){
-    this.languageProvider = languageProvider;
-  }
 }
