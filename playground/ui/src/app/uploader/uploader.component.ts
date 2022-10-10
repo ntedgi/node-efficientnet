@@ -30,5 +30,11 @@ export class UploaderComponent implements OnInit {
     this.classifications = result;
   }
 
+  resetFields(){
+    this.image2Display=null;
+    this.classifications=null;
+    this.loading=false;
+  }
+
   ngOnInit(): void {}
 }
