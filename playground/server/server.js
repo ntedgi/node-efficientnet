@@ -48,6 +48,7 @@ const initServer = (model, serverName = "back-end") => {
           const languageProvider = new EfficientNetLanguageProvider(
             labelLanguage
           );
+          await languageProvider.load();
           const result = await model.inference(
             filePath,
             null,
