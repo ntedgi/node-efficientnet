@@ -46,6 +46,9 @@ const initServer = (model, serverName = "back-end") => {
         else {
           const formattedLanguage = language.toUpperCase();
           const labelLanguage = EfficientNetLableLanguage[formattedLanguage];
+          const languageProvider = new EfficientNetLanguageProvider(
+            labelLanguage
+          );
           const result = await model.inference(filePath,null);
           res.send(result);
         }
