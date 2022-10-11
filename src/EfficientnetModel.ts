@@ -100,22 +100,27 @@ export default class EfficientNetModel {
 
   private async predict(
     tensor: tf.Tensor3D,
-    topK: number
+    topK: number,
+    overrideLanguageProvider?: EfficientNetLanguageProvider
   ): Promise<EfficientNetResult> {
     const objectArray = this.model!.predict(tensor) as tf.Tensor;
     const values = objectArray.dataSync() as Float32Array;
-    return new EfficientNetResult(values, topK, this.languageProvider);
+    const languageProvider = overrideLanguageProvider
+      ? overrideLanguageProvider
+      : this.languageProvider;
+    return new EfficientNetResult(values, topK, languageProvider);
   }
 
   async inference(
     imgPath: string | Buffer,
-    options?: EfficientNetModelInferenceOptions
+    options?: EfficientNetModelInferenceOptions,
+    overrideLanguageProvider?: EfficientNetLanguageProvider
   ): Promise<EfficientNetResult> {
     const { topK = NUM_OF_CHANNELS } = options || {};
     // @ts-ignore
     let image = await Jimp.read(imgPath);
     image = await this.cropAndResize(image);
     const tensor = await this.createTensor(image);
-    return this.predict(tensor, topK);
+    return this.predict(tensor, topK, overrideLanguageProvider);
   }
 }

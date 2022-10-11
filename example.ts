@@ -6,6 +6,8 @@ import {
   EfficientNetCheckPoint,
   EfficientNetModel,
   EfficientNetResult,
+  EfficientNetLableLanguage,
+  EfficientNetLanguageProvider
 } from "./index";
 
 const images = ["car.jpg", "panda.jpg", "fish.jpg"];
@@ -21,18 +23,43 @@ async function download(image: string, cb: fs.NoParamCallback) {
   fs.writeFile(`${imageDir}/${image}`, buffer, cb);
 }
 
+//Default language results (English)
 EfficientNetCheckPointFactory.create(EfficientNetCheckPoint.B0)
-  .then((model: EfficientNetModel) => {
-    images.forEach(async (image) => {
-      await download(image, () => {
-        model
-          .inference(`${imageDir}/${image}`, { topK: 3 })
-          .then((result: EfficientNetResult) => {
-            console.log(result.result);
-          });
+    .then((model: EfficientNetModel) => {
+      images.forEach(async (image) => {
+        await download(image, () => {
+          model
+              .inference(`${imageDir}/${image}`, { topK: 3 })
+              .then((result: EfficientNetResult) => {
+                console.log("Result in English : \n -------------------");
+                console.log(result.result);
+              });
+        });
       });
+    })
+    .catch((e: Error) => {
+      console.error(e);
     });
-  })
-  .catch((e: Error) => {
-    console.error(e);
-  });
+
+//Not default language results (Spanish)
+EfficientNetCheckPointFactory.create(EfficientNetCheckPoint.B0)
+    .then(async (model: EfficientNetModel) => {
+
+      const labelLanguage = EfficientNetLableLanguage.SPANISH;
+      const languageProvider = new EfficientNetLanguageProvider(labelLanguage);
+      await languageProvider.load();
+
+      images.forEach(async (image) => {
+        await download(image, () => {
+          model
+              .inference(`${imageDir}/${image}`, { topK: 3 }, languageProvider)
+              .then((result: EfficientNetResult) => {
+                console.log("Result in Spanish : \n -------------------");
+                console.log(result.result);
+              });
+        });
+      });
+    })
+    .catch((e: Error) => {
+      console.error(e);
+    });
