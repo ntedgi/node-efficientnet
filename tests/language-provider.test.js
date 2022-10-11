@@ -77,7 +77,7 @@ test("EfficientNetLanguageProvider - check arabic translation file", (done) => {
     })
     .catch((error) => done(error));
 });
-test("EfficientNetLanguageProvider - check arabic translation file", (done) => {
+test("EfficientNetLanguageProvider - check french translation file", (done) => {
   const frenchProvider = new EfficientNetLanguageProvider(
     EfficientNetLableLanguage.FRENCH
   );
