@@ -37,6 +37,9 @@ export class EfficientNetLanguageProvider {
         case EfficientNetLabelLanguage.HEBREW:
           fileName = "he";
           break;
+        case EfficientNetLabelLanguage.FRENCH:
+          fileName = "fr";
+          break;
       }
     }
     this.filePath = fileName ? `misc/${fileName}.json` : this.filePath;

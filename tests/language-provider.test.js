@@ -17,6 +17,7 @@ test("EfficientNetLanguageProvider - check english translation file", (done) => 
     })
     .catch((error) => done(error));
 });
+
 test("EfficientNetLanguageProvider - check chinese translation file", (done) => {
   const chineseProvider = new EfficientNetLanguageProvider(
     EfficientNetLabelLanguage.CHINESE
@@ -31,6 +32,7 @@ test("EfficientNetLanguageProvider - check chinese translation file", (done) => 
     })
     .catch((error) => done(error));
 });
+
 test("EfficientNetLanguageProvider - check spanish translation file", (done) => {
   const spanishProvider = new EfficientNetLanguageProvider(
     EfficientNetLabelLanguage.SPANISH
@@ -48,9 +50,9 @@ test("EfficientNetLanguageProvider - check spanish translation file", (done) => 
 
 test("EfficientNetLanguageProvider - check russian translation file", (done) => {
   const russianLanguageProvider = new EfficientNetLanguageProvider(
-    EfficientNetLableLanguage.RUSSIAN
+    EfficientNetLabelLanguage.RUSSIAN
   );
-  
+
   russianLanguageProvider
     .load()
     .then(() => {
@@ -95,6 +97,7 @@ test("EfficientNetLanguageProvider - check hebrew translation file", (done) => {
 });
 
 test("EfficientNetLanguageProvider - check hebrew translation file with special punctuation", (done) => {
+  
   const hebrewProvider = new EfficientNetLanguageProvider(
     EfficientNetLabelLanguage.HEBREW
   );
@@ -105,11 +108,13 @@ test("EfficientNetLanguageProvider - check hebrew translation file with special 
       const result = hebrewProvider.get(38);
       expect(result).toBeDefined();
       expect(result).toEqual("עַפְעַפִּית אֲמֶרִיקָה");
+      done()
+    });
 });
 
 test("EfficientNetLanguageProvider - check french translation file", (done) => {
   const frenchProvider = new EfficientNetLanguageProvider(
-    EfficientNetLableLanguage.FRENCH
+    EfficientNetLabelLanguage.FRENCH
   );
 
   frenchProvider
@@ -118,7 +123,7 @@ test("EfficientNetLanguageProvider - check french translation file", (done) => {
       const result = frenchProvider.get(0);
       expect(result).toBeDefined();
       expect(result).toEqual("tanche, Tinca tinca");
-       done();
+      done();
     })
     .catch((error) => done(error));
 });
