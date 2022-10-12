@@ -6,6 +6,7 @@ export enum EfficientNetLableLanguage {
   CHINESE,
   SPANISH,
   ARABIC,
+  FRENCH,
   RUSSIAN,
 }
 export class EfficientNetLanguageProvider {

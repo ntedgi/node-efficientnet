@@ -66,13 +66,28 @@ test("EfficientNetLanguageProvider - check arabic translation file", (done) => {
   const arabicProvider = new EfficientNetLanguageProvider(
     EfficientNetLableLanguage.ARABIC
   );
-  
+
   arabicProvider
     .load()
     .then(() => {
       const result = arabicProvider.get(0);
       expect(result).toBeDefined();
       expect(result).toEqual("تنش ، تينكا تينكا");
+      done();
+    })
+    .catch((error) => done(error));
+});
+test("EfficientNetLanguageProvider - check french translation file", (done) => {
+  const frenchProvider = new EfficientNetLanguageProvider(
+    EfficientNetLableLanguage.FRENCH
+  );
+
+  frenchProvider
+    .load()
+    .then(() => {
+      const result = frenchProvider.get(0);
+      expect(result).toBeDefined();
+      expect(result).toEqual("tanche, Tinca tinca");
       done();
     })
     .catch((error) => done(error));
