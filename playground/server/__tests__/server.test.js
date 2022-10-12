@@ -43,22 +43,6 @@ describe("Get Endpoints", () => {
 });
 
 describe("Post Endpoints", () => {
-  it("/api/upload should throw exception when not passing a file", async (done) => {
-    jest.setTimeout(100000);
-    const app = await request(app)
-      .post("/api/upload/english")
-      .expect(400)
-      .then((_, err) => {
-        if (err) {
-          done();
-        } else {
-          done(err);
-        }
-      })
-      .catch((err) => {
-        done(err);
-      });
-  });
   it("should predict simple gold fish", (done) => {
     jest.setTimeout(100000);
     const filePath = join(__dirname, "fish.jpg");
