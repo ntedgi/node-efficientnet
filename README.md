@@ -19,7 +19,6 @@ five other commonly used transfer learning datasets.
 The codebase is heavily inspired by the [TensorFlow implementation](https://github.com/tensorflow/tpu/tree/master/models/official/efficientnet).
 
 #
-[Test The Model Online (http://nodeefficientnet.ml/) ](http://nodeefficientnet.ml/)
 
 ![Alt Text](https://raw.githubusercontent.com/ntedgi/node-efficientnet/main/media/sample.gif)
 
