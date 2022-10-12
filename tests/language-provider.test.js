@@ -1,11 +1,11 @@
 const {
-  EfficientNetLableLanguage,
+  EfficientNetLabelLanguage,
   EfficientNetLanguageProvider,
 } = require("../index");
 
 test("EfficientNetLanguageProvider - check english translation file", (done) => {
   const englishProvider = new EfficientNetLanguageProvider(
-    EfficientNetLableLanguage.ENGLISH
+    EfficientNetLabelLanguage.ENGLISH
   );
   englishProvider
     .load()
@@ -19,7 +19,7 @@ test("EfficientNetLanguageProvider - check english translation file", (done) => 
 });
 test("EfficientNetLanguageProvider - check chinese translation file", (done) => {
   const chineseProvider = new EfficientNetLanguageProvider(
-    EfficientNetLableLanguage.CHINESE
+    EfficientNetLabelLanguage.CHINESE
   );
   chineseProvider
     .load()
@@ -33,7 +33,7 @@ test("EfficientNetLanguageProvider - check chinese translation file", (done) => 
 });
 test("EfficientNetLanguageProvider - check spanish translation file", (done) => {
   const spanishProvider = new EfficientNetLanguageProvider(
-    EfficientNetLableLanguage.SPANISH
+    EfficientNetLabelLanguage.SPANISH
   );
   spanishProvider
     .load()
@@ -64,7 +64,7 @@ test("EfficientNetLanguageProvider - check russian translation file", (done) => 
 
 test("EfficientNetLanguageProvider - check arabic translation file", (done) => {
   const arabicProvider = new EfficientNetLanguageProvider(
-    EfficientNetLableLanguage.ARABIC
+    EfficientNetLabelLanguage.ARABIC
   );
 
   arabicProvider
@@ -77,6 +77,36 @@ test("EfficientNetLanguageProvider - check arabic translation file", (done) => {
     })
     .catch((error) => done(error));
 });
+
+test("EfficientNetLanguageProvider - check hebrew translation file", (done) => {
+  const hebrewProvider = new EfficientNetLanguageProvider(
+    EfficientNetLabelLanguage.HEBREW
+  );
+
+  hebrewProvider
+    .load()
+    .then(() => {
+      const result = hebrewProvider.get(0);
+      expect(result).toBeDefined();
+      expect(result).toEqual("טנץ', דג טנקה");
+      done();
+    })
+    .catch((error) => done(error));
+});
+
+test("EfficientNetLanguageProvider - check hebrew translation file with special punctuation", (done) => {
+  const hebrewProvider = new EfficientNetLanguageProvider(
+    EfficientNetLabelLanguage.HEBREW
+  );
+
+  hebrewProvider
+    .load()
+    .then(() => {
+      const result = hebrewProvider.get(38);
+      expect(result).toBeDefined();
+      expect(result).toEqual("עַפְעַפִּית אֲמֶרִיקָה");
+});
+
 test("EfficientNetLanguageProvider - check french translation file", (done) => {
   const frenchProvider = new EfficientNetLanguageProvider(
     EfficientNetLableLanguage.FRENCH
@@ -88,7 +118,7 @@ test("EfficientNetLanguageProvider - check french translation file", (done) => {
       const result = frenchProvider.get(0);
       expect(result).toBeDefined();
       expect(result).toEqual("tanche, Tinca tinca");
-      done();
+       done();
     })
     .catch((error) => done(error));
 });

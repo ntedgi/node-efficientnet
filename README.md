@@ -34,18 +34,16 @@ The codebase is heavily inspired by the [TensorFlow implementation](https://gith
 
 ## Multilingual status
 
-| locale  |           status            |             translate by 👑              |
-| :-----: | :-------------------------: | :--------------------------------------: |
-|  `en`   |             ✅              |                                          |
-|  `zh`   |             ✅              | [@luoye-fe](https://github.com/luoye-fe) |
-|  `es`   |             ✅              |    [@h383r](https://github.com/h383r)    |
-|  `ar`   |             ✅              |  [@lamamyf](https://github.com/lamamyf)  |
-|  `fr`   |             ✅              |  [@burmanp](https://github.com/burmanp)  |
-|  `ru`   |             ✅             | [@Abhighyaa](https://github.com/Abhighyaa)|
-| `other` | ⏩ (need help, PR welcome ) |                |
-
-
-#
+| locale  |           status           |              translate by 👑                | 
+|:-------:|:--------------------------:|:------------------------------------------:|
+|  `en`   |             ✅              |                                            |
+|  `zh`   |             ✅              |  [@luoye-fe](https://github.com/luoye-fe)  |
+|  `es`   |             ✅              |     [@h383r](https://github.com/h383r)     |
+|  `ar`   |             ✅              |   [@lamamyf](https://github.com/lamamyf)   |
+|  `ru`   |             ✅              | [@Abhighyaa](https://github.com/Abhighyaa) |
+|  `he`   |             ✅              | [@jhonDoe15](https://github.com/jhonDoe15) |
+|  `fr`   |             ✅              |  [@burmanp](https://github.com/burmanp)    |
+| `other` | ⏩ (need help, PR welcome ) |                                            |
 
 ## Table of Contents
 

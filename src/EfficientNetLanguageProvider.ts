@@ -1,37 +1,41 @@
 import * as fs from "fs";
 import * as path from "path";
 
-export enum EfficientNetLableLanguage {
+export enum EfficientNetLabelLanguage {
   ENGLISH,
   CHINESE,
   SPANISH,
   ARABIC,
   FRENCH,
   RUSSIAN,
+  HEBREW,
 }
 export class EfficientNetLanguageProvider {
   private filePath = "misc/en.json";
   private labelsMap = null;
 
-  constructor(language: EfficientNetLableLanguage | undefined) {
+  constructor(language: EfficientNetLabelLanguage | undefined) {
     let fileName = null;
     if (language) {
-      language as EfficientNetLableLanguage;
+      language as EfficientNetLabelLanguage;
       switch (+language) {
-        case EfficientNetLableLanguage.CHINESE:
+        case EfficientNetLabelLanguage.CHINESE:
           fileName = "zh";
           break;
-        case EfficientNetLableLanguage.ENGLISH:
+        case EfficientNetLabelLanguage.ENGLISH:
           fileName = "en";
           break;
-        case EfficientNetLableLanguage.SPANISH:
+        case EfficientNetLabelLanguage.SPANISH:
           fileName = "es";
           break;
-        case EfficientNetLableLanguage.RUSSIAN:
+        case EfficientNetLabelLanguage.RUSSIAN:
           fileName = "ru";
           break;
-        case EfficientNetLableLanguage.ARABIC:
+        case EfficientNetLabelLanguage.ARABIC:
           fileName = "ar";
+          break;
+        case EfficientNetLabelLanguage.HEBREW:
+          fileName = "he";
           break;
       }
     }

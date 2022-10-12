@@ -4,7 +4,7 @@ const shelljs = require("shelljs");
 const {
   EfficientNetCheckPoint,
   EfficientNetCheckPointFactory,
-  EfficientNetLableLanguage,
+  EfficientNetLabelLanguage,
 } = require("../index");
 
 const rootDir = path.join(__dirname, "../lib/tfjs/web_model");
@@ -121,7 +121,7 @@ test("EfficientNetCheckPointFactory - load model from remote default", (done) =>
 
 test("EfficientNetModel - use different locale chinese", (done) => {
   EfficientNetCheckPointFactory.create(EfficientNetCheckPoint.B0, {
-    locale: EfficientNetLableLanguage.CHINESE,
+    locale: EfficientNetLabelLanguage.CHINESE,
   })
     .then(async (model) => {
       expect(model).toBeDefined();
@@ -138,7 +138,7 @@ test("EfficientNetModel - use different locale chinese", (done) => {
 
 test("EfficientNetModel - use different locale english", (done) => {
   EfficientNetCheckPointFactory.create(EfficientNetCheckPoint.B0, {
-    locale: EfficientNetLableLanguage.ENGLISH,
+    locale: EfficientNetLabelLanguage.ENGLISH,
   })
     .then(async (model) => {
       expect(model).toBeDefined();
@@ -152,3 +152,29 @@ test("EfficientNetModel - use different locale english", (done) => {
       done(error);
     });
 });
+
+test("EfficientNetModel - use different locale hebrew", (done) => {
+  EfficientNetCheckPointFactory.create(EfficientNetCheckPoint.B0, {
+    locale: EfficientNetLabelLanguage.HEBREW,
+  })
+    .then(async (model) => {
+      expect(model).toBeDefined();
+      const image = "samples/car.jpg";
+      model.inference(image).then((localeEnResult) => {
+        expect(localeEnResult.result[0].label).toEqual(
+          "מכונית ספורט, מכונית ספורט"
+        );
+        done();
+      });
+    })
+    .catch((error) => {
+      done(error);
+    });
+});
+
+
+
+
+
+
+
