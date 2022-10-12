@@ -9,7 +9,7 @@ const { urlencoded, json } = express;
 import {
   EfficientNetCheckPointFactory,
   EfficientNetCheckPoint,
-  EfficientNetLableLanguage,
+  EfficientNetLabelLanguage,
   EfficientNetLanguageProvider,
 } from "node-efficientnet";
 
@@ -33,6 +33,7 @@ const initServer = (model, serverName = "back-end") => {
 
   router.post("/api/upload/:language", async (req, res) => {
     try {
+      console.log(`/api/upload/ ^ language=>${req.params.language}`);
       const filePath = safeGet(() => req.files.file.path, null);
       if (!filePath) {
         res.status(400);
@@ -44,7 +45,7 @@ const initServer = (model, serverName = "back-end") => {
           res.send({ error: "should pass file to inference" });
         } else {
           const formattedLanguage = language.toUpperCase();
-          const labelLanguage = EfficientNetLableLanguage[formattedLanguage];
+          const labelLanguage = EfficientNetLabelLanguage[formattedLanguage];
           const languageProvider = new EfficientNetLanguageProvider(
             labelLanguage
           );
@@ -65,7 +66,7 @@ const initServer = (model, serverName = "back-end") => {
 
   router.get("/api/languages", async (req, res) => {
     try {
-      const languagesEnumKeys = Object.keys(EfficientNetLableLanguage);
+      const languagesEnumKeys = Object.keys(EfficientNetLabelLanguage);
       const languagesAmount = languagesEnumKeys.length / 2;
       const languagesArr = languagesEnumKeys.slice(languagesAmount);
 
@@ -96,6 +97,7 @@ const createServer = async () => {
   const model = await EfficientNetCheckPointFactory.create(
     EfficientNetCheckPoint.B7
   );
+  console.log("model loaded starting server.");
   return initServer(model);
 };
 
