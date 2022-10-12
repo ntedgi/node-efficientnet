@@ -8,7 +8,7 @@
 <a href="https://npmcharts.com/compare/node-efficientnet?minimal=true"><img src="https://img.shields.io/npm/dt/node-efficientnet.svg" alt="Downloads"></a>
 [![Gitter](https://badges.gitter.im/node-efficientnet/community.svg)](https://gitter.im/node-efficientnet/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
-#
+
 
 This repository contains a tensorflowJs implementation of **EfficientNet**,
 an object detection model trained on [ImageNet](http://www.image-net.org/) and can detect [1000 different objects](https://storage.googleapis.com/download.tensorflow.org/data/ImageNetLabels.txt).
@@ -17,10 +17,6 @@ EfficientNet a lightweight convolutional neural network architecture achieving t
 five other commonly used transfer learning datasets.
 
 The codebase is heavily inspired by the [TensorFlow implementation](https://github.com/tensorflow/tpu/tree/master/models/official/efficientnet).
-
-#
-
-[Test The Model Online (http://nodeefficientnet.ml/) ](http://nodeefficientnet.ml/)
 
 ![Alt Text](https://raw.githubusercontent.com/ntedgi/node-efficientnet/main/media/sample.gif)
 
