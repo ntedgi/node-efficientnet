@@ -6,6 +6,7 @@ export enum EfficientNetLabelLanguage {
   CHINESE,
   SPANISH,
   ARABIC,
+  FRENCH,
   RUSSIAN,
   HEBREW,
 }

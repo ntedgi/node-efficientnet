@@ -8,7 +8,7 @@
 <a href="https://npmcharts.com/compare/node-efficientnet?minimal=true"><img src="https://img.shields.io/npm/dt/node-efficientnet.svg" alt="Downloads"></a>
 [![Gitter](https://badges.gitter.im/node-efficientnet/community.svg)](https://gitter.im/node-efficientnet/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
-#
+
 
 This repository contains a tensorflowJs implementation of **EfficientNet**,
 an object detection model trained on [ImageNet](http://www.image-net.org/) and can detect [1000 different objects](https://storage.googleapis.com/download.tensorflow.org/data/ImageNetLabels.txt).
@@ -18,12 +18,10 @@ five other commonly used transfer learning datasets.
 
 The codebase is heavily inspired by the [TensorFlow implementation](https://github.com/tensorflow/tpu/tree/master/models/official/efficientnet).
 
-#
-[Test The Model Online (http://nodeefficientnet.ml/) ](http://nodeefficientnet.ml/)
-
 ![Alt Text](https://raw.githubusercontent.com/ntedgi/node-efficientnet/main/media/sample.gif)
 
 #
+
 ## 👏 Supporters
 
 ### &#8627; Stargazers
@@ -33,9 +31,10 @@ The codebase is heavily inspired by the [TensorFlow implementation](https://gith
 ### &#8627; Forkers
 
 [![Forkers repo roster for @ntedgi/node-efficientnet](https://reporoster.com/forks/ntedgi/node-efficientnet)](https://github.com/ntedgi/node-efficientnet/network/members)
+
 ## Multilingual status
 
-| locale  |           status           |              translate by 👑               | 
+| locale  |           status           |              translate by 👑                | 
 |:-------:|:--------------------------:|:------------------------------------------:|
 |  `en`   |             ✅              |                                            |
 |  `zh`   |             ✅              |  [@luoye-fe](https://github.com/luoye-fe)  |
@@ -43,9 +42,8 @@ The codebase is heavily inspired by the [TensorFlow implementation](https://gith
 |  `ar`   |             ✅              |   [@lamamyf](https://github.com/lamamyf)   |
 |  `ru`   |             ✅              | [@Abhighyaa](https://github.com/Abhighyaa) |
 |  `he`   |             ✅              | [@jhonDoe15](https://github.com/jhonDoe15) |
+|  `fr`   |             ✅              |  [@burmanp](https://github.com/burmanp)    |
 | `other` | ⏩ (need help, PR welcome ) |                                            |
-
-#
 
 ## Table of Contents
 
@@ -179,7 +177,7 @@ Example: to create an efficientnet model you need to pass `EfficientNetCheckPoin
 ```javascript
 const {
   EfficientNetCheckPointFactory,
-  EfficientNetCheckPoint
+  EfficientNetCheckPoint,
 } = require("node-efficientnet");
 
 const model = await EfficientNetCheckPointFactory.create(
@@ -192,7 +190,7 @@ const topResults = 5;
 
 const result = await model.inference(path2image, {
   topK: topResults,
-  locale: "zh"
+  locale: "zh",
 });
 ```
 
@@ -216,13 +214,13 @@ local_model
 const path = require("path");
 const {
   EfficientNetCheckPointFactory,
-  EfficientNetCheckPoint
+  EfficientNetCheckPoint,
 } = require("node-efficientnet");
 
 const model = await EfficientNetCheckPointFactory.create(
   EfficientNetCheckPoint.B7,
   {
-    localModelRootDirectory: path.join(__dirname, "local_model")
+    localModelRootDirectory: path.join(__dirname, "local_model"),
   }
 );
 
@@ -232,9 +230,10 @@ const topResults = 5;
 
 const result = await model.inference(path2image, {
   topK: topResults,
-  locale: "zh"
+  locale: "zh",
 });
 ```
+
 #
 
 ## Examples
@@ -247,7 +246,7 @@ const nodeFetch = require("node-fetch");
 
 const {
   EfficientNetCheckPointFactory,
-  EfficientNetCheckPoint
+  EfficientNetCheckPoint,
 } = require("node-efficientnet");
 
 const images = ["car.jpg", "panda.jpg"];
@@ -287,21 +286,22 @@ output :
   { label: "sports car, sport car", precision: 88.02440940394301 },
   {
     label: "racer, race car, racing car",
-    precision: 6.647441678387659
+    precision: 6.647441678387659,
   },
-  { label: "car wheel", precision: 5.3281489176693295 }
+  { label: "car wheel", precision: 5.3281489176693295 },
 ][
   ({
     label: "giant panda, panda, panda bear, coon bear, Ailuropoda melanoleuca",
-    precision: 83.60747593436018
+    precision: 83.60747593436018,
   },
   { label: "skunk, poleca", precision: 11.61300759424677 },
   {
     label: "hog, pig, grunter, squealer, Sus scrofa",
-    precision: 4.779516471393051
+    precision: 4.779516471393051,
   })
 ];
 ```
+
 #
 
 ## About EfficientNet Models
@@ -328,6 +328,7 @@ EfficientNets achieve state-of-the-art accuracy on ImageNet with an order of mag
 - In middle-accuracy regime, EfficientNet-B1 is 7.6x smaller and 5.7x faster on CPU inference than [ResNet-152](https://arxiv.org/abs/1512.03385), with similar ImageNet accuracy.
 
 - Compared to the widely used [ResNet-50](https://arxiv.org/abs/1512.03385), EfficientNet-B4 improves the top-1 accuracy from 76.3% of ResNet-50 to 82.6% (+6.3%), under similar FLOPS constraints.
+
 #
 
 ## Models
@@ -348,6 +349,7 @@ The performance of each model variant using the pre-trained weights converted fr
 **\*** - topK accuracy score for converted models (imagenet `val` set)
 
 ---
+
 ```ts
 if (this.repo.isAwesome || this.repo.isHelpful) {
   Star(this.repo);

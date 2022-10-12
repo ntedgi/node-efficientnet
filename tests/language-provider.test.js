@@ -105,7 +105,20 @@ test("EfficientNetLanguageProvider - check hebrew translation file with special 
       const result = hebrewProvider.get(38);
       expect(result).toBeDefined();
       expect(result).toEqual("עַפְעַפִּית אֲמֶרִיקָה");
-      done();
+});
+
+test("EfficientNetLanguageProvider - check french translation file", (done) => {
+  const frenchProvider = new EfficientNetLanguageProvider(
+    EfficientNetLableLanguage.FRENCH
+  );
+
+  frenchProvider
+    .load()
+    .then(() => {
+      const result = frenchProvider.get(0);
+      expect(result).toBeDefined();
+      expect(result).toEqual("tanche, Tinca tinca");
+       done();
     })
     .catch((error) => done(error));
 });
