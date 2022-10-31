@@ -32,7 +32,7 @@
   },
   "homepage": "https://github.com/ntedgi/node-efficientnet#readme",
   "dependencies": {
-    "@tensorflow/tfjs-core": "^3.3.0",
+    "@tensorflow/tfjs-core": "^4.0.0",
     "@tensorflow/tfjs-node-gpu": "^3.3.0",
     "@types/cli-progress": "^3.8.0",
     "cli-progress": "^3.8.2",
