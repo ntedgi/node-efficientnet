@@ -47,21 +47,77 @@ The codebase is heavily inspired by the [TensorFlow implementation](https://gith
 
 ## Table of Contents
 
-1.  [Just Want to Play With The Model](#how-i-run-this-project-locally-)
-2.  [Installation](#installation)
-3.  [API](#api)
-4.  [Examples](#examples)
-5.  [Usage](#usgae)
-6.  [About EfficientNet Models](#about-efficientnet-models)
-7.  [Models](#models)
-8.  [Multilingual status](#multilingual-status)
+1.  [PreRequisites](#pre-requisites)
+2.  [Just Want to Play With The Model](#how-i-run-this-project-locally-)
+3.  [Installation](#installation)
+4.  [API](#api)
+5.  [Examples](#examples)
+6.  [Usage](#usgae)
+7.  [About EfficientNet Models](#about-efficientnet-models)
+8.  [Models](#models)
+9.  [Multilingual status](#multilingual-status)
+
+
+## Pre-Requisites
+
+Make sure you have all the following installed and working:
+
+- Node.js
+- NPM
+- Docker
+
+This section will guide you through installing Node.js (which includes NPM) and Docker, which are necessary to run this project.
+
+### Node and NPM
+
+#### macOS
+
+Easiest way is using Homebrew:
+
+- Open terminal and run `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
+- Then run `brew install node`
+
+#### Linux
+
+Easiest way is using Linuxbrew:
+
+- Open terminal and run `sudo apt update && sudo apt install nodejs && sudo apt install npm`
+
+
+#### Windows
+
+Download the Node.js from the official [Node website](https://www.nodejs.org)
+
+
+Verify your installation by running `node -v` for Node.js, and `npm -v` for NPM.
+
+
+### Docker
+
+#### MacOS and Windows
+
+Docker Desktop is the recommended installation method. Visit the Docker Hub to download Docker Desktop for your OS.
+
+Follow the installation instructions provided on the [Docker website](https://docs.docker.com/get-docker/).
+
+#### Linux
+
+Install Docker: The Docker installation process can vary between Linux distributions. Below is the general approach for Ubuntu. For other distributions, please refer to the official [Docker documentation](https://docs.docker.com/).
+
+- Open terminal and run `sudo apt update && sudo apt install docker.io`
+- Enable Docker to start on boot and run it as a non-root user (optional but recommended).
+- Log out and back in
+- Verify installation by running `docker run hello`
+
 
 ## How I Run This Project Locally ?
 
-- clone this repository
-- Just Want to Play ?
-  - At the root project go to playground directory, Run: `docker-compose up`
-  - Navigate to http://localhost:8080
+- Make sure you have all pre-requisites
+- Clone this repository by running `git clone https://github.com/ntedgi/node-efficientnet.git`
+- After cloning, cd into node-efficientnet by running the command `cd node-efficientnet`
+- Enter the playground directory by running `cd playground`
+- At the current directory level, run `docker-compose up`
+- Navigate to [http://localhost:8080](http://localhost:8080)
 
 ## Usage:
 
