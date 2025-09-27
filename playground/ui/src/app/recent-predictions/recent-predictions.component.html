@@ -1,0 +1,34 @@
+<div recent-predictions-container>
+  <h3>Recent Predictions</h3>
+  
+  <div *ngIf="loading" class="loading">
+    Loading recent predictions...
+  </div>
+  
+  <div *ngIf="!loading && recentPredictions.length === 0" class="no-predictions">
+    No recent predictions yet. Try uploading an image!
+  </div>
+  
+  <div *ngIf="!loading && recentPredictions.length > 0" class="predictions-grid">
+    <div 
+      *ngFor="let prediction of recentPredictions" 
+      class="prediction-item"
+      [attr.data-prediction-id]="prediction.id"
+    >
+      <div class="image-container">
+        <img 
+          [src]="getImageSrc(prediction.imageBase64)" 
+          [alt]="getTopPrediction(prediction.predictions)"
+          class="prediction-image"
+        />
+      </div>
+      <div class="prediction-details">
+        <div class="top-prediction">{{ getTopPrediction(prediction.predictions) }}</div>
+        <div class="prediction-meta">
+          <span class="language">{{ prediction.language }}</span>
+          <span class="timestamp">{{ formatTimestamp(prediction.timestamp) }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

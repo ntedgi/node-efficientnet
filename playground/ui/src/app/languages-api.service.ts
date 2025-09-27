@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { RecentPredictionEntry } from './interfces';
 
 
 @Injectable({
@@ -12,5 +14,9 @@ export class LanguagesApiService {
 
   getLanguages(){
     return this.http.get('/api/languages');
+  }
+
+  getRecentPredictions(): Observable<RecentPredictionEntry[]> {
+    return this.http.get<RecentPredictionEntry[]>('/api/recent-predictions');
   }
 }

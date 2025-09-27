@@ -3,6 +3,7 @@
 import express, { Router } from "express";
 import formidable from "express-formidable";
 import bodyParserErrorHandler from "express-body-parser-error-handler";
+import fs from "fs";
 
 const { urlencoded, json } = express;
 
@@ -31,6 +32,34 @@ const initServer = (model, serverName = "back-end") => {
   const router = Router();
   app.use(loggerMiddleware(serverName));
 
+  // In-memory storage for recent predictions (max 5)
+  const recentPredictions = [];
+
+  // Helper function to add prediction to recent storage
+  const addToRecentPredictions = (result, imagePath, language) => {
+    try {
+      const imageBase64 = fs.readFileSync(imagePath, { encoding: 'base64' });
+      
+      const predictionEntry = {
+        id: Date.now() + Math.random(), // Simple unique ID
+        predictions: result,
+        imageBase64,
+        language,
+        timestamp: new Date().toISOString()
+      };
+
+      // Add to beginning of array
+      recentPredictions.unshift(predictionEntry);
+      
+      // Keep only the last 5 predictions
+      if (recentPredictions.length > 5) {
+        recentPredictions.pop();
+      }
+    } catch (error) {
+      console.error('Error saving to recent predictions:', error);
+    }
+  };
+
   router.post("/api/upload/:language", async (req, res) => {
     try {
       console.log(`/api/upload/ ^ language=>${req.params.language}`);
@@ -55,6 +84,10 @@ const initServer = (model, serverName = "back-end") => {
             null,
             languageProvider
           );
+          
+          // Save to recent predictions
+          addToRecentPredictions(result, filePath, language);
+          
           res.send(result);
         }
       }
@@ -83,6 +116,15 @@ const initServer = (model, serverName = "back-end") => {
 
   router.get("/api/version", async (req, res) => {
     res.send({ version: "1.0" });
+  });
+
+  router.get("/api/recent-predictions", async (req, res) => {
+    try {
+      res.send(recentPredictions);
+    } catch (err) {
+      console.error(err);
+      res.status(500).send("Something went wrong");
+    }
   });
 
   app.use(urlencoded({ extended: true }));
