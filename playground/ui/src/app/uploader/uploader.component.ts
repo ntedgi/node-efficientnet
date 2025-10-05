@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import Prediction from '../interfces';
+import { RecentPredictionsComponent } from '../recent-predictions/recent-predictions.component';
 
 @Component({
   selector: 'app-uploader',
@@ -7,6 +8,8 @@ import Prediction from '../interfces';
   styleUrls: ['./uploader.component.scss'],
 })
 export class UploaderComponent implements OnInit {
+  @ViewChild(RecentPredictionsComponent) recentPredictionsComponent: RecentPredictionsComponent;
+  
   constructor() {}
 
   image2Display: string | ArrayBuffer;
@@ -28,6 +31,13 @@ export class UploaderComponent implements OnInit {
     console.log('updateClassification');
     console.log(result);
     this.classifications = result;
+    
+    // Refresh recent predictions when a new prediction is made
+    if (this.recentPredictionsComponent) {
+      setTimeout(() => {
+        this.recentPredictionsComponent.loadRecentPredictions();
+      }, 1000); // Small delay to ensure server has processed the prediction
+    }
   }
 
   resetFields(){

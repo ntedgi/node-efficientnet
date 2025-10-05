@@ -97,5 +97,19 @@ describe("Post Endpoints", () => {
         done(err);
       });
   });
+
+  it("should return recent predictions from /api/recent-predictions", (done) => {
+    request(app)
+      .get("/api/recent-predictions")
+      .expect(200)
+      .then((response) => {
+        const recentPredictions = response.body;
+        expect(Array.isArray(recentPredictions)).toBe(true);
+        done();
+      })
+      .catch((err) => {
+        done(err);
+      });
+  });
 });
 

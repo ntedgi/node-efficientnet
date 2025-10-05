@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NoteComponent } from './note/note.component';
 import { ResultsComponent } from './results/results.component';
 import { SingleResultComponent } from './single-result/single-result.component';
+import { RecentPredictionsComponent } from './recent-predictions/recent-predictions.component';
 import { FormsModule } from '@angular/forms';
 
 
@@ -23,6 +24,7 @@ import { FormsModule } from '@angular/forms';
     NoteComponent,
     ResultsComponent,
     SingleResultComponent,
+    RecentPredictionsComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
